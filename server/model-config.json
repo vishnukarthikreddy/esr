@@ -1,0 +1,55 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db"
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Resource": {
+    "dataSource": "yitsolDB",
+    "public": true
+  },
+  "Project": {
+    "dataSource": "yitsolDB",
+    "public": true
+  },
+  "Calendar": {
+    "dataSource": "yitsolDB",
+    "public": true
+  },
+  "RsrUser": {
+    "dataSource": "yitsolDB",
+    "public": true
+  },
+  "WeeklyStatus": {
+    "dataSource": "yitsolDB",
+    "public": true
+  }
+}

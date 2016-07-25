@@ -1,0 +1,45 @@
+
+<div class="">
+    <h4>RSR_Users</h4>
+</div>
+
+
+
+<div ng-controller="usersController">
+
+
+    <table class="table table-striped table-condensed table-hover" border="1" align="left">
+        <thead>
+
+        <tr>
+            <th class="resourceId" custom-sort order="'resourceId'" sort="sort">Resource_Id&nbsp;</th>
+            <th class="role" custom-sort order="'role'" sort="sort">Role&nbsp;</th>
+            <th class="status" custom-sort order="'status'" sort="sort">Status&nbsp;</th>
+            <!--<th class="created_DT_TM" custom-sort order="'created_DT_TM'" sort="sort">Created_DT_TM&nbsp;</th>-->
+            <!--<th class="modified_DT_TM" custom-sort order="'modified_DT_TM'" sort="sort">Modified_DT_TM&nbsp;</th>-->
+            <!--<th class="createdBy" custom-sort order="'createdBy'" sort="sort">Created By&nbsp;</th>-->
+            <!--<th class="modifiedBy" custom-sort order="'modifiedBy'" sort="sort">Modified By&nbsp;</th>-->
+
+
+
+
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="users in usersData track by $index">
+            <td> {{users.resourceId}}</td>
+            <td> {{users.role}}</td>
+            <td>{{users.status}}</td>
+            <!--<td>{{users.created_DT_TM}}</td>-->
+            <!--<td>{{users.modified_DT_TM}}</td>-->
+            <!--<td> {{users.createdBy}}</td>-->
+            <!--<td> {{users.modifiedBy}}</td>-->
+
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>

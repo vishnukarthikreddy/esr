@@ -1,0 +1,26 @@
+{
+  "name": "Calendar",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "rowId": {
+      "type": "string"
+    },
+    "period": {
+      "type": "string"
+    },
+    "startDay": {
+      "type": "string"
+    },
+    "endDay": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

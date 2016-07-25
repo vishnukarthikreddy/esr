@@ -1,0 +1,48 @@
+
+<div class="">
+    <h4>RSR_Projects</h4>
+</div>
+
+
+
+<div ng-controller="projectsController">
+
+
+    <table class="table table-striped table-condensed table-hover" border="1" align="left">
+        <thead>
+
+        <tr>
+            <th class="paNumb" custom-sort order="'paNumb'" sort="sort">PA_Number&nbsp;</th>
+            <th class="projectName" custom-sort order="'projectName'" sort="sort">Project Name&nbsp;</th>
+            <th class="projectManager" custom-sort order="'projectManager'" sort="sort">Project Manager&nbsp;</th>
+            <th class="start_date" custom-sort order="'start_date'" sort="sort">Start_date&nbsp;</th>
+            <th class="endDate" custom-sort order="'endDate'" sort="sort">End_Date&nbsp;</th>
+            <th class="status" custom-sort order="'status'" sort="sort">Status&nbsp;</th>
+            <th class="entity" custom-sort order="'entity'" sort="sort">Entity&nbsp;</th>
+            <!--<th class="created_DT_TM" custom-sort order="'created_DT_TM'" sort="sort">Created_DT_TM&nbsp;</th>-->
+            <!--<th class="lastUpdated_DT_TM" custom-sort order="'lastUpdated_DT_TM'" sort="sort">LastUpdated_DT_TM&nbsp;</th>-->
+            <!--<th class="createdBy" custom-sort order="'createdBy'" sort="sort">Created By&nbsp;</th>-->
+            <!--<th class="modifiedBy" custom-sort order="'modifiedBy'" sort="sort">Modified By&nbsp;</th>-->
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="projects in projectsData track by $index">
+            <td> {{projects.paNumb}}</td>
+            <td> {{projects.projectName}}</td>
+            <td>{{projects.projectManager}}</td>
+            <td>{{projects.start_date}}</td>
+            <td>{{projects.endDate}}</td>
+            <td> {{projects.status}}</td>
+            <td> {{projects.entity}}</td>
+            <!--<td>{{projects.created_DT_TM}}</td>-->
+            <!--<td>{{projects.lastUpdated_DT_TM}}</td>-->
+            <!--<td>{{projects.createdBy}}</td>-->
+            <!--<td>{{projects.modifiedBy}}</td>-->
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>

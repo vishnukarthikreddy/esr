@@ -1,0 +1,48 @@
+
+<div class="">
+    <h4>RSR_Weekly_Status</h4>
+</div>
+
+
+
+<div ng-controller="StatusController">
+
+
+    <table class="table table-striped table-condensed table-hover" border="1" align="left">
+        <thead>
+
+        <tr>
+            <th class="empId" custom-sort order="'empId'" sort="sort">Emp Id&nbsp;</th>
+            <th class="period" custom-sort order="'period'" sort="sort">Period&nbsp;</th>
+            <th class="project" custom-sort order="'project'" sort="sort">Project&nbsp;</th>
+            <th class="task" custom-sort order="'task'" sort="Task">Reporting Manager&nbsp;</th>
+            <th class="day_Of_Week" custom-sort order="'day_Of_Week'" sort="sort">Day_Of_Week&nbsp;</th>
+            <th class="no_Of_Hrs" custom-sort order="'no_Of_Hrs'" sort="sort">No_Of_Hrs&nbsp;</th>
+            <th class="dt_Submitted" custom-sort order="'dt_Submitted'" sort="sort">DT_Submitted&nbsp;</th>
+            <th class="mgr_Approval" custom-sort order="'mgr_Approval'" sort="sort">MGR_Approval&nbsp;</th>
+            <th class="mgr_Id" custom-sort order="'mgr_Id'" sort="sort">MGR_Id&nbsp;</th>
+            <th class="dt_Approved" custom-sort order="'dt_Approved'" sort="sort">DT_Approved&nbsp;</th>
+
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="status in statusData track by $index">
+            <td> {{status.empId}}</td>
+            <td> {{status.period}}</td>
+            <td>{{status.project}}</td>
+            <td>{{status.task}}</td>
+            <td>{{status.day_Of_Week}}</td>
+            <td>{{status.no_Of_Hrs}}</td>
+            <td> {{status.dt_Submitted}}</td>
+            <td> {{status.mgr_Approval}}</td>
+            <td>{{status.mgr_Id}}</td>
+            <td>{{status.dt_Approved}}</td>
+
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>

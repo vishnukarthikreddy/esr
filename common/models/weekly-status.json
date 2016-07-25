@@ -1,0 +1,44 @@
+{
+  "name": "WeeklyStatus",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "empId": {
+      "type": "string"
+    },
+    "period": {
+      "type": "string"
+    },
+    "project": {
+      "type": "string"
+    },
+    "task": {
+      "type": "string"
+    },
+    "day_Of_Week": {
+      "type": "string"
+    },
+    "no_Of_Hrs": {
+      "type": "string"
+    },
+    "dt_Submitted": {
+      "type": "string"
+    },
+    "mgr_Approval": {
+      "type": "string"
+    },
+    "mgr_Id": {
+      "type": "string"
+    },
+    "dt_Approved": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

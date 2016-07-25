@@ -1,0 +1,35 @@
+{
+  "name": "RsrUser",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "resourceId": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "created_DT_TM": {
+      "type": "string"
+    },
+    "modified_DT_TM": {
+      "type": "string"
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "modifiedBy": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
