@@ -23,6 +23,19 @@ app.config(function($routeProvider) {
             templateUrl: '/rsr-weekly-status.html',
             controller: 'StatusController'
         })
+        .when('/statusEntry', {
+          templateUrl: '/statusEntry.html',
+          controller: 'StatusEntryController'
+        })
+      .when('/managerApproval', {
+        templateUrl: '/managerApproval.html',
+        controller: 'managerApprovalController'
+      })
+      .when('/report', {
+        templateUrl: '/report.html',
+        controller: 'reportController'
+      })
+
 
         .otherwise({redirectTo: '/'});
 });
@@ -230,3 +243,63 @@ app.controller('StatusController', function($scope,$http,$rootScope) {
 
 });
 //****************************WeeklyStatusController************************
+
+
+//****************************Status entry Controller************************
+
+app.controller('StatusEntryController', function($scope,$http,$rootScope) {
+  $scope.getCalender = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/api/Calendars',
+      headers: {"Content-Type": "application/json", "Accept": "application/json"}
+    }).success(function (response) {
+      console.log('Users Response :' + JSON.stringify(response));
+      $rootScope.calenderData = response;
+
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+    });
+  };
+  $scope.getCalender();
+
+  $scope.getProjects = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/api/Projects',
+      headers: {"Content-Type": "application/json", "Accept": "application/json"}
+    }).success(function (response) {
+      console.log('Users Response :' + JSON.stringify(response));
+      $rootScope.projectsData = response;
+
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+    });
+  };
+
+  $scope.getProjects();
+
+
+
+
+  $scope.rowCount=[];
+//  var data=
+
+
+});
+
+app.controller('managerApprovalController', function($scope,$http,$rootScope) {
+
+  $scope.rowCount=[];
+//  var data=
+
+
+});
+app.controller('reportController', function($scope,$http,$rootScope) {
+
+  $scope.rowCount=[];
+//  var data=
+
+
+});
+//****************************Status Entry Controller************************

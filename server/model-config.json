@@ -51,5 +51,9 @@
   "WeeklyStatus": {
     "dataSource": "yitsolDB",
     "public": true
+  },
+  "Task": {
+    "dataSource": "yitsolDB",
+    "public": true
   }
 }
