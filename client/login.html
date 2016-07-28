@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>YitsolTimeSheet</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="stylesheets/style.css" rel="stylesheet">
+
+  <!--&lt;!&ndash; bootstrap&ndash;&gt;-->
+  <!--<link href="css/bootstrap.no-icons.min.css" rel="stylesheet">-->
+
+  <!-- Custom CSS -->
+  <link href="css/sb-admin.css" rel="stylesheet">
+
+  <!-- Morris Charts CSS -->
+  <link href="css/plugins/morris.css" rel="stylesheet">
+  <link href="dist/ngcalendar.css" rel="stylesheet">
+
+  <!--DatePicker-->
+
+  <!-- Custom Fonts -->
+  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+  <script src = "js/angular.min.js" ></script>
+  <script src="js/angular-route.min.js"></script>
+
+  <script src="js/d3.v3.min.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="dist/ngcalendar.js"></script>
+  <script src="js/yitsol.js"></script>
+
+
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!--<script>
+    window.location.href = "/login.html";
+  </script>-->
+
+</head>
+
+<body>
+
+<section ng-controller="indexController">
+  <div class="">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12">
+          <div class="loginFormMain">
+
+            <div class="text-center"><img src="images/logo.png" class="center-block"/></div>
+            <div class="LoginForm">
+              <form role="form" ng-submit="loginSubmit()">
+                <div class="form-group">
+                  <label for="email">Email address:</label>
+                  <input type="email" class="form-control" ng-model="user.email" id="email">
+                </div>
+                <div class="form-group">
+                  <label for="pwd">Password:</label>
+                  <input type="password" class="form-control" ng-model="user.password" id="pwd">
+                </div>
+                <div class="form-group">
+                  <a class="">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div ng-view></div>
+
+</body>
+
+</html>

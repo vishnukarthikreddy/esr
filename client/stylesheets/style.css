@@ -1,12 +1,32 @@
-/*body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* Login starts */
+.loginFormMain {
+  border: 1px solid #ccc;
+  padding: 25px;
+  margin-top: 40px;
 }
-
-a {
-  color: #00B7FF;
-}*/
-
-#statusEntryTable input{
-  width: 50px;
+/*.loginFormMain .tab-content .tab-pane { padding: 15px; }
+.loginFormMain .nav-tabs>li.active>a, .loginFormMain  .nav-tabs>li.active>a:focus, .loginFormMain .nav-tabs>li.active>a:hover {
+  color: #fff;
+  cursor: default;
+  background-color: rgba(72, 67, 67, 0.33);
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
 }
+.loginFormMain .nav-tabs>li>a {
+  margin-right: 0px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background: rgba(204, 204, 204, 0.26);
+  color: #000;
+  text-align: center;
+}
+.loginFormMain .nav-tabs>li {
+  float: left;
+  margin-bottom: -1px;
+  width: 33.33%;
+}
+.loginFormMain .nav-tabs { margin-top: 10px;}*/
+/* Login starts */
+#statusEntryTable input{ width: 50px; }
+

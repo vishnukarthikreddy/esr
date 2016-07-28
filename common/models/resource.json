@@ -1,6 +1,6 @@
 {
   "name": "Resource",
-  "base": "PersistedModel",
+  "base": "User",
   "idInjection": true,
   "options": {
     "validateUpsert": true
@@ -9,39 +9,6 @@
     "empId": {
       "type": "string",
       "required": true
-    },
-    "emailId": {
-      "type": "string"
-    },
-    "resourceName": {
-      "type": "string"
-    },
-    "reportingMgr": {
-      "type": "string"
-    },
-    "primarySkill": {
-      "type": "string"
-    },
-    "secondarySkill": {
-      "type": "string"
-    },
-    "status": {
-      "type": "string"
-    },
-    "type": {
-      "type": "string"
-    },
-    "created_DT_TM": {
-      "type": "string"
-    },
-    "lastUpdated_DT_TM": {
-      "type": "string"
-    },
-    "createdBy": {
-      "type": "string"
-    },
-    "modifiedBy": {
-      "type": "string"
     }
   },
   "validations": [],
