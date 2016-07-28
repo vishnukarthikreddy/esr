@@ -1,51 +1,38 @@
 {
   "name": "Resource",
-  "base": "PersistedModel",
+  "base": "User",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
-  "properties": {
-    "empId": {
-      "type": "string",
-      "required": true
-    },
-    "emailId": {
-      "type": "string"
-    },
-    "resourceName": {
-      "type": "string"
-    },
-    "reportingMgr": {
-      "type": "string"
-    },
-    "primarySkill": {
-      "type": "string"
-    },
-    "secondarySkill": {
-      "type": "string"
-    },
-    "status": {
-      "type": "string"
-    },
-    "type": {
-      "type": "string"
-    },
-    "created_DT_TM": {
-      "type": "string"
-    },
-    "lastUpdated_DT_TM": {
-      "type": "string"
-    },
-    "createdBy": {
-      "type": "string"
-    },
-    "modifiedBy": {
-      "type": "string"
-    }
-  },
+  "properties": {},
   "validations": [],
   "relations": {},
-  "acls": [],
+  "acls": [{
+    "accessType": "*",
+    "principalType": "ROLE",
+    "principalId": "$everyone",
+    "permission": "ALLOW"
+  },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "findById"
+    }],
   "methods": {}
 }

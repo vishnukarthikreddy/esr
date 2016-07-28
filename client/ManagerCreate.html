@@ -1,0 +1,164 @@
+
+<div class="">
+    <h4>Managers</h4>
+</div>
+
+
+
+<div ng-controller="managerController">
+
+
+  <!--*************************Add and Update********************************-->
+
+  <div align="right">
+    <div class="d-table">
+      <div class="d-tbcell">
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" ng-click="reset()">Create</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" resource="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content" align="center">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Create Manager</h4>
+              </div>
+              <div class="modal-body">
+                <div>
+                  <div class=" text-center color-red f-bold" ng-show="resourceCreationError">{{createResourceError}}</div>
+                  <form class="simple-form"  ng-submit="createManager()">
+                    <!--<span class="color-red f-bold f-left">*All fields are mandatory</span><br>-->
+                    <div class="form-group" align="left">
+                      <label ><span class="color-red f-bold f-left">*</span>Manager Id:</label>
+                      <input type="text" class="form-control" ng-model="manager.employeeId" placeholder="Enter Manager Id"  data-toggle="tooltip" data-placement="top" required>
+                    </div>
+                    <div class="form-group" align="left">
+                      <label ><span class="color-red f-bold f-left">*</span>Manager Name:</label>
+                      <input type="text" class="form-control" ng-model="manager.name" placeholder="Enter Manager Name"  data-toggle="tooltip" data-placement="top" required>
+                    </div>
+                    <div class="form-group" align="left">
+                      <label > <span class="color-red f-bold f-left">*</span>Manager Email:</label>
+                      <input type="text" class="form-control"  ng-model="manager.email" placeholder="Enter Manager Email" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
+                    </div>
+                    <div class="form-group" align="left">
+                      <label ><span class="color-red f-bold f-left">*</span>Create Password:</label>
+                      <input type="password"  class="form-control" ng-model="manager.password" placeholder="Enter Manager Password" maxlength="21"    data-toggle="tooltip" data-placement="top" required>
+                    </div>
+
+                    <div class="form-group" align="left">
+                      <label ><span class="color-red f-bold f-left">*</span>Confirm Password:</label>
+                      <input type="password" class="form-control" ng-model="manager.confirmPassword" placeholder="Enter Manager Confirm Password"    data-toggle="tooltip" data-placement="top" required>
+                    </div>
+                    <div class="form-group" align="left">
+                      <label ><span class="color-red f-bold f-left">*</span>Status:</label>
+                      <select ng-model="manager.status">
+                        <option value="">Select Status</option>
+                        <option value="Active">Active</option>
+                        <option value="InActive">InActive</option>
+                        <!-- <option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>-->
+                      </select>
+                    </div>
+
+                    <input type="button" ng-click="reset()" value="Reset" />
+                    <input type="submit" value="Save" />
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="managerEditDetails" resource="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content" align="center">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit Manager</h4>
+              </div>
+              <div class="modal-body">
+
+                <div>
+                  <div class=" text-center color-red f-bold" ng-show="resourceCreationError">{{resourceUserError}}</div>
+                  <form class="simple-form"  ng-submit="managerEdit()">
+                    <!--<span class="color-red f-bold f-left">*All fields are mandatory</span><br>-->
+                    <div class="form-group" align="left">
+                      <label ><span class="color-red f-bold f-left">*</span>Manager Id:</label>
+                      <input type="text" class="form-control" ng-model="editManager.employeeId" placeholder="Enter Manager Id"  data-toggle="tooltip" data-placement="top" required>
+                    </div>
+                    <div class="form-group" align="left">
+                      <label ><span class="color-red f-bold f-left">*</span>Manager Name:</label>
+                      <input type="text" class="form-control" ng-model="editManager.name" placeholder="Enter Manager Name"  data-toggle="tooltip" data-placement="top" required>
+                    </div>
+                    <div class="form-group" align="left">
+                      <label > <span class="color-red f-bold f-left">*</span>Manager Email:</label>
+                      <input type="text" class="form-control"  ng-model="editManager.email" placeholder="Enter Manager Email" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
+                    </div>
+
+                    <div class="form-group" align="left">
+                      <label ><span class="color-red f-bold f-left">*</span>Status:</label>
+                      <select ng-model="editManager.status">
+                        <option value="">Select Status</option>
+                        <option value="Active">Active</option>
+                        <option value="InActive">InActive</option>
+                        <!-- <option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>-->
+                      </select>
+                    </div>
+                    <input type="button" ng-click="reset()" value="Reset" />
+                    <input type="submit" value="Save" />
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+  <!--************************************add and update*********************************************-->
+
+
+
+  <table class="table table-striped table-condensed table-hover" border="1" align="left">
+        <thead>
+        <tr>
+            <th class="paNumb" custom-sort order="'paNumb'" sort="sort">Manager Id&nbsp;</th>
+            <th class="projectName" custom-sort order="'projectName'" sort="sort">Manager Name&nbsp;</th>
+            <th class="projectName" custom-sort order="'projectName'" sort="sort">Manager Email&nbsp;</th>
+            <th class="projectName" custom-sort order="'projectName'" sort="sort">Status&nbsp;</th>
+            <!--<th class="projectManager" custom-sort order="'projectManager'" sort="sort">Project Manager&nbsp;</th>-->
+          <th class="createdBy" custom-sort order="'createdBy'" sort="sort">Created By&nbsp;</th>
+            <th class="created_DT_TM" custom-sort order="'created_DT_TM'" sort="sort">Created_DT_TM&nbsp;</th>
+            <th class="modifiedBy" custom-sort order="'modifiedBy'" sort="sort">Modified By&nbsp;</th>
+          <th class="lastUpdated_DT_TM" custom-sort order="'lastUpdated_DT_TM'" sort="sort">LastUpdated_DT_TM&nbsp;</th>
+        <!--  <th class="edit" custom-sort order="'edit'" sort="sort">Actions&nbsp;</th>-->
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="manager in managerList track by $index">
+            <td> {{manager.employeeId}}</td>
+            <td> {{manager.name}}</td>
+            <td>{{manager.email}}</td>
+            <td>{{manager.status}}</td>
+            <td>{{manager.createdBy}}</td>
+            <td>{{manager.created_DT_TM}}</td>
+            <td>{{manager.modifiedBy}}</td>
+            <td>{{manager.lastUpdated_DT_TM}}</td>
+         <!-- <td>
+            <button class="glyphicon glyphicon-pencil pall10 m-right5" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#managerEditDetails" ng-click="editManager(manager)"></button>
+
+          </td>-->
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>

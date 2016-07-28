@@ -32,10 +32,6 @@
     "dataSource": "db",
     "public": false
   },
-  "Resource": {
-    "dataSource": "yitsolDB",
-    "public": true
-  },
   "Project": {
     "dataSource": "yitsolDB",
     "public": true
@@ -44,15 +40,15 @@
     "dataSource": "yitsolDB",
     "public": true
   },
-  "RsrUser": {
-    "dataSource": "yitsolDB",
-    "public": true
-  },
   "WeeklyStatus": {
     "dataSource": "yitsolDB",
     "public": true
   },
   "Task": {
+    "dataSource": "yitsolDB",
+    "public": true
+  },
+  "Resource": {
     "dataSource": "yitsolDB",
     "public": true
   }
