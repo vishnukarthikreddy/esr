@@ -48,7 +48,7 @@ app.controller('resourcesController', function($scope,$http,$rootScope) {
     $scope.getResources = function() {
         $http({
             method: 'GET',
-            url: 'http://localhost:3000/api/Resources',
+            url: 'http://localhost:3000/api/Resources/',
             headers: {"Content-Type": "application/json", "Accept": "application/json"}
         }).success(function (response) {
             console.log('Users Response :' + JSON.stringify(response));
@@ -68,14 +68,15 @@ app.controller('resourcesController', function($scope,$http,$rootScope) {
     //********create Resource***********
     $scope.createResource = function() {
         console.log('User data:' + JSON.stringify($scope.resource));
-    $scope.reset();
+    //$scope.reset();
 
         console.log("resource"+$scope.resource);
         $http({
             method: 'POST',
             url: 'http://localhost:3000/api/Resources',
-            headers: {"Content-Type": "application/json", "Accept": "application/json"},
+          headers: {"Content-Type": "application/json", "Accept": "application/json"},
             data: $scope.resource
+
         }).success(function (response) {
             console.log('Users Response :' + JSON.stringify(response));
             $rootScope.resourcesData.push(response);

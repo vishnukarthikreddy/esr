@@ -1,150 +1,150 @@
 
 <div class="">
-    <h4>RSR_Resources</h4>
+  <h4>RSR_Resources</h4>
 </div>
 
 
 <!--*************************Add and Update********************************-->
 
 <div align="right">
-    <div class="d-table">
-        <div class="d-tbcell">
-            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" ng-click="reset()">Create</button>
+  <div class="d-table">
+    <div class="d-tbcell">
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" ng-click="reset()">Create</button>
 
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" resource="dialog">
-                <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content" align="center">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Create Resource</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div>
-                                <div class=" text-center color-red f-bold" ng-show="resourceCreationError">{{createResourceError}}</div>
-                                <form class="simple-form"  ng-submit="createResource()">
-                                    <!--<span class="color-red f-bold f-left">*All fields are mandatory</span><br>-->
-                                    <div class="form-group" align="left">
-                                        <label for="empId"><span class="color-red f-bold f-left">*</span>EMP ID:</label>
-                                        <input type="text" class="form-control" id="empId" ng-model="resource.empId" placeholder="Enter EMP ID"  data-toggle="tooltip" data-placement="top" required>
-                                    </div>
-                                    <div class="form-group" align="left">
-                                        <label for="emailId"> <span class="color-red f-bold f-left">*</span>Email:</label>
-                                        <input type="text" class="form-control" id="emailId"  ng-model="resource.emailId" placeholder="Enter Email" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
-                                    </div>
-                                    <div class="form-group" align="left">
-                                        <label for="resourceName"><span class="color-red f-bold f-left">*</span>Resource Name:</label>
-                                        <input type="text" class="form-control" id="resourceName" ng-model="resource.resourceName" placeholder="Enter Resource Name" maxlength="21"    data-toggle="tooltip" data-placement="top" required>
-                                    </div>
-
-                                    <div class="form-group" align="left">
-                                        <label for="reportingMgr"><span class="color-red f-bold f-left">*</span>Reporting Manager:</label>
-                                        <input type="text" class="form-control" id="reportingMgr" ng-model="resource.reportingMgr" placeholder="Enter Reporting Manager Name"    data-toggle="tooltip" data-placement="top" required>
-                                    </div>
-
-                                    <!--<div class="form-group" align="left">-->
-                                        <!--<label > <span class="color-red f-bold f-left">*</span>Role:</label><br>-->
-                                        <!--&lt;!&ndash;<input type="role" class="form-control" id="role" ng-model="user.role" placeholder=" Enter Role">&ndash;&gt;-->
-
-                                        <!--<select multiple ng-model="user.role">-->
-                                            <!--<option ng-repeat="x in role" value="{{x.role}}">{{x.role}}</option>-->
-                                        <!--</select>-->
-                                    <!--</div>-->
-                                    <div class="form-group" align="left">
-                                        <label for="primarySkill"><span class="color-red f-bold f-left">*</span>Primary Skill:</label>
-                                        <input type="text" class="form-control" id="primarySkill" ng-model="resource.primarySkill" placeholder="Enter Primary Skill"   data-toggle="tooltip" data-placement="top" required>
-                                    </div>
-                                    <div class="form-group" align="left">
-                                        <label for="secondarySkill"><span class="color-red f-bold f-left">*</span>Secondary Skill:</label>
-                                        <input type="text" class="form-control" id="secondarySkill" ng-model="resource.secondarySkill" placeholder="Enter Secondary Skill"   data-toggle="tooltip" data-placement="top" required>
-                                    </div>
-                                    <div class="form-group" align="left">
-                                        <label for="status"><span class="color-red f-bold f-left">*</span>Status:</label>
-                                        <input type="text" class="form-control" id="status" ng-model="resource.status" placeholder="Enter Status"   data-toggle="tooltip" data-placement="top" required>
-                                    </div>
-                                    <div class="form-group" align="left">
-                                        <label for="type"><span class="color-red f-bold f-left">*</span>Type:</label>
-                                        <input type="text" class="form-control" id="type" ng-model="resource.secondarySkill" placeholder="Enter type"   data-toggle="tooltip" data-placement="top" required>
-                                    </div>
-
-
-
-                                    <input type="button" ng-click="reset()" value="Reset" />
-                                    <input type="submit" value="Save" />
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" resource="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content" align="center">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Create Resource</h4>
             </div>
-            <div class="modal fade" id="resourceEdit" resource="dialog">
-                <div class="modal-dialog">
+            <div class="modal-body">
+              <div>
+                <div class=" text-center color-red f-bold" ng-show="resourceCreationError">{{createResourceError}}</div>
+                <form class="simple-form"  ng-submit="createResource()">
+                  <!--<span class="color-red f-bold f-left">*All fields are mandatory</span><br>-->
+                  <div class="form-group" align="left">
+                    <label for="empId"><span class="color-red f-bold f-left">*</span>EMP ID:</label>
+                    <input type="text" class="form-control" id="empId" ng-model="resource.empId" placeholder="Enter EMP ID"  data-toggle="tooltip" data-placement="top" required>
+                  </div>
+                  <div class="form-group" align="left">
+                    <label for="emailId"> <span class="color-red f-bold f-left">*</span>Email:</label>
+                    <input type="text" class="form-control" id="emailId"  ng-model="resource.emailId" placeholder="Enter Email" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
+                  </div>
+                  <div class="form-group" align="left">
+                    <label for="resourceName"><span class="color-red f-bold f-left">*</span>Resource Name:</label>
+                    <input type="text" class="form-control" id="resourceName" ng-model="resource.resourceName" placeholder="Enter Resource Name" maxlength="21"    data-toggle="tooltip" data-placement="top" required>
+                  </div>
 
-                    <!-- Modal content-->
-                    <div class="modal-content" align="center">
-                        <div class="modal-header">
-                            <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
-                            <h4 class="modal-title">Edit Resource</h4>
-                        </div>
-                        <div class="modal-body">
+                  <div class="form-group" align="left">
+                    <label for="reportingMgr"><span class="color-red f-bold f-left">*</span>Reporting Manager:</label>
+                    <input type="text" class="form-control" id="reportingMgr" ng-model="resource.reportingMgr" placeholder="Enter Reporting Manager Name"    data-toggle="tooltip" data-placement="top" required>
+                  </div>
 
-                            <div>
-                                <div class=" text-center color-red f-bold" ng-show="resourceCreationError">{{resourceUserError}}</div>
-                                <form class="simple-form"  ng-submit="editResource()">
-                                    <div class="form-group" align="left">
-                                        <label for="empId"><span class="color-red f-bold f-left">*</span>Emp Id:</label>
-                                        <input type="empId" class="form-control" id="empId1" ng-model="updateResource.empId" placeholder="Enter Emp Id"  data-toggle="tooltip" data-placement="top" required>
-                                    </div>
-                                    <div class="form-group" align="left">
-                                        <label for="emailId"><span class="color-red f-bold f-left">*</span>Email Id:</label>
-                                        <input type="emailId" class="form-control" id="emailId1" ng-model="updateResource.emailId" placeholder="Enter Email Id"  data-toggle="tooltip" data-placement="top" required>
-                                    </div>
-                                    <!--<div class="form-group" align="left">-->
-                                        <!--<label ><span class="color-red f-bold f-left">*</span>Role:</label><br>-->
-                                        <!--<select multiple ng-model="updateUser.role">-->
-                                            <!--<option ng-repeat="x in role" value="{{x.role}}">{{x.role}}</option>-->
-                                        <!--</select>-->
-                                    <!--</div>-->
-                                    <div class="form-group" align="left">
-                                        <label for="resourceName"><span class="color-red f-bold f-left">*</span>Resource Name:</label>
-                                        <input type="resourceName" class="form-control" id="resourceName1" ng-model="updateResource.resourceName" placeholder=" Resource Name "  data-toggle="tooltip" data-placement="top" >
-                                    </div>
-                                    <div class="form-group" align="left">
-                                        <label for="reportingMgr"><span class="color-red f-bold f-left">*</span>Reporting Manager:</label>
-                                        <input type="reportingMgr" class="form-control" id="reportingMgr1" ng-model="updateResource.reportingMgr" placeholder="Enter Reporting Manager"  data-toggle="tooltip" data-placement="top" >
-                                    </div>
-                                    <div class="form-group" align="left">
-                                        <label for="primarySkill"><span class="color-red f-bold f-left">*</span>Primary Skill:</label>
-                                        <input type="primarySkill" class="form-control" id="primarySkill1" ng-model="updateResource.primarySkill" placeholder="Enter Primary Skill"  data-toggle="tooltip" data-placement="top" >
-                                    </div>
-                                    <div class="form-group" align="left">
-                                        <label for="secondarySkill"><span class="color-red f-bold f-left">*</span>Secondary Skill:</label>
-                                        <input type="secondarySkill" class="form-control" id="secondarySkill1" ng-model="updateResource.secondarySkill" placeholder="Enter Secondary Skill"  data-toggle="tooltip" data-placement="top" >
-                                    </div>
-                                    <div class="form-group" align="left">
-                                        <label for="status"><span class="color-red f-bold f-left">*</span>Status:</label>
-                                        <input type="status" class="form-control" id="status1" ng-model="updateResource.status" placeholder="Enter Status"  data-toggle="tooltip" data-placement="top" >
-                                    </div>
-                                    <div class="form-group" align="left">
-                                        <label for="type"><span class="color-red f-bold f-left">*</span>Type:</label>
-                                        <input type="type" class="form-control" id="type1" ng-model="updateResource.type" placeholder="Enter Type"  data-toggle="tooltip" data-placement="top" >
-                                    </div>
+                  <!--<div class="form-group" align="left">-->
+                  <!--<label > <span class="color-red f-bold f-left">*</span>Role:</label><br>-->
+                  <!--&lt;!&ndash;<input type="role" class="form-control" id="role" ng-model="user.role" placeholder=" Enter Role">&ndash;&gt;-->
+
+                  <!--<select multiple ng-model="user.role">-->
+                  <!--<option ng-repeat="x in role" value="{{x.role}}">{{x.role}}</option>-->
+                  <!--</select>-->
+                  <!--</div>-->
+                  <div class="form-group" align="left">
+                    <label for="primarySkill"><span class="color-red f-bold f-left">*</span>Primary Skill:</label>
+                    <input type="text" class="form-control" id="primarySkill" ng-model="resource.primarySkill" placeholder="Enter Primary Skill"   data-toggle="tooltip" data-placement="top" required>
+                  </div>
+                  <div class="form-group" align="left">
+                    <label for="secondarySkill"><span class="color-red f-bold f-left">*</span>Secondary Skill:</label>
+                    <input type="text" class="form-control" id="secondarySkill" ng-model="resource.secondarySkill" placeholder="Enter Secondary Skill"   data-toggle="tooltip" data-placement="top" required>
+                  </div>
+                  <div class="form-group" align="left">
+                    <label for="status"><span class="color-red f-bold f-left">*</span>Status:</label>
+                    <input type="text" class="form-control" id="status" ng-model="resource.status" placeholder="Enter Status"   data-toggle="tooltip" data-placement="top" required>
+                  </div>
+                  <div class="form-group" align="left">
+                    <label for="type"><span class="color-red f-bold f-left">*</span>Type:</label>
+                    <input type="text" class="form-control" id="type" ng-model="resource.type" placeholder="Enter type"   data-toggle="tooltip" data-placement="top" required>
+                  </div>
 
 
-                                    <input type="submit" value="Update" />
-                                    <input type="button" value="Cancel" ng-click="cancelEdit()" />
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+                  <input type="button" ng-click="reset()" value="Reset" />
+                  <input type="submit" value="Save" />
+                </form>
+              </div>
             </div>
-
+          </div>
         </div>
+      </div>
+      <div class="modal fade" id="resourceEdit" resource="dialog">
+        <div class="modal-dialog">
 
+          <!-- Modal content-->
+          <div class="modal-content" align="center">
+            <div class="modal-header">
+              <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+              <h4 class="modal-title">Edit Resource</h4>
+            </div>
+            <div class="modal-body">
+
+              <div>
+                <div class=" text-center color-red f-bold" ng-show="resourceCreationError">{{resourceUserError}}</div>
+                <form class="simple-form"  ng-submit="editResource()">
+                  <div class="form-group" align="left">
+                    <label for="empId"><span class="color-red f-bold f-left">*</span>Emp Id:</label>
+                    <input type="empId" class="form-control" id="empId1" ng-model="updateResource.empId" placeholder="Enter Emp Id"  data-toggle="tooltip" data-placement="top" required>
+                  </div>
+                  <div class="form-group" align="left">
+                    <label for="emailId"><span class="color-red f-bold f-left">*</span>Email Id:</label>
+                    <input type="emailId" class="form-control" id="emailId1" ng-model="updateResource.emailId" placeholder="Enter Email Id"  data-toggle="tooltip" data-placement="top" required>
+                  </div>
+                  <!--<div class="form-group" align="left">-->
+                  <!--<label ><span class="color-red f-bold f-left">*</span>Role:</label><br>-->
+                  <!--<select multiple ng-model="updateUser.role">-->
+                  <!--<option ng-repeat="x in role" value="{{x.role}}">{{x.role}}</option>-->
+                  <!--</select>-->
+                  <!--</div>-->
+                  <div class="form-group" align="left">
+                    <label for="resourceName"><span class="color-red f-bold f-left">*</span>Resource Name:</label>
+                    <input type="resourceName" class="form-control" id="resourceName1" ng-model="updateResource.resourceName" placeholder=" Resource Name "  data-toggle="tooltip" data-placement="top" >
+                  </div>
+                  <div class="form-group" align="left">
+                    <label for="reportingMgr"><span class="color-red f-bold f-left">*</span>Reporting Manager:</label>
+                    <input type="reportingMgr" class="form-control" id="reportingMgr1" ng-model="updateResource.reportingMgr" placeholder="Enter Reporting Manager"  data-toggle="tooltip" data-placement="top" >
+                  </div>
+                  <div class="form-group" align="left">
+                    <label for="primarySkill"><span class="color-red f-bold f-left">*</span>Primary Skill:</label>
+                    <input type="primarySkill" class="form-control" id="primarySkill1" ng-model="updateResource.primarySkill" placeholder="Enter Primary Skill"  data-toggle="tooltip" data-placement="top" >
+                  </div>
+                  <div class="form-group" align="left">
+                    <label for="secondarySkill"><span class="color-red f-bold f-left">*</span>Secondary Skill:</label>
+                    <input type="secondarySkill" class="form-control" id="secondarySkill1" ng-model="updateResource.secondarySkill" placeholder="Enter Secondary Skill"  data-toggle="tooltip" data-placement="top" >
+                  </div>
+                  <div class="form-group" align="left">
+                    <label for="status"><span class="color-red f-bold f-left">*</span>Status:</label>
+                    <input type="status" class="form-control" id="status1" ng-model="updateResource.status" placeholder="Enter Status"  data-toggle="tooltip" data-placement="top" >
+                  </div>
+                  <div class="form-group" align="left">
+                    <label for="type"><span class="color-red f-bold f-left">*</span>Type:</label>
+                    <input type="type" class="form-control" id="type1" ng-model="updateResource.type" placeholder="Enter Type"  data-toggle="tooltip" data-placement="top" >
+                  </div>
+
+
+                  <input type="submit" value="Update" />
+                  <input type="button" value="Cancel" ng-click="cancelEdit()" />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
+
+
+  </div>
 
 
 </div>
@@ -155,37 +155,42 @@
 <div ng-controller="resourcesController">
 
 
-    <table class="table table-striped table-condensed table-hover" border="1" align="left">
-        <thead>
+  <table class="table table-striped table-condensed table-hover" border="1" align="left">
+    <thead>
 
-        <tr>
-            <th class="empId" custom-sort order="'empId'" sort="sort">Emp Id&nbsp;</th>
-            <th class="emailId" custom-sort order="'emailId'" sort="sort">Email Id&nbsp;</th>
-            <th class="resourceName" custom-sort order="'resourceName'" sort="sort">Resource Name&nbsp;</th>
-            <th class="reportingMgr" custom-sort order="'reportingMgr'" sort="sort">Reporting Manager&nbsp;</th>
-            <th class="primarySkill" custom-sort order="'primarySkill'" sort="sort">Primary Skill&nbsp;</th>
-            <th class="secondarySkill" custom-sort order="'secondarySkill'" sort="sort">Secondary Skill&nbsp;</th>
-            <th class="status" custom-sort order="'status'" sort="sort">Status&nbsp;</th>
-            <th class="type" custom-sort order="'type'" sort="sort">Type&nbsp;</th>
-
-
-        </tr>
-        </thead>
-
-        <tbody>
-        <tr ng-repeat="resources in resourcesData track by $index">
-            <td> {{resources.empId}}</td>
-            <td> {{resources.emailId}}</td>
-            <td>{{resources.resourceName}}</td>
-            <td>{{resources.reportingMgr}}</td>
-            <td>{{resources.primarySkill}}</td>
-            <td>{{resources.secondarySkill}}</td>
-            <td> {{resources.status}}</td>
-            <td> {{resources.type}}</td>
+    <tr>
+      <th class="empId" custom-sort order="'empId'" sort="sort">Emp Id&nbsp;</th>
+      <th class="emailId" custom-sort order="'emailId'" sort="sort">Email Id&nbsp;</th>
+      <th class="resourceName" custom-sort order="'resourceName'" sort="sort">Resource Name&nbsp;</th>
+      <th class="reportingMgr" custom-sort order="'reportingMgr'" sort="sort">Reporting Manager&nbsp;</th>
+      <th class="primarySkill" custom-sort order="'primarySkill'" sort="sort">Primary Skill&nbsp;</th>
+      <th class="secondarySkill" custom-sort order="'secondarySkill'" sort="sort">Secondary Skill&nbsp;</th>
+      <th class="status" custom-sort order="'status'" sort="sort">Status&nbsp;</th>
+      <th class="type" custom-sort order="'type'" sort="sort">Type&nbsp;</th>
+      <th class="status" custom-sort order="'status'" sort="sort">Actions&nbsp;</th>
 
 
-        </tr>
-        </tbody>
-    </table>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="resources in resourcesData track by $index">
+      <td> {{resources.empId}}</td>
+      <td> {{resources.emailId}}</td>
+      <td>{{resources.resourceName}}</td>
+      <td>{{resources.reportingMgr}}</td>
+      <td>{{resources.primarySkill}}</td>
+      <td>{{resources.secondarySkill}}</td>
+      <td> {{resources.status}}</td>
+      <td> {{resources.type}}</td>
+      <td>
+        <button class="glyphicon glyphicon-pencil pall10 m-right5" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#resourceEdit" ng-click="editPopup(resourceDetails)"></button>
+
+      </td>
+
+
+    </tr>
+    </tbody>
+  </table>
 
 </div>
