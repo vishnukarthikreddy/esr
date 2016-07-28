@@ -2,15 +2,18 @@ var app = angular.module('myApp', ['ngRoute','ngCalendar'])
 
 app.config(function($routeProvider) {
     $routeProvider
-        .when('/', {
-            templateUrl: '/rsr-resources.html',
-            controller: 'resourcesController'
+        .when('/login', {
+            templateUrl: '/login.html',
+            controller: 'homeController'
+        })
+        .when('/rsr-resources', {
+          templateUrl: '/rsr-resources.html',
+          controller: 'resourcesController'
         })
         .when('/projects', {
             templateUrl: '/rsr-projects.html',
             controller: 'projectsController'
         })
-
         .when('/calender', {
             templateUrl: '/rsr-calender.html',
             controller: 'calenderController'
@@ -27,29 +30,72 @@ app.config(function($routeProvider) {
           templateUrl: '/statusEntry.html',
           controller: 'StatusEntryController'
         })
-      .when('/managerApproval', {
-        templateUrl: '/managerApproval.html',
-        controller: 'managerApprovalController'
+        .when('/managerApproval', {
+          templateUrl: '/managerApproval.html',
+          controller: 'managerApprovalController'
+        })
+        .when('/report', {
+          templateUrl: '/report.html',
+          controller: 'reportController'
+        })
+      .when('/manager', {
+        templateUrl: '/ManagerCreate.html',
+        controller: 'managerController'
       })
-      .when('/report', {
-        templateUrl: '/report.html',
-        controller: 'reportController'
-      })
 
-    .when('/manager', {
-            templateUrl: '/ManagerCreate.html',
-            controller: 'managerController'
-          })
-
-
-        .otherwise({redirectTo: '/'});
+      .otherwise({redirectTo: '/'});
 });
 
 
+
+
+/** index controlle **/
+app.controller('indexController', function($http, $scope, $window, $location, $rootScope) {
+  console.log("indexController");
+
+  $scope.user = {
+    "email": "",
+    "password": "",
+  };
+
+  $scope.loginSubmit = function() {
+    $http({
+      "method": "POST",
+      "url": "http://localhost:3000/api/Resources/login",
+      "headers": {"Content-Type": "application/json", "Accept": "application/json"},
+      "data": {
+        "email": $scope.user.email,
+        "password": $scope.user.password      }
+    }).success(function (response, data) {
+        console.log("success");
+        $scope.userDetails1 = response;
+        console.log("details....."+ JSON.stringify($scope.userDetails1));
+        $window.localStorage.setItem('userDetails',JSON.stringify($scope.userDetails1));
+
+        /*console.log("details111"+ $scope.userDetails1);
+        $window.localStorage.setItem('userDetails',$scope.user);
+        $scope.userDetails = $window.localStorage.getItem('userDetails');
+        console.log("details"+ JSON.stringify($scope.userDetails));*/
+        window.location.href = "/index.html";
+    }).error(function (response, data) {
+      console.log("failure");
+    })
+  }
+
+});
+/** index controlle **/
+
+
+/** home controlle **/
+app.controller('homeController', function($http, $scope, $window, $location, $rootScope) {
+  console.log("homeController");
+});
+/** home controlle **/
+
 //*************ResourcesController***********************
 app.controller('resourcesController', function($scope,$http,$rootScope) {
-
     console.log("resources controller entered");
+
     $scope.getResources = function() {
         $http({
             method: 'GET',
@@ -126,7 +172,7 @@ app.controller('resourcesController', function($scope,$http,$rootScope) {
 
 
 //************************ProjectController**************************
-app.controller('projectsController', function($scope,$http,$rootScope) {
+app.controller('projectsController', function($http, $scope, $window, $location, $rootScope) {
 
   $scope.master = {};
     console.log("projects controller entered");
@@ -208,7 +254,7 @@ console.log('project details'+JSON.stringify(projectDetails));
 
 //****************************CalenderController************************
 
-app.controller('calenderController', function($scope,$http,$rootScope) {
+app.controller('calenderController', function($http, $scope, $window, $location, $rootScope) {
 
     console.log("calender controller entered");
     $scope.getCalender = function() {
