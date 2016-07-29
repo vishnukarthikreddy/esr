@@ -14,6 +14,7 @@
     ng-model="myDate"
     format="%d/%m/%Y"></i>-->
 
+<!--
 
 <input
   ng-model="myDate1"
@@ -22,6 +23,7 @@
   ng-calendar
   ng-model="myDate1"
   format="%d/%m/%Y">
+-->
 
 <div ng-controller="projectsController">
 
@@ -48,7 +50,7 @@
                     <!--<span class="color-red f-bold f-left">*All fields are mandatory</span><br>-->
                     <div class="form-group" align="left">
                       <label ><span class="color-red f-bold f-left">*</span>Projet Number:</label>
-                      <input type="text" class="form-control" ng-model="project.id" placeholder="Enter Project ID"  data-toggle="tooltip" data-placement="top" required>
+                      <input type="text" class="form-control" ng-model="project.projectId" placeholder="Enter Project ID"  data-toggle="tooltip" data-placement="top" required>
                     </div>
                     <div class="form-group" align="left">
                       <label > <span class="color-red f-bold f-left">*</span>Project Name:</label>
@@ -58,13 +60,13 @@
 
                       <label ><span class="color-red f-bold f-left">*</span>Start Date:</label>
                       <!--<input type="text"  class="form-control" ng-model="project.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>-->
-                      <input placeholder="__/__/____" type="text" ng-calendar ng-model="myDate" format="%d/%m/%Y" />
+                      <input placeholder="Select Start Date" type="text" ng-calendar ng-model="project.startDate" format="%d/%m/%Y" />
                     </div>
 
                     <div class="form-group" align="left">
                       <label ><span class="color-red f-bold f-left">*</span>End Date:</label>
                       <!--<input type="text" class="form-control" ng-model="project.endDate" placeholder="Select End Date"    data-toggle="tooltip" data-placement="top" required>-->
-                      <input placeholder="__/__/____" type="text" ng-calendar ng-model="myDate" format="%d/%m/%Y" />
+                      <input placeholder="Select End Date" type="text" ng-calendar ng-model="project.endDate" format="%d/%m/%Y" />
                     </div>
 
 
@@ -105,13 +107,13 @@
                       <label for="type"><span class="color-red f-bold f-left">*</span>Type:</label>
                       <input type="text" class="form-control" id="type" ng-model="resource.type" placeholder="Enter type"   data-toggle="tooltip" data-placement="top" required>
                     </div>-->
-
+                    <input type="button" ng-click="reset()" value="Reset" />
+                    <input type="submit" value="Save" />
 
                   </form>
                 </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" ng-click="reset()" value="Reset" />Reset</form>
-                <button type="submit" class="btn btn-success" value="Save" />Save</button>
+
               </div>
               </div>
             </div>
@@ -221,13 +223,24 @@
 
         <tbody>
         <tr ng-repeat="projects in projectsData track by $index">
-            <td> {{projects.paNumb}}</td>
-            <td> {{projects.projectName}}</td>
-            <td>{{projects.projectManager}}</td>
+            <td> {{projects.projectId}}</td>
+            <td> {{projects.name}}</td>
+            <td>{{projects.manager}}</td>
             <td>{{projects.start_date}}</td>
             <td>{{projects.endDate}}</td>
             <td> {{projects.status}}</td>
-            <td> {{projects.entity}}</td>
+<!--
+          {
+          "endDate": "30/07/2016",
+          "status": "Not started yet",
+          "id": "12",
+          "name": "Yitsol",
+          "startDate": "30/07/2016",
+          "manager": "vinod",
+          "company": "Yitsol"
+          }-->
+
+            <td> {{projects.company}}</td>
             <td>{{projects.createdBy}}</td>
             <td>{{projects.created_DT_TM}}</td>
             <td>{{projects.modifiedBy}}</td>

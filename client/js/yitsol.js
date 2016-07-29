@@ -226,21 +226,21 @@ app.controller('projectsController', function($http, $scope, $window, $location,
 
 
   $scope.createProject=function(){
-
+alert('hai');
 var projectDetails=$scope.project;
 console.log('project details'+JSON.stringify(projectDetails));
- /*   $http({
+    $http({
       method: 'POST',
       url: 'http://localhost:3000/api/Projects',
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data:projectDetails
     }).success(function (response) {
       console.log('Users Response :' + JSON.stringify(response));
-      $rootScope.projectsData = response;
+        $rootScope.projectsData = response;
 
     }).error(function (response) {
       console.log('Error Response :' + JSON.stringify(response));
-    });*/
+    });
 
    // alert('create Project');
 
