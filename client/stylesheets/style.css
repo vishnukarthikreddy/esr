@@ -29,4 +29,41 @@
 .loginFormMain .nav-tabs { margin-top: 10px;}*/
 /* Login starts */
 #statusEntryTable input{ width: 50px; }
-
+body .dhtmlxcalendar_material.dhtmlxcalendar_in_input {
+  z-index: 99999 !important;
+}
+.form-group {
+  width: 50%;
+  float: left;
+}
+.form-group input {
+  width: 95%;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  height: 35px;
+  box-shadow: inset 0 0 2px #ccc;
+  -webkit-box-shadow: inset 0 0 2px #ccc;
+  -moz-box-shadow: inset 0 0 2px #ccc;
+}
+.form-group label {
+  font-size: 12px;
+  font-weight: normal;
+}
+.form-group select {
+  width: 95%;
+  height: 35px;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  box-shadow: inset 0 0 2px #ccc;
+  -webkit-box-shadow: inset 0 0 2px #ccc;
+  -moz-box-shadow: inset 0 0 2px #ccc;
+}
+.modal-footer {
+  display: block;
+  clear: both;
+  text-align: center;
+}

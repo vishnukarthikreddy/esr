@@ -77,6 +77,7 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
         $scope.userDetails = $window.localStorage.getItem('userDetails');
         console.log("details"+ JSON.stringify($scope.userDetails));*/
         window.location.href = "/index.html";
+      $locationProvider.html5Mode(true)
     }).error(function (response, data) {
       console.log("failure");
     })
