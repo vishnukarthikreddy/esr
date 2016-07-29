@@ -7,15 +7,15 @@
 <div ng-controller="calenderController">
 
 <!--<<<<<<< HEAD-->
-  <div align="right">
+ <!-- <div align="right">
     <div class="d-table">
       <div class="d-tbcell">
         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" ng-click="reset()">Create</button>
 
-        <!-- Modal -->
+        &lt;!&ndash; Modal &ndash;&gt;
         <div class="modal fade" id="myModal" resource="dialog">
           <div class="modal-dialog">
-            <!-- Modal content-->
+            &lt;!&ndash; Modal content&ndash;&gt;
             <div class="modal-content" align="center">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -25,7 +25,7 @@
                 <div>
                   <div class=" text-center color-red f-bold" ng-show="resourceCreationError">{{createResourceError}}</div>
                   <form class="simple-form"  ng-submit="createManager()">
-                    <!--<span class="color-red f-bold f-left">*All fields are mandatory</span><br>-->
+                    &lt;!&ndash;<span class="color-red f-bold f-left">*All fields are mandatory</span><br>&ndash;&gt;
                     <div class="form-group" align="left">
                       <label ><span class="color-red f-bold f-left">*</span>Start Date</label>
                       <input type="text" class="form-control" ng-model="calendar.startDate" placeholder="Enter Start Date"  data-toggle="tooltip" data-placement="top" required>
@@ -46,7 +46,7 @@
         <div class="modal fade" id="managerEditDetails" resource="dialog">
           <div class="modal-dialog">
 
-            <!-- Modal content-->
+            &lt;!&ndash; Modal content&ndash;&gt;
             <div class="modal-content" align="center">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -57,7 +57,7 @@
                 <div>
                   <div class=" text-center color-red f-bold" ng-show="resourceCreationError">{{resourceUserError}}</div>
                   <form class="simple-form"  ng-submit="managerEdit()">
-                    <!--<span class="color-red f-bold f-left">*All fields are mandatory</span><br>-->
+                    &lt;!&ndash;<span class="color-red f-bold f-left">*All fields are mandatory</span><br>&ndash;&gt;
                     <div class="form-group" align="left">
                       <label ><span class="color-red f-bold f-left">*</span>Manager Id:</label>
                       <input type="text" class="form-control" ng-model="editManager.employeeId" placeholder="Enter Manager Id"  data-toggle="tooltip" data-placement="top" required>
@@ -77,7 +77,7 @@
                         <option value="">Select Status</option>
                         <option value="Active">Active</option>
                         <option value="InActive">InActive</option>
-                        <!-- <option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>-->
+                        &lt;!&ndash; <option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>&ndash;&gt;
                       </select>
                     </div>
                     <input type="button" ng-click="reset()" value="Reset" />
@@ -95,12 +95,10 @@
     </div>
 
 
-  </div>
-<!--
-=======
+  </div>-->
+
+
   <button class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#createCalendar">Create</button>
->>>>>>> ccdbb49ba56e80a4f3770b10e41f979ff5293e3e
--->
 
     <table class="table table-striped table-condensed table-hover" border="1" align="left">
         <thead>
