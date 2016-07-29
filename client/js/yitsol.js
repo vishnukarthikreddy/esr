@@ -61,7 +61,7 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
   $scope.loginSubmit = function() {
     $http({
       "method": "POST",
-      "url": "http://localhost:3000/api/Resources/login",
+      "url": "http://139.162.42.96:4545/api/Resources/login",
       "headers": {"Content-Type": "application/json", "Accept": "application/json"},
       "data": {
         "email": $scope.user.email,
@@ -100,7 +100,7 @@ app.controller('resourcesController', function($scope,$http,$rootScope) {
   $scope.getResources = function() {
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/api/Resources/',
+      url: 'http://139.162.42.96:4545/api/Resources/',
       headers: {"Content-Type": "application/json", "Accept": "application/json"}
     }).success(function (response) {
       console.log('Users Response :' + JSON.stringify(response));
@@ -125,7 +125,7 @@ app.controller('resourcesController', function($scope,$http,$rootScope) {
     console.log("resource"+$scope.resource);
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/api/Resources',
+      url: 'http://139.162.42.96:4545/api/Resources',
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data: $scope.resource
 
@@ -175,7 +175,7 @@ app.controller('resourcesController', function($scope,$http,$rootScope) {
   $scope.getManager=function(){
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/api/Resources?filter={"where":{"role":"manager"}}',
+      url: 'http://139.162.42.96:4545/api/Resources?filter={"where":{"role":"manager"}}',
       headers: {"Content-Type": "application/json", "Accept": "application/json"}
 
     }).success(function (response) {
@@ -201,7 +201,7 @@ app.controller('projectsController', function($http, $scope, $window, $location,
     $scope.getProjects = function() {
         $http({
             method: 'GET',
-            url: 'http://localhost:3000/api/Projects',
+            url: 'http://139.162.42.96:4545/api/Projects',
             headers: {"Content-Type": "application/json", "Accept": "application/json"}
         }).success(function (response) {
             console.log('Users Response :' + JSON.stringify(response));
@@ -229,7 +229,7 @@ app.controller('projectsController', function($http, $scope, $window, $location,
   $scope.getManager=function(){
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/api/Resources?filter={"where":{"role":"manager"}}',
+      url: 'http://139.162.42.96:4545/api/Resources?filter={"where":{"role":"manager"}}',
       headers: {"Content-Type": "application/json", "Accept": "application/json"}
 
     }).success(function (response) {
@@ -245,21 +245,21 @@ app.controller('projectsController', function($http, $scope, $window, $location,
 
 
   $scope.createProject=function(){
-
+alert('hai');
 var projectDetails=$scope.project;
 console.log('project details'+JSON.stringify(projectDetails));
- /*   $http({
+    $http({
       method: 'POST',
-      url: 'http://localhost:3000/api/Projects',
+      url: 'http://139.162.42.96:4545/api/Projects',
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data:projectDetails
     }).success(function (response) {
       console.log('Users Response :' + JSON.stringify(response));
-      $rootScope.projectsData = response;
+        $rootScope.projectsData = response;
 
     }).error(function (response) {
       console.log('Error Response :' + JSON.stringify(response));
-    });*/
+    });
 
    // alert('create Project');
 
@@ -278,7 +278,7 @@ app.controller('calenderController', function($http, $scope, $window, $location,
     $scope.getCalender = function() {
         $http({
             method: 'GET',
-            url: 'http://localhost:3000/api/Calendars',
+            url: 'http://139.162.42.96:4545/api/Calendars',
             headers: {"Content-Type": "application/json", "Accept": "application/json"}
         }).success(function (response) {
             console.log('Users Response :' + JSON.stringify(response));
@@ -299,7 +299,7 @@ app.controller('calenderController', function($http, $scope, $window, $location,
 
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/api/Calendars',
+      url: 'http://139.162.42.96:4545/api/Calendars',
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data: createCalendar
     }).success(function (response) {
@@ -336,7 +336,7 @@ app.controller('usersController', function($scope,$http,$rootScope) {
     $scope.getUsers = function() {
         $http({
             method: 'GET',
-            url: 'http://localhost:3000/api/RsrUsers',
+            url: 'http://139.162.42.96:4545/api/RsrUsers',
             headers: {"Content-Type": "application/json", "Accept": "application/json"}
         }).success(function (response) {
             console.log('Users Response :' + JSON.stringify(response));
@@ -366,7 +366,7 @@ app.controller('StatusController', function($scope,$http,$rootScope) {
     $scope.getStatus = function() {
         $http({
             method: 'GET',
-            url: 'http://localhost:3000/api/WeeklyStatuses',
+            url: 'http://139.162.42.96:4545/api/WeeklyStatuses',
             headers: {"Content-Type": "application/json", "Accept": "application/json"}
         }).success(function (response) {
             console.log('Users Response :' + JSON.stringify(response));
@@ -395,7 +395,7 @@ app.controller('StatusEntryController', function($scope,$http,$rootScope) {
   $scope.getCalender = function() {
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/api/Calendars',
+      url: 'http://139.162.42.96:4545/api/Calendars',
       headers: {"Content-Type": "application/json", "Accept": "application/json"}
     }).success(function (response) {
       console.log('Users Response :' + JSON.stringify(response));
@@ -410,7 +410,7 @@ app.controller('StatusEntryController', function($scope,$http,$rootScope) {
   $scope.getProjects = function() {
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/api/Projects',
+      url: 'http://139.162.42.96:4545/api/Projects',
       headers: {"Content-Type": "application/json", "Accept": "application/json"}
     }).success(function (response) {
       console.log('Users Response :' + JSON.stringify(response));
@@ -485,7 +485,7 @@ app.controller('managerController', function($scope,$http,$rootScope) {
   $scope.getManager=function(){
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/api/Resources?filter={"where":{"role":"manager"}}',
+      url: 'http://139.162.42.96:4545/api/Resources?filter={"where":{"role":"manager"}}',
       headers: {"Content-Type": "application/json", "Accept": "application/json"}
 
     }).success(function (response) {
@@ -515,7 +515,7 @@ $scope.editManager=function(manager){
    console.log(JSON.stringify(editManagerDetails));
    $http({
      method: 'PUT',
-     url: 'http://localhost:3000/api/Resources/'+ $scope.editManager.id,
+     url: 'http://139.162.42.96:4545/api/Resources/'+ $scope.editManager.id,
      headers: {"Content-Type": "application/json", "Accept": "application/json"},
      data: editManagerDetails
    }).success(function (response) {
@@ -550,7 +550,7 @@ $scope.editManager=function(manager){
     //manager
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/api/Resources',
+      url: 'http://139.162.42.96:4545/api/Resources',
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data: manager
 
