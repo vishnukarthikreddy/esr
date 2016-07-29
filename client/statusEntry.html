@@ -4,8 +4,6 @@
     <h6  class="text-center">Status Report Submission Form</h6>
 </div>
 
-
-
 <div ng-controller="StatusEntryController">
 
   <div>
@@ -26,7 +24,9 @@
 
   </div>
 
-  <div><button>Add Project</button></div>
+  <div><button class="btn btn-default" ng-click="addPerson()">Add Project</button></div>
+
+
     <table class="table table-striped table-condensed table-hover" id="statusEntryTable" border="1" align="left">
         <thead>
 
@@ -59,53 +59,28 @@
           <td></td>
           <td></td>
         </tr>
-        <tr ng-repeat="">
+        <tr ng-repeat="person in people">
           <td>
             <select ng-model="kasdak">
               <option value="">Select date</option>
               <option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>
             </select>
           </td>
-          <td>
+          <td>{{ person.name }}
             <select ng-model="akdakjs">
               <option value="">Select date</option>
               <option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>
             </select>
-          </td>
-          <td><input type="text" ng-model="1"></td>
-          <td><input type="text" ng-model="2"></td>
-          <td><input type="text" ng-model="3"></td>
-          <td><input type="text" ng-model="4"></td>
-          <td><input type="text" ng-model="5"></td>
-          <td><input type="text" ng-model="6"></td>
-          <td><input type="text" ng-model="7"></td>
-          <td>delete button</td>
-          <td>10</td>
-
-        </tr>
-        <tr>
-          <td>
-            <select ng-model="kasdak">
-              <option value="">Select date</option>
-              <option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>
-            </select>
-          </td>
-          <td>
-            <select ng-model="akdakjs">
-              <option value="">Select date</option>
-              <option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>
-            </select>
-          </td>
-          <td><input type="text" ng-model="1"></td>
-          <td><input type="text" ng-model="2"></td>
-          <td><input type="text" ng-model="3"></td>
-          <td><input type="text" ng-model="4"></td>
-          <td><input type="text" ng-model="5"></td>
-          <td><input type="text" ng-model="6"></td>
-          <td><input type="text" ng-model="7"></td>
-          <td>delete button</td>
-          <td>10</td>
-
+          </td>{{ person.name }}
+          <td><input type="text" id="m{{$index}}"></td>
+          <td><input type="text" id="t{{$index}}"></td>
+          <td><input type="text" id="w{{$index}}"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><button class="btn btn-danger" ng-click="removePerson($index)"><i class="fa fa-close"></i></button></td>
+          <td></td>
 
         </tr>
         </tbody>
@@ -114,5 +89,7 @@
     <button>Submit</button>
     <button>Cancel</button>
   </div>
+
+
 
 </div>

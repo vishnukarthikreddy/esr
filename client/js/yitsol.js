@@ -190,8 +190,6 @@ app.controller('resourcesController', function($scope,$http,$rootScope) {
   $scope.getManager();
 
 });
-
-
 //*************************ResourceController**************************
 
 
@@ -271,11 +269,9 @@ console.log('project details'+JSON.stringify(projectDetails));
 
 
 });
-
 //************************ProjectController**************************
 
-//****************************CalenderController************************
-
+//****************************CalenderController************************//
 app.controller('calenderController', function($http, $scope, $window, $location, $rootScope) {
 
     console.log("calender controller entered");
@@ -333,8 +329,7 @@ app.controller('calenderController', function($http, $scope, $window, $location,
 //****************************CalenderController************************
 
 
-//****************************UsersController************************
-
+//****************************UsersController************************//
 app.controller('usersController', function($scope,$http,$rootScope) {
 
     console.log("users controller entered");
@@ -362,10 +357,9 @@ app.controller('usersController', function($scope,$http,$rootScope) {
 
 
 });
-//****************************UsersController************************
+//****************************UsersController************************//
 
-//****************************WeeklyStatusController************************
-
+//****************************WeeklyStatusController************************//
 app.controller('StatusController', function($scope,$http,$rootScope) {
 
     console.log("status controller entered");
@@ -393,12 +387,11 @@ app.controller('StatusController', function($scope,$http,$rootScope) {
 
 
 });
-//****************************WeeklyStatusController************************
+//****************************WeeklyStatusController************************//
 
-
-//****************************Status entry Controller************************
-
+//****************************Status entry Controller************************//
 app.controller('StatusEntryController', function($scope,$http,$rootScope) {
+
   $scope.getCalender = function() {
     $http({
       method: 'GET',
@@ -430,15 +423,36 @@ app.controller('StatusEntryController', function($scope,$http,$rootScope) {
 
   $scope.getProjects();
 
-
-
-
   $scope.rowCount=[];
 //  var data=
 
+  /*$scope.addPerson = function(){
+    var person = {
+      name: $scope.name,
+      age: $scope.age,
+      title: $scope.title,
+    };
+
+    $scope.people.push(person);
+  };*/
+  $scope.people = [
+
+  ];
+
+  $scope.addPerson = function(){
+    var person = {
+    };
+
+    $scope.people.push(person);
+  };
+
+  $scope.removePerson = function(index){
+    $scope.people.splice(index, 1);
+  };
 
 });
 
+//****************************manager Approval Controller************************//
 app.controller('managerApprovalController', function($scope,$http,$rootScope) {
 
   $scope.rowCount=[];
@@ -446,6 +460,9 @@ app.controller('managerApprovalController', function($scope,$http,$rootScope) {
 
 
 });
+//****************************manager Approval Controller************************//
+
+//****************************report Controller************************//
 app.controller('reportController', function($scope,$http,$rootScope) {
 
   $scope.rowCount=[];
@@ -453,6 +470,9 @@ app.controller('reportController', function($scope,$http,$rootScope) {
 
 
 });
+//****************************report Controller************************//
+
+//****************************manager Controller************************//
 app.controller('managerController', function($scope,$http,$rootScope) {
   $scope.master={};
   $scope.rowCount=[];
@@ -553,4 +573,4 @@ $scope.editManager=function(manager){
 
 
 });
-//****************************Status Entry Controller************************
+//****************************manager Controller************************
