@@ -205,8 +205,6 @@ app.controller('projectsController', function($http, $scope, $window, $location,
 
     $scope.project = {};
     $scope.reset();
-
-
   $scope.getManager=function(){
     $http({
       method: 'GET',
@@ -272,6 +270,30 @@ app.controller('calenderController', function($http, $scope, $window, $location,
         });
     };
     $scope.getCalender();
+
+  $scope.createCalendar = function() {
+    var createCalendar={
+      "startDate": $scope.calendar.calendarStartDate,
+      "endtDate": $scope.calendar.calendarEndDate,
+      "period": $scope.calendar.calendarStartDate+" To "+ $scope.calendar.calendarEndDate
+    }
+
+    $http({
+      method: 'POST',
+      url: 'http://localhost:3000/api/Calendars',
+      headers: {"Content-Type": "application/json", "Accept": "application/json"},
+      data: createCalendar
+    }).success(function (response) {
+      console.log('Users Response :' + JSON.stringify(response));
+      $rootScope.CalendarData = response;
+      $scope.getCalender();
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+    });
+
+    console.log('project calendar details'+JSON.stringify(createCalendar));
+
+  }
 
     $scope.reset = function() {
         $scope.calender = angular.copy($scope.master);

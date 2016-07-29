@@ -4,32 +4,71 @@
 </div>
 
 
-
 <div ng-controller="calenderController">
 
+  <button class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#createCalendar">Create</button>
 
     <table class="table table-striped table-condensed table-hover" border="1" align="left">
         <thead>
-
         <tr>
             <th class="rowId" custom-sort order="'rowId'" sort="sort">Row_Id&nbsp;</th>
             <th class="period" custom-sort order="'period'" sort="sort">Period&nbsp;</th>
             <th class="startDay" custom-sort order="'startDay'" sort="sort">Start_Day&nbsp;</th>
             <th class="endDay" custom-sort order="'endDay'" sort="sort">end_Day&nbsp;</th>
-
         </tr>
         </thead>
 
         <tbody>
+
+        <!--{{createCalendar}}-->
         <tr ng-repeat="calender in calenderData track by $index">
             <td> {{calender.rowId}}</td>
             <td> {{calender.period}}</td>
-            <td>{{calender.startDay}}</td>
-            <td>{{calender.endDay}}</td>
+            <td>{{calender.startDate}}</td>
+            <td>{{calender.endtDate}}</td>
 
 
         </tr>
         </tbody>
     </table>
+
+
+  <div id="createCalendar" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+
+          <form class="simple-form" ng-submit="createCalendar()">
+
+            <div class="form-group" align="left">
+              <label ><span class="color-red f-bold f-left">*</span>Start Date:</label>
+              <!--<input type="text" class="form-control" ng-model="project.endDate" placeholder="Select End Date"    data-toggle="tooltip" data-placement="top" required>-->
+              <input placeholder="Start Date" type="text" ng-calendar ng-model="calendar.calendarStartDate" format="%d/%m/%Y" />
+              {{project.scalendarCreate}}
+            </div>
+
+            <div class="form-group" align="left">
+              <label ><span class="color-red f-bold f-left">*</span>End Date:</label>
+              <!--<input type="text" class="form-control" ng-model="project.endDate" placeholder="Select End Date"    data-toggle="tooltip" data-placement="top" required>-->
+              <input placeholder="End Date" type="text" ng-calendar ng-model="calendar.calendarEndDate" format="%d/%m/%Y" />
+            </div>
+            <input type="button" ng-click="reset()" value="Reset" />
+            <input type="submit" value="Save" />
+          </form>
+
+        </div>
+       <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>-->
+      </div>
+
+    </div>
+  </div>
 
 </div>

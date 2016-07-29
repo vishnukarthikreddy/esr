@@ -67,3 +67,4 @@ body .dhtmlxcalendar_material.dhtmlxcalendar_in_input {
   clear: both;
   text-align: center;
 }
+.loginFormMain .form-group { width: 100%; }
