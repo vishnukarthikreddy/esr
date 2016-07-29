@@ -46,7 +46,7 @@
               </div>
               <div class="modal-body">
                   <div class=" text-center color-red f-bold" ng-show="resourceCreationError">{{createResourceError}}</div>
-                  <form class="simple-form"  ng-submit="createProject()">
+                  <form class="simple-form" ng-submit="createProject()">
                     <!--<span class="color-red f-bold f-left">*All fields are mandatory</span><br>-->
                     <div class="form-group" align="left">
                       <label ><span class="color-red f-bold f-left">*</span>Projet Number:</label>
@@ -107,6 +107,7 @@
                       <label for="type"><span class="color-red f-bold f-left">*</span>Type:</label>
                       <input type="text" class="form-control" id="type" ng-model="resource.type" placeholder="Enter type"   data-toggle="tooltip" data-placement="top" required>
                     </div>-->
+<!--<<<<<<< HEAD-->
                     <input type="button" ng-click="reset()" value="Reset" />
                     <input type="submit" value="Save" />
 
@@ -115,6 +116,16 @@
               <div class="modal-footer">
 
               </div>
+<!--=======
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" ng-click="reset()" value="Reset" />Reset</form>
+                        <button class="btn btn-success" value="Save" />Save</button>
+                  </div>
+
+                  </form>
+                </div>
+>>>>>>> ccdbb49ba56e80a4f3770b10e41f979ff5293e3e-->
               </div>
             </div>
           </div>

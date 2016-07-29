@@ -95,79 +95,102 @@ app.controller('homeController', function($http, $scope, $window, $location, $ro
 
 //*************ResourcesController***********************
 app.controller('resourcesController', function($scope,$http,$rootScope) {
-    console.log("resources controller entered");
 
-    $scope.getResources = function() {
-        $http({
-            method: 'GET',
-            url: 'http://localhost:3000/api/Resources/',
-            headers: {"Content-Type": "application/json", "Accept": "application/json"}
-        }).success(function (response) {
-            console.log('Users Response :' + JSON.stringify(response));
-            $rootScope.resourcesData = response;
+  console.log("resources controller entered");
+  $scope.getResources = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/api/Resources/',
+      headers: {"Content-Type": "application/json", "Accept": "application/json"}
+    }).success(function (response) {
+      console.log('Users Response :' + JSON.stringify(response));
+      $rootScope.resourcesData = response;
 
-        }).error(function (response) {
-            console.log('Error Response :' + JSON.stringify(response));
-        });
-    };
-    $scope.getResources();
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+    });
+  };
+  $scope.getResources();
 
-    $scope.reset = function() {
-        $scope.resource = angular.copy($scope.master);
-    };
+  $scope.reset = function() {
+    $scope.resource = angular.copy($scope.master);
+  };
 
-    $scope.resource = {};
-    //********create Resource***********
-    $scope.createResource = function() {
-        console.log('User data:' + JSON.stringify($scope.resource));
+  $scope.resource = {};
+  //********create Resource***********
+  $scope.createResource = function() {
+    console.log('User data:' + JSON.stringify($scope.resource));
     //$scope.reset();
 
-        console.log("resource"+$scope.resource);
-        $http({
-            method: 'POST',
-            url: 'http://localhost:3000/api/Resources',
-          headers: {"Content-Type": "application/json", "Accept": "application/json"},
-            data: $scope.resource
+    console.log("resource"+$scope.resource);
+    $http({
+      method: 'POST',
+      url: 'http://localhost:3000/api/Resources',
+      headers: {"Content-Type": "application/json", "Accept": "application/json"},
+      data: $scope.resource
 
-        }).success(function (response) {
-            console.log('Users Response :' + JSON.stringify(response));
-            $rootScope.resourcesData.push(response);
-            $scope.resource ={};
-            $('#myModal').modal('hide');
-        }).error(function (response) {
-            console.log('Error Response :' + JSON.stringify(response));
-            console.log("entered post last");
-        });
-    };
+    }).success(function (response) {
+      console.log('Users Response :' + JSON.stringify(response));
+      $rootScope.resourcesData.push(response);
+      $scope.resource ={};
+      $('#myModal').modal('hide');
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+      console.log("entered post last");
+    });
+  };
 
-    $scope.updateResource = {};
-    $scope.editPopup = function(resourceInfo){
-        console.log('Edit resource:'+JSON.stringify(resourceInfo));
-        $scope.updateResource = resourceInfo;
-        console.log("entered resource Update");
-    };
+  $scope.updateResource = {};
+  $scope.editPopup = function(resourceInfo){
+    console.log('Edit resource:'+JSON.stringify(resourceInfo));
+    $scope.updateResource = resourceInfo;
+    console.log("entered resource Update");
+  };
 
-    $scope.editResource = function(){
-        console.log('Edit Resource:'+JSON.stringify($scope.updateResource));
-        $http({
-            method: 'PUT',
-            url: 'http://localhost:3000/api/Resources/'+$scope.updateResource.id,
-            headers: {"Content-Type": "application/json", "Accept": "application/json"},
-            data: $scope.updateResource
-        }).success(function (response) {
-            console.log('Resources Response :' + JSON.stringify(response));
-            $scope.updateResource = {};
-            console.log("entered Put");
-            $scope.getResources();
-            $('#resourceEdit').modal('hide');
-        }).error(function (response) {
-            console.log('Error Response :' + JSON.stringify(response));
-            console.log("Update done");
-        });
-    };
+  $scope.editResource = function(){
+    console.log('Edit Resource:'+JSON.stringify($scope.updateResource));
+    $http({
+      method: 'PUT',
+      url: 'http://localhost:3000/api/Resources/'+$scope.updateResource.email,
+      headers: {"Content-Type": "application/json", "Accept": "application/json"},
+      data: $scope.updateResource
+    }).success(function (response) {
+      console.log('Resources Response :' + JSON.stringify(response));
+      $scope.updateResource = {};
+      console.log("entered Put");
+      $scope.getResources();
+      $('#resourceEdit').modal('hide');
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+      console.log("Update done");
+    });
+  };
 
+  $scope.cancelEdit = function(){
+    $scope.getResources();
+    $('#resourceEdit').modal('hide');
+  };
+
+
+  $scope.getManager=function(){
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/api/Resources?filter={"where":{"role":"manager"}}',
+      headers: {"Content-Type": "application/json", "Accept": "application/json"}
+
+    }).success(function (response) {
+      // console.log('Users Response :' + JSON.stringify(response));
+      $scope.managerList=response;
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+      console.log("entered post last");
+    });
+  }
+
+  $scope.getManager();
 
 });
+
 
 //*************************ResourceController**************************
 
@@ -205,8 +228,6 @@ app.controller('projectsController', function($http, $scope, $window, $location,
 
     $scope.project = {};
     $scope.reset();
-
-
   $scope.getManager=function(){
     $http({
       method: 'GET',
@@ -272,6 +293,30 @@ app.controller('calenderController', function($http, $scope, $window, $location,
         });
     };
     $scope.getCalender();
+
+  $scope.createCalendar = function() {
+    var createCalendar={
+      "startDate": $scope.calendar.calendarStartDate,
+      "endtDate": $scope.calendar.calendarEndDate,
+      "period": $scope.calendar.calendarStartDate+" To "+ $scope.calendar.calendarEndDate
+    }
+
+    $http({
+      method: 'POST',
+      url: 'http://localhost:3000/api/Calendars',
+      headers: {"Content-Type": "application/json", "Accept": "application/json"},
+      data: createCalendar
+    }).success(function (response) {
+      console.log('Users Response :' + JSON.stringify(response));
+      $rootScope.CalendarData = response;
+      $scope.getCalender();
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+    });
+
+    console.log('project calendar details'+JSON.stringify(createCalendar));
+
+  }
 
     $scope.reset = function() {
         $scope.calender = angular.copy($scope.master);
