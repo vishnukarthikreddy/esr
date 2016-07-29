@@ -61,7 +61,7 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
   $scope.loginSubmit = function() {
     $http({
       "method": "POST",
-      "url": "http://139.162.42.96:454/api/Resources/login",
+      "url": "http://139.162.42.96:4545/api/Resources/login",
       "headers": {"Content-Type": "application/json", "Accept": "application/json"},
       "data": {
         "email": $scope.user.email,
