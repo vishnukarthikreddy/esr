@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute', 'ngCalendar'])
+var app = angular.module('myApp', ['ngRoute'])
 
 app.config(function($routeProvider) {
     $routeProvider
@@ -69,6 +69,7 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
         $scope.userDetails = $window.localStorage.getItem('userDetails');
         console.log("details"+ JSON.stringify($scope.userDetails));*/
         window.location.href = "/index.html";
+      $locationProvider.html5Mode(true)
     }).error(function (response, data) {
       console.log("failure");
     })
@@ -87,7 +88,7 @@ app.controller('homeController', function($http, $scope, $window, $location, $ro
 //*************ResourcesController***********************
 app.controller('resourcesController', function($scope,$http,$rootScope) {
     console.log("resources controller entered");
-  
+
     $scope.getResources = function() {
         $http({
             method: 'GET',
