@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute'])
+var app = angular.module('myApp', ['ngRoute','ngCalendar'])
 
 app.config(function($routeProvider) {
     $routeProvider
@@ -38,8 +38,16 @@ app.config(function($routeProvider) {
           templateUrl: '/report.html',
           controller: 'reportController'
         })
-        .otherwise({redirectTo: '/'});
+      .when('/manager', {
+        templateUrl: '/ManagerCreate.html',
+        controller: 'managerController'
+      })
+
+      .otherwise({redirectTo: '/'});
 });
+
+
+
 
 /** index controlle **/
 app.controller('indexController', function($http, $scope, $window, $location, $rootScope) {
@@ -167,6 +175,7 @@ app.controller('resourcesController', function($scope,$http,$rootScope) {
 //************************ProjectController**************************
 app.controller('projectsController', function($http, $scope, $window, $location, $rootScope) {
 
+  $scope.master = {};
     console.log("projects controller entered");
     $scope.getProjects = function() {
         $http({
@@ -183,12 +192,61 @@ app.controller('projectsController', function($http, $scope, $window, $location,
     };
     $scope.getProjects();
 
+  $scope.editProject=function(project){
+
+    $scope.editProject =project;
+
+  }
+
+
     $scope.reset = function() {
         $scope.project = angular.copy($scope.master);
     };
 
     $scope.project = {};
     $scope.reset();
+
+
+  $scope.getManager=function(){
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/api/Resources?filter={"where":{"role":"manager"}}',
+      headers: {"Content-Type": "application/json", "Accept": "application/json"}
+
+    }).success(function (response) {
+      // console.log('Users Response :' + JSON.stringify(response));
+      $scope.managerList=response;
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+      console.log("entered post last");
+    });
+  }
+
+  $scope.getManager();
+
+
+  $scope.createProject=function(){
+
+var projectDetails=$scope.project;
+console.log('project details'+JSON.stringify(projectDetails));
+ /*   $http({
+      method: 'POST',
+      url: 'http://localhost:3000/api/Projects',
+      headers: {"Content-Type": "application/json", "Accept": "application/json"},
+      data:projectDetails
+    }).success(function (response) {
+      console.log('Users Response :' + JSON.stringify(response));
+      $rootScope.projectsData = response;
+
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+    });*/
+
+   // alert('create Project');
+
+
+  }
+
 
 
 });
@@ -222,6 +280,9 @@ app.controller('calenderController', function($http, $scope, $window, $location,
     $scope.calender = {};
     $scope.reset();
 
+  $scope.reset = function() {
+    $scope.resource = angular.copy($scope.master);
+  };
 
 });
 //****************************CalenderController************************
@@ -344,6 +405,106 @@ app.controller('reportController', function($scope,$http,$rootScope) {
 
   $scope.rowCount=[];
 //  var data=
+
+
+});
+app.controller('managerController', function($scope,$http,$rootScope) {
+  $scope.master={};
+  $scope.rowCount=[];
+//  var data=
+  /*status*/
+  $scope.reset = function() {
+    $scope.manager = angular.copy($scope.master);
+  };
+
+  $scope.getManager=function(){
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/api/Resources?filter={"where":{"role":"manager"}}',
+      headers: {"Content-Type": "application/json", "Accept": "application/json"}
+
+    }).success(function (response) {
+     // console.log('Users Response :' + JSON.stringify(response));
+      $scope.managerList=response;
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+      console.log("entered post last");
+    });
+  }
+
+$scope.getManager();
+
+
+$scope.editManager=function(manager){
+  $scope.editManager=manager;
+}
+ $scope.managerEdit=function(){
+
+   var editManagerDetails={
+     "name":$scope.editManager.name,
+     "employeeId":$scope.editManager.employeeId,
+     "email":$scope.editManager.email,
+     "status":$scope.editManager.status
+   }
+
+   console.log(JSON.stringify(editManagerDetails));
+   $http({
+     method: 'PUT',
+     url: 'http://localhost:3000/api/Resources/'+ $scope.editManager.id,
+     headers: {"Content-Type": "application/json", "Accept": "application/json"},
+     data: editManagerDetails
+   }).success(function (response) {
+     console.log('Users Response :' + JSON.stringify(response));
+     $rootScope.resourcesData.push(response);
+     $scope.resource ={};
+     $scope.getManager();
+     $('#managerEditDetails').modal('hide');
+   }).error(function (response) {
+     console.log('Error Response :' + JSON.stringify(response));
+     console.log("entered post last");
+   });
+
+   alert(JSON.stringify($scope.editManager));
+
+
+
+ }
+
+  $scope.createManager=function(){
+    alert($scope.manager.password);
+    var manager={
+      "name":$scope.manager.name,
+      "employeeId":$scope.manager.employeeId,
+      "email":$scope.manager.email,
+      "password":$scope.manager.password,
+      "role":"manager",
+      "status":$scope.manager.status
+      };
+
+      //=$scope.manager;
+    //manager
+    $http({
+      method: 'POST',
+      url: 'http://localhost:3000/api/Resources',
+      headers: {"Content-Type": "application/json", "Accept": "application/json"},
+      data: manager
+
+    }).success(function (response) {
+      console.log('Users Response :' + JSON.stringify(response));
+      $rootScope.resourcesData.push(response);
+      $scope.resource ={};
+      $scope.getManager();
+      $('#myModal').modal('hide');
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+      console.log("entered post last");
+    });
+
+    //alert(JSON.stringify($scope.manager));
+
+
+
+  }
 
 
 });
