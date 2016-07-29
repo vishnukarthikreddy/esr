@@ -3,7 +3,25 @@
     <h4>RSR_Projects</h4>
 </div>
 
+<!--<input
+  ng-model="myDate"
+  placeholder="__/__/____"
+  type="text">
 
+<i  class="fa fa-calendar-check-o"
+    aria-hidden="true"
+    ng-calendar
+    ng-model="myDate"
+    format="%d/%m/%Y"></i>-->
+
+
+<input
+  ng-model="myDate1"
+  placeholder="__/__/____"
+  type="text"
+  ng-calendar
+  ng-model="myDate1"
+  format="%d/%m/%Y">
 
 <div ng-controller="projectsController">
 
@@ -25,7 +43,6 @@
                 <h4 class="modal-title">Create Project</h4>
               </div>
               <div class="modal-body">
-                <div>
                   <div class=" text-center color-red f-bold" ng-show="resourceCreationError">{{createResourceError}}</div>
                   <form class="simple-form"  ng-submit="createProject()">
                     <!--<span class="color-red f-bold f-left">*All fields are mandatory</span><br>-->
@@ -38,21 +55,16 @@
                       <input type="text" class="form-control"  ng-model="project.name" placeholder="Enter Project Name" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
                     </div>
                     <div class="form-group" align="left">
-                     <!-- <input
-                        ng-model="myDate"
-                        placeholder="__/__/____"
-                        type="text"
-                        ng-calendar
-                        ng-model="myDate"
-                        format="%d/%m/%Y">
--->
+
                       <label ><span class="color-red f-bold f-left">*</span>Start Date:</label>
-                      <input type="text"  class="form-control" ng-model="project.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>
+                      <!--<input type="text"  class="form-control" ng-model="project.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>-->
+                      <input placeholder="__/__/____" type="text" ng-calendar ng-model="myDate" format="%d/%m/%Y" />
                     </div>
 
                     <div class="form-group" align="left">
                       <label ><span class="color-red f-bold f-left">*</span>End Date:</label>
-                      <input type="text" class="form-control" ng-model="project.endDate" placeholder="Select End Date"    data-toggle="tooltip" data-placement="top" required>
+                      <!--<input type="text" class="form-control" ng-model="project.endDate" placeholder="Select End Date"    data-toggle="tooltip" data-placement="top" required>-->
+                      <input placeholder="__/__/____" type="text" ng-calendar ng-model="myDate" format="%d/%m/%Y" />
                     </div>
 
 
@@ -83,7 +95,8 @@
                         <option value="Array">Array</option>
 
                         <!--<option value="">{{x.model}}</option>-->
-                      </select> </div>
+                      </select>
+                    </div>
                   <!--  <div class="form-group" align="left">
                       <label for="status"><span class="color-red f-bold f-left">*</span>Status:</label>
                       <input type="text" class="form-control" id="status" ng-model="resource.status" placeholder="Enter Status"   data-toggle="tooltip" data-placement="top" required>
@@ -94,11 +107,12 @@
                     </div>-->
 
 
-
-                    <input type="button" ng-click="reset()" value="Reset" />
-                    <input type="submit" value="Save" />
                   </form>
                 </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="reset()" value="Reset" />Reset</form>
+                <button type="submit" class="btn btn-success" value="Save" />Save</button>
+              </div>
               </div>
             </div>
           </div>
@@ -128,12 +142,14 @@
                     </div>
                     <div class="form-group" align="left">
                       <label ><span class="color-red f-bold f-left">*</span>Start Date:</label>
-                      <input type="text"  class="form-control" ng-model="editProject.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>
+                      <!--<input type="text"  class="form-control" ng-model="editProject.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>-->
+                      <input placeholder="__/__/____" type="text" ng-calendar ng-model="myDate" format="%d/%m/%Y" />
                     </div>
 
                     <div class="form-group" align="left">
                       <label ><span class="color-red f-bold f-left">*</span>End Date:</label>
-                      <input type="text" class="form-control" ng-model="editProject.endDate" placeholder="Select End Date"    data-toggle="tooltip" data-placement="top" required>
+                      <!--<input type="text" class="form-control" ng-model="editProject.endDate" placeholder="Select End Date"    data-toggle="tooltip" data-placement="top" required>-->
+                      <input placeholder="__/__/____" type="text" ng-calendar ng-model="myDate2" format="%d/%m/%Y" />
                     </div>
 
                     <div class="form-group" align="left">
@@ -181,25 +197,7 @@
   <!--************************************add and update*********************************************-->
 
 
-  <input
-    ng-model="myDate"
-    placeholder="__/__/____"
-    type="text">
 
-  <i  class="fa fa-calendar-check-o"
-      aria-hidden="true"
-      ng-calendar
-      ng-model="myDate"
-      format="%d/%m/%Y"></i>
-
-
-  <input
-    ng-model="myDate"
-    placeholder="__/__/____"
-    type="text"
-    ng-calendar
-    ng-model="myDate"
-    format="%d/%m/%Y">
 
 
   <table class="table table-striped table-condensed table-hover" border="1" align="left">
