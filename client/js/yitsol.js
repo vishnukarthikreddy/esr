@@ -103,7 +103,11 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
         headers: {"Content-Type": "application/json", "Accept": "application/json"}
       }).success(function (response) {
         console.log('Users Response :' + JSON.stringify(response));
-        $window.localStorage.setItem('profileDetails',response);
+        $rootScope.loginPersonDetails="somedata is";
+        $rootScope.nameOfLoginPerson=response.name;
+        var data=response;
+        $window.localStorage.setItem("profileDetails",JSON.stringify(data));
+        console.log('after login details are'+$rootScope.loginPersonDetails);
         $scope.loginDetails= response;
         if(response.role=='admin'){
           window.location.href = "/index.html#/rsr-resources";
@@ -138,7 +142,7 @@ app.controller('homeController', function($http, $scope, $window, $location, $ro
 //*************ResourcesController***********************
 app.controller('resourcesController', function($scope,$http,$rootScope) {
 
-  console.log("resources controller entered");
+  console.log("resources controller entered"+$rootScope.loginPersonDetails);
   $scope.getResources = function() {
     $http({
       method: 'GET',
@@ -477,25 +481,28 @@ app.controller('StatusEntryController', function($scope,$http,$rootScope) {
 
     $scope.people.push(person);
   };*/
-  $scope.timeList= [
-
-  ];
+  $scope.timeList= [];
 var timeDetails={
-  "project1":"",
-  "task1":"",
-  "monday1":'',
-  "tuesday1":'',
-  "wednesday1":'',
-  "thursday1":'',
-  "friday1":'',
-  "saturday1":'',
-  "sunday1":'',
-  "total1":''
+  "project":"",
+  "task":"",
+  "monday":'',
+  "tuesday":'',
+  "wednesday":'',
+  "thursday":'',
+  "friday":'',
+  "saturday":'',
+  "sunday":'',
+  "total":''
 };
 
   $scope.timeList.push(timeDetails);
   $scope.rowsLength=1;
   $scope.addIme = function(){
+    console.log('lenght is'+    $scope.timeList.length);
+    console.log('monday value'+$scope.timeList[0].monday);
+    $scope.timeList[0].total= $scope.timeList[0].monday+$scope.timeList[0].monday;
+
+
     var lengthOfRows=$scope.timeList.length+1;
     var projectName='project'+lengthOfRows;
     var taskName='task'+lengthOfRows;
@@ -575,8 +582,10 @@ app.controller('managerController', function($scope,$http,$window,$rootScope) {
   }
 
 $scope.getManager();
+  var loginPersonDetail=JSON.parse($window.localStorage.getItem('profileDetails'));
 
-
+  console.log(JSON.parse($window.localStorage.getItem('profileDetails')));
+console.log('login user details are'+JSON.stringify($rootScope.loginPersonDetails));
 $scope.editManager=function(manager){
   $scope.editManager=manager;
 }
@@ -626,13 +635,14 @@ $scope.editManager=function(manager){
       //=$scope.manager;
     //manager
     if(validateAccessToken()){
+      console.log(JSON.stringify(JSON.parse($window.localStorage.getItem('profileDetails'))));
       var loginDetails=$window.localStorage.getItem('profileDetails');
 
-      console.log('login details'+loginDetails);
+      console.log('login details'+JSON.stringify(loginDetails));
 
-      if(loginDetails.role=='admin'){
+      if(loginPersonDetail.role=='admin'){
 
-        manager['createdBy']=loginDetails.name;
+        manager['createdBy']=loginPersonDetail.name;
         manager['createdTime']=new Date();
 
         $http({

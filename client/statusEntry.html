@@ -59,9 +59,10 @@
           <td></td>
           <td></td>
         </tr>
-        <tr ng-repeat="list in timeList track by $index">
+        <tr ng-repeat="timeDetails in  timeList track by $index">
+
           <td>
-            <select ng-model="list.project">
+            <select ng-model="list[index]">
               <option value="">Select date</option>
               <option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>
             </select>
@@ -72,15 +73,15 @@
               <option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>
             </select>
           </td>{{ person.name }}
-          <td><input type="text" ng-model='list.monday1'></td>
-          <td><input type="text" ng-model='mon'+{{rowsLength}}>{{rowsLength}}</td>
-          <td><input type="text" id="w{{$index}}"></td>
-          <td><input type="text"></td>
-          <td><input type="text"></td>
-          <td><input type="text"></td>
-          <td><input type="text"></td>
+          <td><input type="text" ng-model='timeList[$index].monday'></td>
+          <td><input type="text" ng-model='timeList[$index].tuesday'> </td>
+          <td><input type="text" id="w{{$index}}" ng-model='timeList[index].wen'></td>
+          <td><input type="text" ng-model='timeList[$index].tu'></td>
+          <td><input type="text" ng-model='timeList[$index].fr'></td>
+          <td><input type="text" ng-model='timeList[$index].sat'></td>
+          <td><input type="text" ng-model='timeList[$index].sun'></td>
           <td><button class="btn btn-danger" ng-click="removePerson($index)"><i class="fa fa-close"></i></button></td>
-          <td></td>
+          <td><input type="text" ng-model='timeList[$index].total'></td></td>
 
         </tr>
         </tbody>
