@@ -99,7 +99,7 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
 
       $http({
         method: 'GET',
-        url: 'hhttp://139.162.42.96:4545/api/Resources/'+$scope.userDetails.userId+"?access_token="+$scope.userDetails.id,
+        url: 'http://139.162.42.96:4545/api/Resources/'+$scope.userDetails.userId+"?access_token="+$scope.userDetails.id,
         headers: {"Content-Type": "application/json", "Accept": "application/json"}
       }).success(function (response) {
         console.log('Users Response :' + JSON.stringify(response));
@@ -477,19 +477,54 @@ app.controller('StatusEntryController', function($scope,$http,$rootScope) {
 
     $scope.people.push(person);
   };*/
-  $scope.people = [
+  $scope.timeList= [
 
   ];
+var timeDetails={
+  "project1":"",
+  "task1":"",
+  "monday1":'',
+  "tuesday1":'',
+  "wednesday1":'',
+  "thursday1":'',
+  "friday1":'',
+  "saturday1":'',
+  "sunday1":'',
+  "total1":''
+};
 
-  $scope.addPerson = function(){
-    var person = {
+  $scope.timeList.push(timeDetails);
+  $scope.rowsLength=1;
+  $scope.addIme = function(){
+    var lengthOfRows=$scope.timeList.length+1;
+    var projectName='project'+lengthOfRows;
+    var taskName='task'+lengthOfRows;
+    var mondayName='monday'+lengthOfRows;
+    var tuesdayName='tuesday'+lengthOfRows;
+    var wednesdayName='wedneday'+lengthOfRows;
+    var thursdayName='thursday'+lengthOfRows;
+    var fridayName='friday'+lengthOfRows;
+    var saturdayName='saturday'+lengthOfRows;
+    var sundayName='sunday'+lengthOfRows;
+    var totalTime='total'+lengthOfRows;
+    var projectRows = {
+      projectName:"",
+      taskName:"",
+      mondayName:'',
+      tuesdayName:'',
+      wednesdayName:'',
+      thursdayName:'',
+      fridayName:'',
+      saturdayName:'',
+      sundayName:'',
+      totalTime:''
     };
 
-    $scope.people.push(person);
+    $scope.timeList.push(projectRows);
   };
 
   $scope.removePerson = function(index){
-    $scope.people.splice(index, 1);
+    $scope.timeList.splice(index, 1);
   };
 
 });
