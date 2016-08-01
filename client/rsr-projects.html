@@ -58,13 +58,13 @@
 
                       <label ><span class="color-red f-bold f-left">*</span>Start Date:</label>
                       <!--<input type="text"  class="form-control" ng-model="project.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>-->
-                      <input placeholder="Select Start Date" type="text" ng-calendar ng-model="project.startDate" format="%d/%m/%Y" />
+                      <input placeholder="Select Start Date" type="text" ng-calendar ng-model="project.startDate" format="%d-%m-%Y" />
                     </div>
 
                     <div class="form-group" align="left">
                       <label ><span class="color-red f-bold f-left">*</span>End Date:</label>
                       <!--<input type="text" class="form-control" ng-model="project.endDate" placeholder="Select End Date"    data-toggle="tooltip" data-placement="top" required>-->
-                      <input placeholder="Select End Date" type="text" ng-calendar ng-model="project.endDate" format="%d/%m/%Y" />
+                      <input placeholder="Select End Date" type="text" ng-calendar ng-model="project.endDate" format="%d-%m-%Y" />
                     </div>
 
 
@@ -225,7 +225,7 @@
             <td> {{projects.projectId}}</td>
             <td> {{projects.name}}</td>
             <td>{{projects.manager}}</td>
-            <td>{{projects.start_date}}</td>
+            <td>{{projects.startDate}}</td>
             <td>{{projects.endDate}}</td>
             <td> {{projects.status}}</td>
 <!--
@@ -241,7 +241,7 @@
 
             <td> {{projects.company}}</td>
             <td>{{projects.createdBy}}</td>
-            <td>{{projects.created_DT_TM}}</td>
+            <td>{{projects.createdTime}}</td>
             <td>{{projects.modifiedBy}}</td>
             <td>{{projects.lastUpdated_DT_TM}}</td>
           <td>

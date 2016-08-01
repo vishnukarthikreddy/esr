@@ -289,10 +289,16 @@ app.controller('projectsController', function($http, $scope, $window, $location,
 
   $scope.getManager();
 
+  console.log(JSON.stringify(JSON.parse($window.localStorage.getItem('profileDetails'))));
+  var loginDetails=JSON.parse($window.localStorage.getItem('profileDetails'));
 
   $scope.createProject=function(){
-alert('hai');
+//alert('hai');
 var projectDetails=$scope.project;
+    projectDetails['createdBy']=loginDetails.name;
+    projectDetails['createdTime']=new Date();
+
+
 console.log('project details'+JSON.stringify(projectDetails));
     $http({
       method: 'POST',
@@ -300,8 +306,11 @@ console.log('project details'+JSON.stringify(projectDetails));
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data:projectDetails
     }).success(function (response) {
-      console.log('Users Response :' + JSON.stringify(response));
-        $rootScope.projectsData = response;
+      $scope.getProjects();
+      $('#myModal').modal('hide');
+     // $('#createCalendar').modal('hide');
+      /*console.log('Users Response :' + JSON.stringify(response));
+        $rootScope.projectsData = response;*/
 
     }).error(function (response) {
       console.log('Error Response :' + JSON.stringify(response));
@@ -350,7 +359,8 @@ app.controller('calenderController', function($http, $scope, $window, $location,
       data: createCalendar
     }).success(function (response) {
       console.log('Users Response :' + JSON.stringify(response));
-      $rootScope.CalendarData = response;
+//      $rootScope.CalendarData = response;
+      $('#createCalendar').modal('hide');
       $scope.getCalender();
     }).error(function (response) {
       console.log('Error Response :' + JSON.stringify(response));
