@@ -112,9 +112,9 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
         if(response.role=='admin'){
           window.location.href = "/index.html#/rsr-resources";
         }else if(response.role=='manager'){
-
+          window.location.href = "/index.html#/rsr-resources";
         }else if(response.role=='employee'){
-
+          window.location.href = "/index.html#/rsr-resources";
         }
 
       }).error(function (response) {
