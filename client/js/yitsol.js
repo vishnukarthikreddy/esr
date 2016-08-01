@@ -73,6 +73,12 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
   };
 
   $scope.loginSubmit = function() {
+    $scope.word = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
+
+    if($scope.word=="" ||$scope.word==null){
+      alert();
+    }
+
     $http({
       "method": "POST",
       "url": "http://139.162.42.96:4545/api/Resources/login",
@@ -187,7 +193,7 @@ app.controller('resourcesController', function($scope,$http,$rootScope) {
     console.log('Edit Resource:'+JSON.stringify($scope.updateResource));
     $http({
       method: 'PUT',
-      url: 'http://localhost:3000/api/Resources/'+$scope.updateResource.email,
+      url: 'http://139.162.42.96:4545/api/Resources/'+$scope.updateResource.email,
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data: $scope.updateResource
     }).success(function (response) {
