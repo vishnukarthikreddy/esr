@@ -46,7 +46,21 @@ app.config(function($routeProvider) {
       .otherwise({redirectTo: '/'});
 });
 
+function validateAccessToken(){
 
+  var experiedTime = new Date(window.localStorage.getItem('experiedTime'));
+  var date=new Date();
+  console.log('now Time is'+date);
+  console.log('experiedTime is'+experiedTime);
+  if(experiedTime>date){
+    console.log('It is more');
+    return true;
+  }else{
+    console.log('It is less');
+    return false;
+  }
+
+}
 
 
 /** index controlle **/
@@ -68,18 +82,40 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
         "password": $scope.user.password      }
     }).success(function (response, data) {
         console.log("success");
-        $scope.userDetails1 = response;
-        console.log("details....."+ JSON.stringify($scope.userDetails1));
-        $window.localStorage.setItem('userDetails',JSON.stringify($scope.userDetails1));
+        $scope.userDetails = response;
+       var accessToken=$scope.userDetails.id;
+      console.log("details....."+ JSON.stringify($scope.userDetails));
+      $window.localStorage.setItem('userDetails',JSON.stringify($scope.userDetails));
+      if($scope.userDetails.expireTime)
+        var experiedTime=$scope.userDetails.expireTime;
+      $window.localStorage.setItem('experiedTime',experiedTime);
+      console.log(validateAccessToken());
 
-        /*console.log("details111"+ $scope.userDetails1);
-        $window.localStorage.setItem('userDetails',$scope.user);
-        $scope.userDetails = $window.localStorage.getItem('userDetails');
-        console.log("details"+ JSON.stringify($scope.userDetails));*/
-        window.location.href = "/index.html";
-      $locationProvider.html5Mode(true)
+      $http({
+        method: 'GET',
+        url: 'hhttp://139.162.42.96:4545/api/Resources/'+$scope.userDetails.userId+"?access_token="+$scope.userDetails.id,
+        headers: {"Content-Type": "application/json", "Accept": "application/json"}
+      }).success(function (response) {
+        console.log('Users Response :' + JSON.stringify(response));
+        $window.localStorage.setItem('profileDetails',response);
+        $scope.loginDetails= response;
+        if(response.role=='admin'){
+          window.location.href = "/index.html#/rsr-resources";
+        }else if(response.role=='manager'){
+
+        }else if(response.role=='employee'){
+
+        }
+
+      }).error(function (response) {
+        console.log('Error Response :' + JSON.stringify(response));
+      });
+
+
+
+
     }).error(function (response, data) {
-      console.log("failure");
+      console.log("failure"+JSON.stringify(response));
     })
   }
 
@@ -473,7 +509,7 @@ app.controller('reportController', function($scope,$http,$rootScope) {
 //****************************report Controller************************//
 
 //****************************manager Controller************************//
-app.controller('managerController', function($scope,$http,$rootScope) {
+app.controller('managerController', function($scope,$http,$window,$rootScope) {
   $scope.master={};
   $scope.rowCount=[];
 //  var data=
@@ -548,23 +584,42 @@ $scope.editManager=function(manager){
 
       //=$scope.manager;
     //manager
-    $http({
-      method: 'POST',
-      url: 'http://139.162.42.96:4545/api/Resources',
-      headers: {"Content-Type": "application/json", "Accept": "application/json"},
-      data: manager
+    if(validateAccessToken()){
+      var loginDetails=$window.localStorage.getItem('profileDetails');
 
-    }).success(function (response) {
-      console.log('Users Response :' + JSON.stringify(response));
-      $rootScope.resourcesData.push(response);
-      $scope.resource ={};
-      $scope.getManager();
-      $('#myModal').modal('hide');
-    }).error(function (response) {
-      console.log('Error Response :' + JSON.stringify(response));
-      console.log("entered post last");
-    });
+      console.log('login details'+loginDetails);
 
+      if(loginDetails.role=='admin'){
+
+        manager['createdBy']=loginDetails.name;
+        manager['createdTime']=new Date();
+
+        $http({
+          method: 'POST',
+          url: 'http://139.162.42.96:4545/api/Resources',
+          headers: {"Content-Type": "application/json", "Accept": "application/json"},
+          data: manager
+
+        }).success(function (response) {
+          console.log('Users Response :' + JSON.stringify(response));
+          $rootScope.resourcesData.push(response);
+          $scope.resource ={};
+          $scope.getManager();
+          $('#myModal').modal('hide');
+        }).error(function (response) {
+          console.log('Error Response :' + JSON.stringify(response));
+          console.log("entered post last");
+        });
+
+      }else{
+        alert('You donot have option to create manager');
+      }
+    }else{
+
+    }
+
+ /*
+*/
     //alert(JSON.stringify($scope.manager));
 
 
