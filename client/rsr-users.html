@@ -1,6 +1,6 @@
 <div class="contentArea">
   <div class="">
-    <div class="pageTitle">RSR_Users</div>
+    <div class="pageTitle">Users</div>
     <hr class="hline1" />
   </div>
 
@@ -14,6 +14,7 @@
 
         <tr>
             <th class="resourceId" custom-sort order="'resourceId'" sort="sort">Resource_Id&nbsp;</th>
+          <th class="password" custom-sort order="'password'" sort="sort">Password&nbsp;</th>
             <th class="role" custom-sort order="'role'" sort="sort">Role&nbsp;</th>
             <th class="status" custom-sort order="'status'" sort="sort">Status&nbsp;</th>
             <!--<th class="created_DT_TM" custom-sort order="'created_DT_TM'" sort="sort">Created_DT_TM&nbsp;</th>-->
@@ -30,7 +31,8 @@
 
         <tbody>
         <tr ng-repeat="users in usersData track by $index">
-            <td> {{users.resourceId}}</td>
+            <td> {{users.email}}</td>
+          <td> {{users.confpassword}}</td>
             <td> {{users.role}}</td>
             <td>{{users.status}}</td>
             <!--<td>{{users.created_DT_TM}}</td>-->

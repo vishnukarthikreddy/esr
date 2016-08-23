@@ -115,10 +115,10 @@
     <!--Top Menu Items-->
     <ul class="nav navbar-right top-nav">
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> User Name <b class="caret"></b></a>
+        <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{nameOfLoginPerson}} <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li>
-            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+            <a href="#/userProfile" ng-controller="homeController"><i class="fa fa-fw fa-user"></i> Profile</a>
           </li>
 
           <li class="divider"></li>
@@ -134,20 +134,18 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav side-nav">
         <li>
-          <a href="#/rsr-resources"><i class="fa fa-fw fa-dashboard"></i> RSR_Resources</a>
+          <a href="#/rsr-resources"><i class="fa fa-fw fa-dashboard"></i> Resources</a>
         </li>
         <li>
-          <a href="#/projects"><i class="fa fa-fw fa-edit"></i>RSR_Projects</a>
+          <a href="#/projects"><i class="fa fa-fw fa-edit"></i>Projects</a>
         </li>
 
         <li>
-          <a href="#/calender"><i class="fa fa-fw fa fa-calendar"></i>RSR_Calender</a>
+          <a href="#/calender"><i class="fa fa-fw fa fa-calendar"></i>Calender</a>
         </li>
+
         <li>
-          <a href="#/users"><i class="fa fa-fw fa fa-users"></i>RSR_Users</a>
-        </li>
-        <li>
-          <a href="#/status"><i class="fa fa-fw fa fa-users"></i>RSR_Weekly_Status</a>
+          <a href="#/status"><i class="fa fa-fw fa fa-users"></i>Weekly_Status</a>
         </li>
         <li>
           <a href="#/statusEntry"><i class="fa fa-fw fa fa-users"></i>Status Entry</a>
@@ -158,9 +156,12 @@
         <li>
           <a href="#/report"><i class="fa fa-fw fa fa-users"></i>Reports</a>
         </li>
-       <li>
+        <li>
+          <a href="#/users"><i class="fa fa-fw fa fa-users"></i>Users</a>
+        </li>
+      <!-- <li>
                 <a href="#/manager"><i class="fa fa-fw fa fa-users"></i>Manager</a>
-              </li>
+              </li>-->
 
 
       </ul>

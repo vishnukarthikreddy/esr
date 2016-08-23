@@ -95,3 +95,45 @@ body .dhtmlxcalendar_material.dhtmlxcalendar_in_input {
   padding: 15px 0;
   font-weight: normal;
 }
+ /*profile*/
+.profile-table{
+  width: 50%;
+  text-align: center;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  border: 1px solid #000;
+}
+.p-top45{ padding-top: 45px;}
+.input_change_pswrd{
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+.txt_center{ text-align: center;}
+.submit_change_pswrd{
+  text-align: center;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  display: table;
+  margin-bottom: 15px;
+  background-color: #00BCD4;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+}
+
+.change_pswrd {
+  text-align: center;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: table;
+  margin-top: 30px;
+  font-size: 14px;
+}

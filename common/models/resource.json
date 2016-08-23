@@ -8,12 +8,13 @@
   "properties": {},
   "validations": [],
   "relations": {},
-  "acls": [{
-    "accessType": "*",
-    "principalType": "ROLE",
-    "principalId": "$everyone",
-    "permission": "ALLOW"
-  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
     {
       "accessType": "WRITE",
       "principalType": "ROLE",
@@ -33,6 +34,7 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "findById"
-    }],
+    }
+  ],
   "methods": {}
 }

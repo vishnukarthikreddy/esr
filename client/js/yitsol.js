@@ -5,7 +5,10 @@ app.config(function($routeProvider) {
         .when('/login', {
             templateUrl: '/login.html',
             controller: 'homeController'
-        })
+        }).when('/userProfile', {
+        templateUrl: '/profile.html',
+        controller: 'homeController'
+      })
         .when('/rsr-resources', {
           templateUrl: '/rsr-resources.html',
           controller: 'resourcesController'
@@ -66,7 +69,38 @@ function validateAccessToken(){
 /** index controlle **/
 app.controller('indexController', function($http, $scope, $window, $location, $rootScope) {
   console.log("indexController");
+  $scope.profileDetails=JSON.parse($window.localStorage.getItem('profileDetails'))
+  $rootScope.nameOfLoginPerson=$scope.profileDetails.resourceName;
+  $('#errormsgdis').hide();
+  $scope.forgotPassword=function () {
 
+    var sendmail=$scope.forgotmail;
+    var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+    if (reg.test(sendmail)) {
+      $http({
+        method: 'POST',
+        url: 'http://139.162.42.96:4545/api/emails',
+        headers: {"Content-Type": "application/json", "Accept": "application/json"},
+        data: {
+          "to": "hr@yitsol.com",
+          "from": sendmail,
+          "subject": "Forgot Password",
+          "text": "",
+          "html": "Password for  is  &nbsp;&nbsp;" + sendmail+ "&nbsp;&nbsp; Change password after login. " + "<br>Thank You"
+        }
+      }).success(function (response) {
+        $('#errormsgdis').hide();
+        console.log('Users Response :');
+        $('#myModal112').modal('hide');
+
+      }).error(function (response) {
+        console.log('Error Response :' + JSON.stringify(response));
+      });
+    }else{
+      $('#errormsgdis').show();
+    }
+
+  }
   $scope.user = {
     "email": "",
     "password": "",
@@ -89,6 +123,7 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
     }).success(function (response, data) {
         console.log("success");
         $scope.userDetails = response;
+
        var accessToken=$scope.userDetails.id;
       console.log("details....."+ JSON.stringify($scope.userDetails));
       $window.localStorage.setItem('userDetails',JSON.stringify($scope.userDetails));
@@ -104,7 +139,8 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
       }).success(function (response) {
         console.log('Users Response :' + JSON.stringify(response));
         $rootScope.loginPersonDetails="somedata is";
-        $rootScope.nameOfLoginPerson=response.name;
+        $rootScope.nameOfLoginPerson=response.username;
+
         var data=response;
         $window.localStorage.setItem("profileDetails",JSON.stringify(data));
         console.log('after login details are'+$rootScope.loginPersonDetails);
@@ -116,7 +152,7 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
         }else if(response.role=='employee'){
           window.location.href = "/index.html#/rsr-resources";
         }
-
+        window.location.href = "/index.html#/rsr-resources";
       }).error(function (response) {
         console.log('Error Response :' + JSON.stringify(response));
       });
@@ -136,6 +172,79 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
 /** home controlle **/
 app.controller('homeController', function($http, $scope, $window, $location, $rootScope) {
   console.log("homeController");
+
+    $scope.profile=JSON.parse($window.localStorage.getItem("profileDetails"));
+
+
+  /*$scope.updatePassword=function(){
+    $scope.userInfo=JSON.parse($window.localStorage.getItem('userInfo'));
+
+    var oldPassword = document.getElementById("oldPassword").value;
+    var npassword = document.getElementById("nPassword").value;
+    var cpasswor = document.getElementById("cPassword").value;
+    if (oldPassword.length >= 6 ){
+      if (npassword.length >= 6 ){
+
+        if(npassword==cpasswor){
+
+          $http({
+            "method": "POST",
+            "url": "http://139.162.42.96:4545/api/Resources/login",
+            "headers": {"Content-Type": "application/json", "Accept": "application/json"},
+            "data": {
+              "email": $scope.profile.email,
+              "password": oldPassword.trim()      }
+          }).success(function (response, data) {
+            console.log("success");
+            $scope.userDetails = response;
+
+            var accessToken=$scope.userDetails.id;
+            console.log("details....."+ JSON.stringify($scope.userDetails));
+            $window.localStorage.setItem('userDetails',JSON.stringify($scope.userDetails));
+            if($scope.userDetails.expireTime)
+              var experiedTime=$scope.userDetails.expireTime;
+            $window.localStorage.setItem('experiedTime',experiedTime);
+
+
+
+              $http({
+                method:"put",
+                url: 'http://139.162.42.96:4545/api/Resources/'+$scope.userDetails.userId+"?access_token="+$scope.userDetails.id,
+                headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+                data:{"password":npassword}
+              }).success(function(responce){
+
+
+
+              }).error(function(responce){
+                cb(responce);
+
+              })
+
+
+
+          }).error(function (data) {
+            $scope.passwordError = true;
+            // $scope.passwordErrorMessage = 'Please enter Correct password';
+            Notification.error({message: 'Please Enter Correct Password', delay: 5000});
+          })
+        }
+        else{
+          Notification.error({message: 'Password dose not match', delay: 3000});
+          return false;
+        }
+      }
+      else{
+        Notification.error({message: 'Password must have atleast 6 characters', delay: 3000});
+        return false;
+      }
+    }else{
+      Notification.error({message: 'Password must have atleast 6 characters', delay: 3000});
+      return false;
+    }
+  };*/
+
+
 });
 /** home controlle **/
 
@@ -166,8 +275,8 @@ app.controller('resourcesController', function($scope,$http,$rootScope) {
   //********create Resource***********
   $scope.createResource = function() {
     console.log('User data:' + JSON.stringify($scope.resource));
-    //$scope.reset();
-
+    //$scope.reset();resource.password
+    $scope.resource['confpassword']=$scope.resource.password;
     console.log("resource"+$scope.resource);
     $http({
       method: 'POST',
@@ -186,14 +295,15 @@ app.controller('resourcesController', function($scope,$http,$rootScope) {
     });
   };
 
-  $scope.updateResource = {};
+  //$scope.updateResource = {};
   $scope.editPopup = function(resourceInfo){
     console.log('Edit resource:'+JSON.stringify(resourceInfo));
     $scope.updateResource = resourceInfo;
-    console.log("entered resource Update");
+    console.log("entered resource Update"+JSON.stringify($scope.updateResource1));
   };
 
   $scope.editResource = function(){
+
     console.log('Edit Resource:'+JSON.stringify($scope.updateResource));
     $http({
       method: 'PUT',
@@ -202,7 +312,7 @@ app.controller('resourcesController', function($scope,$http,$rootScope) {
       data: $scope.updateResource
     }).success(function (response) {
       console.log('Resources Response :' + JSON.stringify(response));
-      $scope.updateResource = {};
+      $rootScope.updateResource = {};
       console.log("entered Put");
       $scope.getResources();
       $('#resourceEdit').modal('hide');
@@ -392,7 +502,7 @@ app.controller('usersController', function($scope,$http,$rootScope) {
     $scope.getUsers = function() {
         $http({
             method: 'GET',
-            url: 'http://139.162.42.96:4545/api/RsrUsers',
+            url: 'http://139.162.42.96:4545/api/Resources',
             headers: {"Content-Type": "application/json", "Accept": "application/json"}
         }).success(function (response) {
             console.log('Users Response :' + JSON.stringify(response));
@@ -625,14 +735,14 @@ $scope.editManager=function(manager){
      console.log("entered post last");
    });
 
-   alert(JSON.stringify($scope.editManager));
+  // alert(JSON.stringify($scope.editManager));
 
 
 
  }
 
   $scope.createManager=function(){
-    alert($scope.manager.password);
+    //alert($scope.manager.password);
     var manager={
       "name":$scope.manager.name,
       "employeeId":$scope.manager.employeeId,
