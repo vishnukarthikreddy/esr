@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute','ngCalendar'])
+var app = angular.module('myApp', ['ngRoute','ngCalendar', 'ui-notification'])
 
 app.config(function($routeProvider) {
     $routeProvider
@@ -69,6 +69,7 @@ function validateAccessToken(){
 /** index controlle **/
 app.controller('indexController', function($http, $scope, $window, $location, $rootScope) {
   console.log("indexController");
+  $scope.adminshow=true;
   $scope.profileDetails=JSON.parse($window.localStorage.getItem('profileDetails'))
   $rootScope.nameOfLoginPerson=$scope.profileDetails.resourceName;
   $('#errormsgdis').hide();
@@ -114,6 +115,7 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
     }
     var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
     if (reg.test($scope.user.email)){
+
       $http({
         "method": "POST",
         "url": "http://139.162.42.96:4545/api/Resources/login",
