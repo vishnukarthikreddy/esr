@@ -70,13 +70,15 @@ function validateAccessToken(){
 app.controller('indexController', function($http, $scope, $window, $location, $rootScope) {
   console.log("indexController");
   $scope.adminshow=true;
-  $scope.profileDetails=JSON.parse($window.localStorage.getItem('profileDetails'))
-  if($scope.profileDetails.resourceName==undefined||$scope.profileDetails.resourceName==null){
-    $rootScope.nameOfLoginPerson=$scope.profileDetails.name;
-  }else {
-    $rootScope.nameOfLoginPerson=$scope.profileDetails.resourceName;
-  }
+  $scope.profileDetails = JSON.parse($window.localStorage.getItem('profileDetails'))
+  if($scope.profileDetails) {
 
+    if ($scope.profileDetails.resourceName == undefined || $scope.profileDetails.resourceName == null) {
+      $rootScope.nameOfLoginPerson = $scope.profileDetails.name;
+    } else {
+      $rootScope.nameOfLoginPerson = $scope.profileDetails.resourceName;
+    }
+  }
   $('#errormsgdis').hide();
   $scope.forgotPassword=function () {
 
