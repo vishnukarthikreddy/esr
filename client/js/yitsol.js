@@ -112,57 +112,63 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
     if($scope.word=="" ||$scope.word==null){
       alert();
     }
-
-    $http({
-      "method": "POST",
-      "url": "http://139.162.42.96:4545/api/Resources/login",
-      "headers": {"Content-Type": "application/json", "Accept": "application/json"},
-      "data": {
-        "email": $scope.user.email,
-        "password": $scope.user.password      }
-    }).success(function (response, data) {
+    var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+    if (reg.test($scope.user.email)){
+      $http({
+        "method": "POST",
+        "url": "http://139.162.42.96:4545/api/Resources/login",
+        "headers": {"Content-Type": "application/json", "Accept": "application/json"},
+        "data": {
+          "email": $scope.user.email,
+          "password": $scope.user.password      }
+      }).success(function (response, data) {
         console.log("success");
         $scope.userDetails = response;
 
-       var accessToken=$scope.userDetails.id;
-      console.log("details....."+ JSON.stringify($scope.userDetails));
-      $window.localStorage.setItem('userDetails',JSON.stringify($scope.userDetails));
-      if($scope.userDetails.expireTime)
-        var experiedTime=$scope.userDetails.expireTime;
-      $window.localStorage.setItem('experiedTime',experiedTime);
-      console.log(validateAccessToken());
+        var accessToken=$scope.userDetails.id;
+        console.log("details....."+ JSON.stringify($scope.userDetails));
+        $window.localStorage.setItem('userDetails',JSON.stringify($scope.userDetails));
+        if($scope.userDetails.expireTime)
+          var experiedTime=$scope.userDetails.expireTime;
+        $window.localStorage.setItem('experiedTime',experiedTime);
+        console.log(validateAccessToken());
 
-      $http({
-        method: 'GET',
-        url: 'http://139.162.42.96:4545/api/Resources/'+$scope.userDetails.userId+"?access_token="+$scope.userDetails.id,
-        headers: {"Content-Type": "application/json", "Accept": "application/json"}
-      }).success(function (response) {
-        console.log('Users Response :' + JSON.stringify(response));
-        $rootScope.loginPersonDetails="somedata is";
-        $rootScope.nameOfLoginPerson=response.username;
+        $http({
+          method: 'GET',
+          url: 'http://139.162.42.96:4545/api/Resources/'+$scope.userDetails.userId+"?access_token="+$scope.userDetails.id,
+          headers: {"Content-Type": "application/json", "Accept": "application/json"}
+        }).success(function (response) {
+          console.log('Users Response :' + JSON.stringify(response));
+          $rootScope.loginPersonDetails="somedata is";
+          $rootScope.nameOfLoginPerson=response.username;
 
-        var data=response;
-        $window.localStorage.setItem("profileDetails",JSON.stringify(data));
-        console.log('after login details are'+$rootScope.loginPersonDetails);
-        $scope.loginDetails= response;
-        if(response.role=='admin'){
+          var data=response;
+          $window.localStorage.setItem("profileDetails",JSON.stringify(data));
+          console.log('after login details are'+$rootScope.loginPersonDetails);
+          $scope.loginDetails= response;
+          if(response.role=='admin'){
+            window.location.href = "/index.html#/rsr-resources";
+          }else if(response.role=='manager'){
+            window.location.href = "/index.html#/rsr-resources";
+          }else if(response.role=='employee'){
+            window.location.href = "/index.html#/rsr-resources";
+          }
           window.location.href = "/index.html#/rsr-resources";
-        }else if(response.role=='manager'){
-          window.location.href = "/index.html#/rsr-resources";
-        }else if(response.role=='employee'){
-          window.location.href = "/index.html#/rsr-resources";
-        }
-        window.location.href = "/index.html#/rsr-resources";
-      }).error(function (response) {
-        console.log('Error Response :' + JSON.stringify(response));
-      });
+        }).error(function (response) {
+          console.log('Error Response :' + JSON.stringify(response));
+        });
 
 
 
 
-    }).error(function (response, data) {
-      console.log("failure"+JSON.stringify(response));
-    })
+      }).error(function (response, data) {
+        console.log("failure"+JSON.stringify(response));
+      })
+    }else {
+      Notification.error({message: 'Enter valid email id', delay: 3000});
+      alert("Enter valid email id");
+    }
+
   }
 
 });
@@ -307,7 +313,7 @@ app.controller('resourcesController', function($scope,$http,$rootScope) {
     console.log('Edit Resource:'+JSON.stringify($scope.updateResource));
     $http({
       method: 'PUT',
-      url: 'http://139.162.42.96:4545/api/Resources/'+$scope.updateResource.email,
+      url: 'http://139.162.42.96:4545/api/Resources/'+$scope.updateResource.id,
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data: $scope.updateResource
     }).success(function (response) {

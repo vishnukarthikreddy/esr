@@ -111,63 +111,83 @@
           </div>
         </div>
       </div>
-      <div class="modal fade" id="resourceEdit" resource="dialog">
-        <div class="modal-dialog">
+  <div class="modal fade" id="resourceEdit" resource="dialog">
+    <div class="modal-dialog">
 
-          <!-- Modal content-->
-          <div class="modal-content" align="center">
-            <div class="modal-header">
-              <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
-              <h4 class="modal-title">Edit Resource</h4>
-            </div>
-            <div class="modal-body">
+      <!-- Modal content-->
+      <div class="modal-content" align="center">
+        <div class="modal-header">
+          <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+          <h4 class="modal-title">Edit Resource</h4>
+        </div>
+        <div class="modal-body">
 
-              <div>
-                <div class=" text-center color-red f-bold" ng-show="resourceCreationError">{{resourceUserError}}</div>
-                <form class="simple-form"  ng-submit="editResource()">
-                  <div class="form-group" align="left">
-                    <label for="empId"><span class="color-red f-bold f-left">*</span>Emp Id:</label>
-                    <input type="text" class="form-control" id="empId1" ng-model="updateResource.empId" placeholder="Enter Emp Id"  data-toggle="tooltip" data-placement="top" required>
-                  </div>
-                  <div class="form-group" align="left">
-                    <label for="email"><span class="color-red f-bold f-left">*</span>Email Id:</label>
-                    <input type="text" class="form-control" id="email1" ng-model="updateResource.email" placeholder="Enter Email Id"  data-toggle="tooltip" data-placement="top" required>
-                  </div>
-
-                  <div class="form-group" align="left">
-                  <label for="resourceName"><span class="color-red f-bold f-left">*</span>Resource Name:</label>
-                  <input type="resourceName" class="form-control" id="resourceName1" ng-model="updateResource.resourceName" placeholder=" Resource Name "  data-toggle="tooltip" data-placement="top" >
-                  </div>
-                  <div class="form-group" align="left">
-                  <label for="reportingMgr"><span class="color-red f-bold f-left">*</span>Reporting Manager:</label>
-                  <input type="reportingMgr" class="form-control" id="reportingMgr1" ng-model="updateResource.reportingMgr" placeholder="Enter Reporting Manager"  data-toggle="tooltip" data-placement="top" >
-                  </div>
-                  <div class="form-group" align="left">
-                  <label for="primarySkill"><span class="color-red f-bold f-left">*</span>Primary Skill:</label>
-                  <input type="primarySkill" class="form-control" id="primarySkill1" ng-model="updateResource.primarySkill" placeholder="Enter Primary Skill"  data-toggle="tooltip" data-placement="top" >
-                  </div>
-                  <div class="form-group" align="left">
-                  <label for="secondarySkill"><span class="color-red f-bold f-left">*</span>Secondary Skill:</label>
-                  <input type="secondarySkill" class="form-control" id="secondarySkill1" ng-model="updateResource.secondarySkill" placeholder="Enter Secondary Skill"  data-toggle="tooltip" data-placement="top" >
-                  </div>
-                  <div class="form-group" align="left">
-                  <label for="status"><span class="color-red f-bold f-left">*</span>Status:</label>
-                  <input type="status" class="form-control" id="status1" ng-model="updateResource.status" placeholder="Enter Status"  data-toggle="tooltip" data-placement="top" >
-                  </div>
-                  <div class="form-group" align="left">
-                  <label for="type"><span class="color-red f-bold f-left">*</span>Type:</label>
-                  <input type="type" class="form-control" id="type1" ng-model="updateResource.type" placeholder="Enter Type"  data-toggle="tooltip" data-placement="top" >
-                  </div>
-
-
-                  <input type="submit" value="Update" />
-                  <input type="button" value="Cancel" ng-click="cancelEdit()" />
-                </form>
+          <div>
+            <div class=" text-center color-red f-bold" ng-show="resourceCreationError">{{resourceUserError}}</div>
+            <form class="simple-form"  ng-submit="editResource()">
+              <div class="form-group" align="left">
+                <label for="empId"><span class="color-red f-bold f-left">*</span>Resource Id:</label>
+                <input type="text" class="form-control" id="empId1" ng-model="updateResource.empId" placeholder="Enter Resource Id"  data-toggle="tooltip" data-placement="top" required>
               </div>
-            </div>
+              <div class="form-group" align="left">
+                <label for="resourceName"><span class="color-red f-bold f-left">*</span>Resource Name:</label>
+                <input type="resourceName" class="form-control" id="resourceName1" ng-model="updateResource.resourceName" placeholder=" Resource Name "  data-toggle="tooltip" data-placement="top" >
+              </div>
+              <div class="form-group" align="left">
+                <label for="email"><span class="color-red f-bold f-left">*</span>Email Id:</label>
+                <input type="text" class="form-control" id="email1" ng-model="updateResource.email" placeholder="Enter Email Id"  data-toggle="tooltip" data-placement="top" required>
+              </div>
+
+              <div class="form-group" align="left">
+                <label for="reportingMgr"><span class="color-red f-bold f-left">*</span>Reporting Manager:</label>
+                <select ng-model="updateResource.reportingMgr">
+                  <option value="">Select Manager</option>
+                  <option ng-repeat="manager in managerList" value="{{manager.name}}">{{manager.name}}</option>
+                </select></div>
+
+              <div class="form-group" align="left">
+                <label ><span class="color-red f-bold f-left">*</span>Resource Role:</label>
+                <select ng-model="updateResource.role">
+                  <option value="">Employee Role</option>
+                  <option  value="employee">Employee</option>
+                  <option  value="manager"> Manager</option>
+                  <option  value="admin">Admin</option>
+                </select></div>
+
+              <div class="form-group" align="left">
+                <label for="primarySkill"><span class="color-red f-bold f-left">*</span>Primary Skill:</label>
+                <input type="primarySkill" class="form-control" id="primarySkill1" ng-model="updateResource.primarySkill" placeholder="Enter Primary Skill"  data-toggle="tooltip" data-placement="top" >
+              </div>
+              <div class="form-group" align="left">
+                <label for="secondarySkill"><span class="color-red f-bold f-left">*</span>Secondary Skill:</label>
+                <input type="secondarySkill" class="form-control" id="secondarySkill1" ng-model="updateResource.secondarySkill" placeholder="Enter Secondary Skill"  data-toggle="tooltip" data-placement="top" >
+              </div>
+
+              <div class="form-group" align="left">
+                <label ><span class="color-red f-bold f-left">*</span>Select Status:</label>
+                <select ng-model="updateResource.status">
+                  <option value="">Select Status</option>
+                  <option value="On-Role">On Role</option>
+                  <option value="Resigned">Resigned</option>
+                  <option value="CSP-Released">CSP-Released</option>
+
+                </select></div>
+              <div class="form-group" align="left">
+                <label ><span class="color-red f-bold f-left">*</span>Select Type:</label>
+                <select ng-model="updateResource.type">
+                  <option value="">Select Type</option>
+                  <option value="Employee">Employee</option>
+                  <option value="Contractor">Contractor</option>
+                </select></div>
+
+              <input type="submit" value="Update" />
+              <input type="button" value="Cancel" ng-click="cancelEdit()" />
+            </form>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
 <!--************************************add and update*********************************************-->
 

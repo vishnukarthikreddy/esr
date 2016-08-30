@@ -4,6 +4,7 @@
   padding: 25px;
   margin-top: 40px;
 }
+.curser{cursor: pointer;}
 :focus { outline: 0 !important; }
 .m-btm10 { margin-bottom: 10px; }
 
