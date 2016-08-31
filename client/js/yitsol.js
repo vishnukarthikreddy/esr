@@ -344,6 +344,7 @@ app.controller('resourcesController', function($scope,$http,$rootScope) {
 
 
   $scope.getManager=function(){
+
     $http({
       method: 'GET',
       url: 'http://139.162.42.96:4545/api/Resources?filter={"where":{"role":"manager"}}',
@@ -351,7 +352,8 @@ app.controller('resourcesController', function($scope,$http,$rootScope) {
 
     }).success(function (response) {
       // console.log('Users Response :' + JSON.stringify(response));
-      $scope.managerList=response;
+      $rootScope.managerList=response;
+
     }).error(function (response) {
       console.log('Error Response :' + JSON.stringify(response));
       console.log("entered post last");

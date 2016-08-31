@@ -48,7 +48,7 @@
                     <label ><span class="color-red f-bold f-left">*</span>Select Manager:</label>
                     <select ng-model="resource.reportingMgr">
                       <option value="">Select Manager</option>
-                      <option ng-repeat="manager in managerList" value="{{manager.name}}">{{manager.name}}</option>
+                      <option ng-repeat="manager in managerList" value="{{manager.resourceName}}">{{manager.resourceName}}</option>
                     </select></div>
                   <div class="form-group" align="left">
                     <label ><span class="color-red f-bold f-left">*</span>Employee Role:</label>
@@ -142,7 +142,7 @@
                 <label for="reportingMgr"><span class="color-red f-bold f-left">*</span>Reporting Manager:</label>
                 <select ng-model="updateResource.reportingMgr">
                   <option value="">Select Manager</option>
-                  <option ng-repeat="manager in managerList" value="{{manager.name}}">{{manager.name}}</option>
+                  <option ng-repeat="manager in managerList" value="{{manager.resourceName}}">{{manager.resourceName}}</option>
                 </select></div>
 
               <div class="form-group" align="left">
