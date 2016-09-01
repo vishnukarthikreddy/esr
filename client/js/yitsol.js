@@ -125,7 +125,7 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
 
       $http({
         "method": "POST",
-        "url": "http://localhost:4545/api/Resources/login",
+        "url": "http://139.162.42.96:4545/api/Resources/login",
         "headers": {"Content-Type": "application/json", "Accept": "application/json"},
         "data": {
           "email": $scope.user.email,
@@ -144,7 +144,7 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
 
         $http({
           method: 'GET',
-          url: 'http://localhost:4545/api/Resources/'+$scope.userDetails.userId+"?access_token="+$scope.userDetails.id,
+          url: 'http://139.162.42.96:4545/api/Resources/'+$scope.userDetails.userId+"?access_token="+$scope.userDetails.id,
           headers: {"Content-Type": "application/json", "Accept": "application/json"}
         }).success(function (response) {
           console.log('Users Response :' + JSON.stringify(response));
@@ -441,7 +441,7 @@ $scope.editProject={
   }
 
     $scope.reset = function() {
-     
+
         $scope.project = angular.copy($scope.master);
     };
 
