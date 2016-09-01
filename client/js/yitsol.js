@@ -385,13 +385,60 @@ app.controller('projectsController', function($http, $scope, $window, $location,
         });
     };
     $scope.getProjects();
+$scope.editProject={
+  "projectId":"",
+  "id":"",
+  "name":"",
+  "startDate":"",
+  "endDate":"",
+  "status":"",
+  "company":""
+}
+  $scope.editProject12=function(project){
 
-  $scope.editProject=function(project){
+    $scope.editProject.projectId=project.projectId;
+    $scope.editProject.id=project.id;
+    $scope.editProjectname=project.name;
+    $scope.editProject.startDate=project.startDate;
+    $scope.editProject.endDate=project.endDate;
+    $scope.editProject.status=project.status;
+    $scope.editProject.company=project.company;
 
-    $scope.editProject =project;
+    $("#resourceEdit").modal("show");
 
+  /*  $scope.editProject =project;
+    $scope.showeditprojectpopup();*/
   }
 
+  $scope.updateProject=function(){
+//alert('hai');
+    var projectDetails=$scope.editProject;
+    projectDetails['name']=$scope.editProjectname;
+    projectDetails['updatedBy']=loginDetails.name;
+    projectDetails['updatedTime']=new Date();
+
+
+    console.log('project details'+JSON.stringify(projectDetails));
+    $http({
+      method: 'PUT',
+      url: 'http://139.162.42.96:4545/api/Projects/'+$scope.editProject.id,
+      headers: {"Content-Type": "application/json", "Accept": "application/json"},
+      data:projectDetails
+    }).success(function (response) {
+      $scope.getProjects();
+      $('#resourceEdit').modal('hide');
+      // $('#createCalendar').modal('hide');
+      /*console.log('Users Response :' + JSON.stringify(response));
+       $rootScope.projectsData = response;*/
+
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+    });
+
+    // alert('create Project');
+
+
+  }
 
     $scope.reset = function() {
         $scope.project = angular.copy($scope.master);
