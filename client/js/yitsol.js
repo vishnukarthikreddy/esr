@@ -407,8 +407,8 @@ $scope.editProject={
     $scope.editProject.endDate=project.endDate;
     $scope.editProject.status=project.status;
     $scope.editProject.company=project.company;
-
-    $("#resourceEdit").modal("show");
+    $('#resourceEdit').modal('show');
+   
 
   /*  $scope.editProject =project;
     $scope.showeditprojectpopup();*/
