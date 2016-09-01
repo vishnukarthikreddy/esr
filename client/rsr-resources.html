@@ -2,6 +2,8 @@
   <div class="">
     <div class="pageTitle">Resources</div>
     <hr class="hline1" />
+
+
   </div>
 
 
@@ -195,14 +197,14 @@
 <div>
 
 
-  <table class="table table-striped table-condensed table-hover" border="1" align="left">
+  <table  datatable="ng" class="table table-bordered rsrtable table-striped" border="1" align="left">
     <thead>
 
     <tr>
       <th class="empId" custom-sort order="'empId'" sort="sort">Emp Id&nbsp;</th>
-      <th class="email" custom-sort order="'email'" sort="sort">Email Id&nbsp;</th>
-      <th class="resourceName" custom-sort order="'resourceName'" sort="sort">Resource Name&nbsp;</th>
-      <th class="reportingMgr" custom-sort order="'reportingMgr'" sort="sort">Reporting Manager&nbsp;</th>
+      <th class="email" custom-sort order="'resourceName'" sort="sort">Resource Name&nbsp;</th>
+      <th class="resourceName" custom-sort order="'Manager'" sort="sort">Manager&nbsp;</th>
+      <th class="reportingMgr" custom-sort order="'email Id'" sort="sort">Email Id&nbsp;</th>
       <th class="primarySkill" custom-sort order="'primarySkill'" sort="sort">Primary Skill&nbsp;</th>
       <th class="secondarySkill" custom-sort order="'secondarySkill'" sort="sort">Secondary Skill&nbsp;</th>
       <th class="status" custom-sort order="'status'" sort="sort">Status&nbsp;</th>
@@ -219,6 +221,8 @@
       <td> {{resources.email}}</td>
       <!--<td> {{resources.password}}</td>-->
       <td>{{resources.resourceName}}</td>
+
+
       <td>{{resources.reportingMgr}}</td>
       <td>{{resources.primarySkill}}</td>
       <td>{{resources.secondarySkill}}</td>

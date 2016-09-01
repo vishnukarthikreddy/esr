@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute','ngCalendar', 'ui-notification'])
+var app = angular.module('myApp', ['ngRoute','ngCalendar', 'ui-notification','datatables'])
 
 app.config(function($routeProvider) {
     $routeProvider
@@ -33,9 +33,9 @@ app.config(function($routeProvider) {
           templateUrl: '/statusEntry.html',
           controller: 'StatusEntryController'
         })
-        .when('/managerApproval', {
-          templateUrl: '/managerApproval.html',
-          controller: 'managerApprovalController'
+        .when('/Status', {
+          templateUrl: '/Status.html',
+          controller: 'StatusController'
         })
         .when('/report', {
           templateUrl: '/report.html',
@@ -125,7 +125,7 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
 
       $http({
         "method": "POST",
-        "url": "http://139.162.42.96:4545/api/Resources/login",
+        "url": "http://localhost:4545/api/Resources/login",
         "headers": {"Content-Type": "application/json", "Accept": "application/json"},
         "data": {
           "email": $scope.user.email,
@@ -144,7 +144,7 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
 
         $http({
           method: 'GET',
-          url: 'http://139.162.42.96:4545/api/Resources/'+$scope.userDetails.userId+"?access_token="+$scope.userDetails.id,
+          url: 'http://localhost:4545/api/Resources/'+$scope.userDetails.userId+"?access_token="+$scope.userDetails.id,
           headers: {"Content-Type": "application/json", "Accept": "application/json"}
         }).success(function (response) {
           console.log('Users Response :' + JSON.stringify(response));
@@ -672,7 +672,7 @@ var timeDetails={
 });
 
 //****************************manager Approval Controller************************//
-app.controller('managerApprovalController', function($scope,$http,$rootScope) {
+app.controller('StatusController', function($scope,$http,$rootScope) {
 
   $scope.rowCount=[];
 //  var data=
