@@ -118,7 +118,7 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
     $scope.word = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 
     if($scope.word=="" ||$scope.word==null){
-      alert();
+
     }
     var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
     if (reg.test($scope.user.email)){
@@ -441,6 +441,7 @@ $scope.editProject={
   }
 
     $scope.reset = function() {
+     
         $scope.project = angular.copy($scope.master);
     };
 
