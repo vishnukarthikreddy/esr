@@ -90,6 +90,10 @@ body .dhtmlxcalendar_material.dhtmlxcalendar_in_input {
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
   vertical-align: middle;
 }
+.calenderTable>tbody>tr>td{
+  text-align: right !important;
+  vertical-align: middle;
+}
 .table>thead>tr>th {
   background: rgba(34, 34, 34, 0.79);
   color: #fff;
@@ -137,4 +141,66 @@ body .dhtmlxcalendar_material.dhtmlxcalendar_in_input {
   display: table;
   margin-top: 30px;
   font-size: 14px;
+}
+.yitsol-title{
+  text-align: center;
+  margin: auto;
+  padding: 5px 0;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  color: #fff !important;
+}
+.yitsol-title h5 {
+  margin: -4px 0;
+  font-size: 24px;
+}
+.titleAdmin h5 {
+  color: #fff;
+}
+
+.edcolor {
+  color: #999; !important,
+}
+#statusId {
+  padding-left: 47px;
+}
+#status{
+  padding-left: 46px;
+}
+#manager{
+  padding-left: 46px;
+}
+#project{
+  padding-left: 46px;
+}
+#business{
+  padding-left: 46px;
+}
+a:focus, a:hover {
+  color: #999; !important;
+  text-decoration: underline;
+}
+.h6, h6 {
+  font-size: 15px;
+}
+.projectstable>tbody>tr>td {
+  text-align: left !important;
+  vertical-align: middle;
+}
+.resourcetable>tbody>tr>td {
+  text-align: left !important;
+  vertical-align: middle;
+}
+.usertable>tbody>tr>td {
+  text-align: left !important;
+  vertical-align: middle;
+}
+.managertable>tbody>tr>td {
+  text-align: left !important;
+  vertical-align: middle;
+}
+.rsrtable>tbody>tr>td {
+  text-align: left !important;
+  vertical-align: middle;
 }

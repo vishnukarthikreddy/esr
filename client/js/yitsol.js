@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute','ngCalendar', 'ui-notification'])
+var app = angular.module('myApp', ['ngRoute','ngCalendar', 'ui-notification','datatables'])
 
 app.config(function($routeProvider) {
     $routeProvider
@@ -33,9 +33,9 @@ app.config(function($routeProvider) {
           templateUrl: '/statusEntry.html',
           controller: 'StatusEntryController'
         })
-        .when('/managerApproval', {
-          templateUrl: '/managerApproval.html',
-          controller: 'managerApprovalController'
+        .when('/Status', {
+          templateUrl: '/Status.html',
+          controller: 'StatusController'
         })
         .when('/report', {
           templateUrl: '/report.html',
@@ -726,7 +726,7 @@ var timeDetails={
 });
 
 //****************************manager Approval Controller************************//
-app.controller('managerApprovalController', function($scope,$http,$rootScope) {
+app.controller('StatusController', function($scope,$http,$rootScope) {
 
   $scope.rowCount=[];
 //  var data=
