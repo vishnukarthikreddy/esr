@@ -5,11 +5,53 @@
 
 
   </div>
+  <button type="button" class="btn btn-danger btn-md pull-right m-btm10" data-toggle="modal" data-target="#myModal" ng-click="reset()">Create</button>
+
+  <table datatable="ng" class="table table-bordered resourcetable table-striped">
+    <thead>
+
+    <tr>
+      <th >Emp Id&nbsp;</th>
+      <th >EmailId&nbsp;</th>
+      <th>Resource Name&nbsp;</th>
+      <th>Manager&nbsp;</th>
+      <th>Primary Skill&nbsp;</th>
+      <th>Secondary Skill&nbsp;</th>
+      <th>Status&nbsp;</th>
+      <th>Type&nbsp;</th>
+      <th>Actions&nbsp;</th>
+
+
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="resources in resourcesData">
+      <td> {{resources.empId}}</td>
+      <td> {{resources.email}}</td>
+      <!--<td> {{resources.password}}</td>-->
+      <td>{{resources.resourceName}}</td>
+
+
+      <td>{{resources.reportingMgr}}</td>
+      <td>{{resources.primarySkill}}</td>
+      <td>{{resources.secondarySkill}}</td>
+      <td> {{resources.status}}</td>
+      <td> {{resources.type}}</td>
+      <td>
+        <button class="glyphicon glyphicon-pencil pall10 m-right5" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#resourceEdit" ng-click="editPopup(resources)"></button>
+
+      </td>
+
+
+    </tr>
+    </tbody>
+  </table>
 
 
 <!--*************************Add and Update********************************-->
 
-      <button type="button" class="btn btn-danger btn-md pull-right m-btm10" data-toggle="modal" data-target="#myModal" ng-click="reset()">Create</button>
+
 
       <!-- Modal -->
       <div class="modal fade" id="myModal" resource="dialog">
@@ -197,45 +239,6 @@
 <div>
 
 
-  <table  datatable="ng" class="table table-bordered rsrtable table-striped" border="1" align="left">
-    <thead>
 
-    <tr>
-      <th class="empId" custom-sort order="'empId'" sort="sort">Emp Id&nbsp;</th>
-      <th class="email" custom-sort order="'resourceName'" sort="sort">Resource Name&nbsp;</th>
-      <th class="resourceName" custom-sort order="'Manager'" sort="sort">Manager&nbsp;</th>
-      <th class="reportingMgr" custom-sort order="'email Id'" sort="sort">Email Id&nbsp;</th>
-      <th class="primarySkill" custom-sort order="'primarySkill'" sort="sort">Primary Skill&nbsp;</th>
-      <th class="secondarySkill" custom-sort order="'secondarySkill'" sort="sort">Secondary Skill&nbsp;</th>
-      <th class="status" custom-sort order="'status'" sort="sort">Status&nbsp;</th>
-      <th class="type" custom-sort order="'type'" sort="sort">Type&nbsp;</th>
-      <th class="status" custom-sort order="'status'" sort="sort">Actions&nbsp;</th>
-
-
-    </tr>
-    </thead>
-
-    <tbody>
-    <tr ng-repeat="resources in resourcesData track by $index">
-      <td> {{resources.empId}}</td>
-      <td> {{resources.email}}</td>
-      <!--<td> {{resources.password}}</td>-->
-      <td>{{resources.resourceName}}</td>
-
-
-      <td>{{resources.reportingMgr}}</td>
-      <td>{{resources.primarySkill}}</td>
-      <td>{{resources.secondarySkill}}</td>
-      <td> {{resources.status}}</td>
-      <td> {{resources.type}}</td>
-      <td>
-        <button class="glyphicon glyphicon-pencil pall10 m-right5" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#resourceEdit" ng-click="editPopup(resources)"></button>
-
-      </td>
-
-
-    </tr>
-    </tbody>
-  </table>
 
 </div>

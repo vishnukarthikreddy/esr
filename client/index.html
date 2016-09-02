@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html ng-app="myApp">
 
@@ -15,17 +14,17 @@
   <!--Bootstrap Core CSS-->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="stylesheets/style.css" rel="stylesheet">
-  <link href="bower_components/angular-datatables/dist/css/angular-datatables.css" rel="stylesheet" />
-  <link href="bower_components/datatables/media/css/jquery.dataTables.css" rel="stylesheet" />
+  <link href="bower_components/angular-datatables/dist/css/angular-datatables.css" rel="stylesheet"/>
+  <link href="bower_components/datatables/media/css/jquery.dataTables.css" rel="stylesheet"/>
 
   <!--bootstrap-->
   <!--<link href="css/bootstrap.no-icons.min.css" rel="stylesheet">-->
 
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="stylesheets/style.css" rel="stylesheet">
-    <link href="dist/ngcalendar.css" rel="stylesheet">
+  <!-- Bootstrap Core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="stylesheets/style.css" rel="stylesheet">
+  <link href="dist/ngcalendar.css" rel="stylesheet">
   <link href="css/sb-admin.css" rel="stylesheet">
 
   <!--Custom CSS-->
@@ -39,40 +38,39 @@
 
   <!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">-->
 
-   <!--Custom Fonts-->
+  <!--Custom Fonts-->
   <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-<!--  <script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
-  <script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.js"></script>-->
+  <!--  <script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+    <script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.js"></script>-->
   <!--<script src="js/angular.min.js"></script>-->
 
   <!--<script src="../node_modules/chart.js/Chart.min.js"></script>-->
   <!--<script src="../node_modules/angular-chart.js/dist/angular-chart.min.js"></script>-->
 
+  <script src="js/jquery-1.12.4.min.js"></script>
+  <script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 
-    <!--<script src="js/angular.min.js"></script>-->
-    <script src = "js/angular.min.js" ></script>
-    <script src = "dist/ngcalendar.js" ></script>
-    <script src="js/angular-route.min.js"></script>
+  <!--<script src="js/angular.min.js"></script>-->
+  <script src="js/angular.min.js"></script>
+  <script src="bower_components/angular-datatables/dist/angular-datatables.min.js"></script>
+  <script src="dist/ngcalendar.js"></script>
+  <script src="js/angular-route.min.js"></script>
 
   <script src="js/d3.v3.min.js"></script>
   <!--<script src="node_modules/angular/angular.min.js"></script>-->
-  <script src="js/jquery.js"></script>
   <!--<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
   <!--Bootstrap Core JavaScript-->
-  <script src="js/bootstrap.min.js"></script>
   <script src="js/yitsol.js"></script>
-  <script src="js/jquery.js"></script>
-  <script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
 
-  <script src="js/angular.min.js"></script>
 
   <script src="js/angular-ui-notification.min.js"></script>
   <script>
 
     var userDetails = window.localStorage.getItem('userDetails');
-    console.log("userDetails"+ userDetails);
-    if(!userDetails) {
+    console.log("userDetails" + userDetails);
+    if (!userDetails) {
       window.location.href = "/login.html";
     }
 
@@ -89,13 +87,12 @@
   <!--<script src = "https://cdn.zingchart.com/angular/zingchart-angularjs.js" ></script>-->
 
 
-
   <!--HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
   WARNING: Respond.js doesn't work if you view the page via file://
   [if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
 
   <script>
 
@@ -109,9 +106,9 @@
 
   <!--Navigation-->
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-   <!-- Brand and toggle get grouped for better mobile display-->
+    <!-- Brand and toggle get grouped for better mobile display-->
     <a class="navbar-brand yitsol-title" style="text-align: center;" href="#/"><h5>Yukti IT Solutions</h5>
-    <h6>Human Resource Portal</h6></a>
+      <h6>Human Resource Portal</h6></a>
 
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -124,8 +121,9 @@
     </div>
     <!--Top Menu Items-->
     <ul class="nav navbar-right top-nav">
-      <li class="dropdown curser" >
-        <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{nameOfLoginPerson}} <b class="caret"></b></a>
+      <li class="dropdown curser">
+        <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{nameOfLoginPerson}} <b
+          class="caret"></b></a>
         <ul class="dropdown-menu">
           <li>
             <a href="#/userProfile" ng-controller="homeController"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -160,31 +158,35 @@
           <a href="#/users"><i class="fa fa-fw fa fa-users"></i>Users Administration</a>
         </li>
 
-      <!--  <li>
-          <a href="#/rsr-Approvals"><i class="fa fa-fw fa-dashboard"></i> Approvals</a>
+        <!--  <li>
+            <a href="#/rsr-Approvals"><i class="fa fa-fw fa-dashboard"></i> Approvals</a>
 
 
-        </li>-->
+          </li>-->
         <li class="">
-        <a data-toggle="collapse" data-target="#Approval" data-parent="#sidenav01" class="cursor-pointer"><i class="fa fa-fw fa fa-users"></i>
-          Approvals <span class="caret"></span></a>
-        <div class="collapse" id="Approval" style="">
-          <ul class="nav nav-list">
-            <li class="active "><a href="#/Status" class="edcolor" id="statusId">Status</a></li>
-            <li><a href="#/Expenses" class="edcolor" id="status">Expenses</a></li>
-          </ul>
-        </div>
-      </li>
+          <a data-toggle="collapse" data-target="#Approval" data-parent="#sidenav01" class="cursor-pointer"
+             role="button"><i class="fa fa-fw fa fa-users"></i>
+            Approvals <span class="caret"></span></a>
+          <div class="collapse" id="Approval" style="">
+            <ul class="nav nav-list">
+              <li class="active "><a href="#/Status" class="edcolor" id="statusId">Status</a></li>
+              <li><a href="#/Expenses" class="edcolor" id="status">Expenses</a></li>
+            </ul>
+          </div>
+        </li>
         <li class="">
-          <a data-toggle="collapse" data-target="#Reports" data-parent="#sidenav01" class="cursor-pointer"><i class="fa fa-fw fa fa-users"></i>
+          <a data-toggle="collapse" data-target="#Reports" data-parent="#sidenav01" class="cursor-pointer"
+             role="button"><i class="fa fa-fw fa fa-users"></i>
             Reports <span class="caret"></span></a>
           <div class="collapse" id="Reports" style="">
             <ul class="nav nav-list">
-              <li class="active "><a  href="#/manager" class="edcolor" id="manager">Status by Manager</a></li>
+              <li class="active "><a href="#/manager" class="edcolor" id="manager">Status by Manager</a></li>
               <li><a href="#/Status by Project" class="edcolor" id="project">Status by Project</a></li>
               <li><a href="#/Status by Business Unit" class="edcolor" id="business">Status by Business Unit</a></li>
             </ul>
           </div>
+        </li>
+
         <li>
           <a href="#/statusEntry"><i class="fa fa-fw fa fa-users"></i>Status Report Entry</a>
         </li>
@@ -192,33 +194,34 @@
           <a href="#/LeaveRequest"><i class="fa fa-fw fa fa-users"></i>Leave Request</a>
         </li>
 
-        <li>
+        <!--<li>
           <a href="#/status"><i class="fa fa-fw fa fa-users"></i>Weekly Status</a>
-        </li>
+        </li>-->
         <li>
           <a href="#/Expense Submission"><i class="fa fa-fw fa fa-users"></i>Expense Submission</a>
         </li>
-       <!-- <li class="">
-          <a data-toggle="collapse" data-target="#Reports" data-parent="#sidenav01" class="cursor-pointer"><i class="fa fa-fw fa fa-users"></i>
+        <li class="">
+          <a data-toggle="collapse" data-target="#reports123" data-parent="#sidenav01" role="button" class="cursor-pointer"><i
+            class="fa fa-fw fa fa-users"></i>
             Reports <span class="caret"></span></a>
           <div class="collapse" id="reports123" style="">
             <ul class="nav nav-list">
-              <li class="active "><a href="#/Status" class="edcolor">Status</a></li>
-              <li><a href="#/Expenses" class="edcolor">Expenses</a></li>
+              <a href="#/status" class="edcolor" id="resource">Status by Week</a></li>
+              <li><a href="#/Leave Balance" class="edcolor" id="resource2">Leave Balance</a></li>
             </ul>
           </div>
-        </li>-->
-      <!-- <li >
-          <a href="#/managerApproval"><i class="fa fa-fw fa fa-users"></i>Manager Approval</a>
-        </li>-->
+        </li>
+        <!-- <li >
+            <a href="#/managerApproval"><i class="fa fa-fw fa fa-users"></i>Manager Approval</a>
+          </li>-->
         <!--  <li>
             <a href="#/report"><i class="fa fa-fw fa fa-users"></i>Reports</a>
           </li>-->
 
-<!--
-       <li>
-                <a href="#/manager"><i class="fa fa-fw fa fa-users"></i>Manager</a>
-              </li>-->
+        <!--
+               <li>
+                        <a href="#/manager"><i class="fa fa-fw fa fa-users"></i>Manager</a>
+                      </li>-->
 
 
       </ul>
@@ -229,14 +232,13 @@
 
   <section id="intro" class="intro-section">
     <div id="page-wrapper">
-        <div class="content-part" ng-controller="indexController">
-          <div ng-view>
+      <div class="content-part" ng-controller="indexController">
+        <div ng-view>
 
-          </div>
         </div>
+      </div>
     </div>
   </section>
-
 
 
 </div>

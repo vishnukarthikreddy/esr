@@ -177,6 +177,12 @@ body .dhtmlxcalendar_material.dhtmlxcalendar_in_input {
 #business{
   padding-left: 46px;
 }
+#resource{
+  padding-left: 46px;
+}
+#resource2{
+  padding-left: 46px;
+}
 a:focus, a:hover {
   color: #999; !important;
   text-decoration: underline;
@@ -203,4 +209,8 @@ a:focus, a:hover {
 .rsrtable>tbody>tr>td {
   text-align: left !important;
   vertical-align: middle;
+}
+.btn-default {
+
+  background-color: #9d9d9d;
 }

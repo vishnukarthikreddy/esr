@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute','ngCalendar', 'ui-notification','datatables'])
+var app = angular.module('myApp', ['ngRoute','ngCalendar','datatables'])
 
 app.config(function($routeProvider) {
     $routeProvider
