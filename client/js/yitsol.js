@@ -45,6 +45,11 @@ app.config(function($routeProvider) {
         templateUrl: '/ManagerCreate.html',
         controller: 'managerController'
       })
+      .when('/LeaveRequest',{
+        templateUrl:'Leave Request.html',
+        controller:'LeaveRequestController'
+      })
+
 
       .otherwise({redirectTo: '/'});
 });
@@ -385,6 +390,7 @@ app.controller('projectsController', function($http, $scope, $window, $location,
         });
     };
     $scope.getProjects();
+
 $scope.editProject={
   "projectId":"",
   "id":"",
@@ -396,6 +402,7 @@ $scope.editProject={
   "status":"",
   "company":""
 }
+
   $scope.editProject12=function(project){
 
     $scope.editProject.projectId=project.projectId;
@@ -408,7 +415,7 @@ $scope.editProject={
     $scope.editProject.status=project.status;
     $scope.editProject.company=project.company;
     $('#resourceEdit').modal('show');
-   
+
 
   /*  $scope.editProject =project;
     $scope.showeditprojectpopup();*/
@@ -595,6 +602,134 @@ app.controller('usersController', function($scope,$http,$rootScope) {
 //****************************UsersController************************//
 
 //****************************WeeklyStatusController************************//
+app.controller('LeaveRequestController',function($scope,$http,$rootScope){
+  
+  $scope.master = {};
+  console.log("projects controller entered");
+  $scope.getLeaveRequests = function() {
+    $http({
+      method: 'post',
+      url: 'http://localhost:4545/api/LeaveRequests',
+      headers: {"Content-Type": "application/json", "Accept": "application/json"}
+    }).success(function (response) {
+      console.log('Users Response :' + JSON.stringify(response));
+      $rootScope.projectsData = response;
+
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+    });
+  };
+  $scope.getLeaveRequests();
+  $scope.editRequest={
+    "empId":"",
+    "emailId":"",
+    "fromDt":"",
+    "toDt":"",
+    "noOfDays":"",
+    "reasonForLeave":"",
+    "dtSubmitted":"",
+
+  }
+  $scope.editRequest=function(request) {
+
+    $scope.editRequest.empId= request.empId;
+    $scope.editRequest.emailId = request.emailid;
+    $scope.editRequest.fromDt= request.fromDt;
+    $scope.editRequest.toDt = request.toDt;
+    $scope.editRequest.noOfDays = request.noOfDays;
+    $scope.editRequest.reasonForLeave = request.reasonForLeave;
+    $scope.editRequest.dtSubmitted = request.dtSubmitted;
+
+    $('#resourceEdit').modal('show');
+  }
+  $scope.updateProject=function(){
+//alert('hai');
+    var requestDetails=$scope.editProject;
+    requestDetails['name']=$scope.editProjectname;
+    requestDetails['updatedBy']=loginDetails.name;
+    requestDetails['updatedTime']=new Date();
+
+
+    console.log('request details'+JSON.stringify(requestDetails));
+    $http({
+      method: 'PUT',
+      url: 'http://localhost:4545/api/Requests/'+$scope.editRequest.id,
+      headers: {"Content-Type": "application/json", "Accept": "application/json"},
+      data:requestDetails
+    }).success(function (response) {
+      $scope.getRequests();
+      $('#resourceEdit').modal('hide');
+      // $('#createCalendar').modal('hide');
+      /*console.log('Users Response :' + JSON.stringify(response));
+       $rootScope.projectsData = response;*/
+
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+    });
+
+    // alert('create Project');
+
+
+  }
+
+  $scope.reset = function() {
+
+    $scope.request = angular.copy($scope.master);
+  };
+
+  $scope.request= {};
+  $scope.reset();
+/*
+  $scope.getManager=function(){
+    $http({
+      method: 'GET',
+      url: 'http://139.162.42.96:4545/api/Resources?filter={"where":{"role":"manager"}}',
+      headers: {"Content-Type": "application/json", "Accept": "application/json"}
+
+    }).success(function (response) {
+      // console.log('Users Response :' + JSON.stringify(response));
+      $scope.managerList=response;
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+      console.log("entered post last");
+    });
+  }
+
+  $scope.getManager();
+
+  console.log(JSON.stringify(JSON.parse($window.localStorage.getItem('profileDetails'))));
+  var loginDetails=JSON.parse($window.localStorage.getItem('profileDetails'));
+*/
+
+  $scope.createRequest=function(){
+//alert('hai');
+    var requestDetails=$scope.request;
+    requestDetails['createdBy']=loginDetails.name;
+    requestDetails['createdTime']=new Date();
+
+
+    console.log('request details'+JSON.stringify(projectDetails));
+    $http({
+      method: 'POST',
+      url: 'http://localhost:4545/api/Requests',
+      headers: {"Content-Type": "application/json", "Accept": "application/json"},
+      data:requestDetails
+    }).success(function (response) {
+      $scope.getRequests();
+      $('#myModal').modal('hide');
+      // $('#createCalendar').modal('hide');
+      /*console.log('Users Response :' + JSON.stringify(response));
+       $rootScope.projectsData = response;*/
+
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+    });
+
+    // alert('create Project');
+
+
+  }
+  })
 app.controller('StatusController', function($scope,$http,$rootScope) {
 
     console.log("status controller entered");
