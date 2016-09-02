@@ -53,6 +53,45 @@
 
 
 
+  <table datatable="ng" class="table table-bordered table-striped" >
+    <thead>
+
+    <tr>
+      <th >Emp Id&nbsp;</th>
+      <th >Resource Name&nbsp;</th>
+      <th >Manager&nbsp;</th>
+      <th >Email Id&nbsp;</th>
+      <th >Primary Skill&nbsp;</th>
+      <th >Secondary Skill&nbsp;</th>
+      <th >Status&nbsp;</th>
+      <th >Type&nbsp;</th>
+      <th >Actions&nbsp;</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="resources in resourcesData track by $index">
+      <td> {{resources.empId}}</td>
+      <td> {{resources.email}}</td>
+      <!--<td> {{resources.password}}</td>-->
+      <td>{{resources.resourceName}}</td>
+
+
+      <td>{{resources.reportingMgr}}</td>
+      <td>{{resources.primarySkill}}</td>
+      <td>{{resources.secondarySkill}}</td>
+      <td> {{resources.status}}</td>
+      <td> {{resources.type}}</td>
+      <td>
+        <button class="glyphicon glyphicon-pencil pall10 m-right5" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#resourceEdit" ng-click="editPopup(resources)"></button>
+
+      </td>
+
+
+    </tr>
+    </tbody>
+  </table>
+
       <!-- Modal -->
       <div class="modal fade" id="myModal" resource="dialog">
         <div class="modal-dialog">

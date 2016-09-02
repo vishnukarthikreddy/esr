@@ -389,6 +389,8 @@ $scope.editProject={
   "projectId":"",
   "id":"",
   "name":"",
+  "description":"",
+  "technology":"",
   "startDate":"",
   "endDate":"",
   "status":"",
@@ -399,12 +401,14 @@ $scope.editProject={
     $scope.editProject.projectId=project.projectId;
     $scope.editProject.id=project.id;
     $scope.editProjectname=project.name;
+    $scope.editProject.description=project.description;
+    $scope.editProject.technology=project.technology;
     $scope.editProject.startDate=project.startDate;
     $scope.editProject.endDate=project.endDate;
     $scope.editProject.status=project.status;
     $scope.editProject.company=project.company;
-
-    $("#resourceEdit").modal("show");
+    $('#resourceEdit').modal('show');
+   
 
   /*  $scope.editProject =project;
     $scope.showeditprojectpopup();*/
