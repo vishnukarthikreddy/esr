@@ -1,0 +1,298 @@
+<div class="contentArea">
+  <div class="">
+    <div class="pageTitle">Leave Request</div>
+    <hr class="hline1" />
+  </div>
+  <div ng-controller="LeaveRequestController">
+    <button type="button" class="btn btn-danger btn-md pull-right m-btm10" data-toggle="modal" data-target="#myModal" ng-click="reset()">Create</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" resource="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" align="center">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Create Request</h4>
+          </div>
+          <div class="modal-body">
+            <div class=" text-center color-red f-bold" ng-show="resourceCreationError">{{createResourceError}}</div>
+            <form class="simple-form" ng-submit="createRequest()">
+              <!--<span class="color-red f-bold f-left">*All fields are mandatory</span><br>-->
+              <div class="form-group" align="left">
+                <label ><span class="color-red f-bold f-left">*</span>Start Date:</label>
+                <input type="text" class="form-control" ng-model="request.emp id" placeholder="Enter Emp Id"  data-toggle="tooltip" data-placement="top" required>
+              </div>
+              <div class="form-group" align="left">
+                <label > <span class="color-red f-bold f-left">*</span>Email Id:</label>
+                <input type="text" class="form-control"  ng-model="request.id" placeholder="Enter Email Id" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
+              </div>
+              <!--<div class="form-group" align="left">
+                <label > <span class="color-red f-bold f-left">*</span>From Dt:</label>
+                <input type="text" class="form-control"  ng-model="request.from dt" placeholder="Enter Project Description" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
+              </div>
+              <div class="form-group" align="left">
+                <label > <span class="color-red f-bold f-left">*</span>TO Dt:</label>
+                <input type="text" class="form-control"  ng-model="request.to dt" placeholder="Enter Project Technology" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
+              </div>-->
+              <div class="form-group" align="left">
+
+                <label ><span class="color-red f-bold f-left">*</span>From Dt:</label>
+                <!--<input type="text"  class="form-control" ng-model="project.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>-->
+                <input placeholder="Select Start Date" type="text" ng-calendar ng-model="request.from dt" format="%d-%m-%Y" />
+              </div>
+
+              <div class="form-group" align="left">
+
+                <label ><span class="color-red f-bold f-left">*</span>To Dt:</label>
+                <!--<input type="text"  class="form-control" ng-model="project.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>-->
+                <input placeholder="Select Start Date" type="text" ng-calendar ng-model="request.to dt" format="%d-%m-%Y" />
+              </div>
+              <div class="form-group" align="left">
+                <label > <span class="color-red f-bold f-left">*</span>No Of Days:</label>
+                <input type="text" class="form-control"  ng-model="request.no of days" placeholder="Enter No Of Days" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
+              </div>
+              <div class="form-group" align="left">
+                <label > <span class="color-red f-bold f-left">*</span>Request For Leave:</label>
+                <input type="text" class="form-control"  ng-model="request.requestfor leave" placeholder="Enter Request For Leave" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
+              </div>
+              <div class="form-group" align="left">
+                <label > <span class="color-red f-bold f-left">*</span>Dt Submitted:</label>
+                <input type="text" class="form-control"  ng-model="request.dtSubmitted" placeholder="Enter dtsubmit" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
+              </div>
+             <!-- <div class="form-group" align="left">
+
+                <label ><span class="color-red f-bold f-left">*</span>Start Date:</label>
+                &lt;!&ndash;<input type="text"  class="form-control" ng-model="project.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>&ndash;&gt;
+                <input placeholder="Select Start Date" type="text" ng-calendar ng-model="project.startDate" format="%d-%m-%Y" />
+              </div>
+
+              <div class="form-group" align="left">
+                <label ><span class="color-red f-bold f-left">*</span>End Date:</label>
+                &lt;!&ndash;<input type="text" class="form-control" ng-model="project.endDate" placeholder="Select End Date"    data-toggle="tooltip" data-placement="top" required>&ndash;&gt;
+                <input placeholder="Select End Date" type="text" ng-calendar ng-model="project.endDate" format="%d-%m-%Y" />
+              </div>
+-->
+
+            <!--  <div class="form-group" align="left">
+                <label ><span class="color-red f-bold f-left">*</span>Select Manager:</label>
+                <select ng-model="project.manager">
+                  <option value="">Select Manager</option>
+                  <option ng-repeat="manager in managerList" value="{{manager.resourceName}}">{{manager.resourceName}}</option>
+                </select></div>
+              <div class="form-group" align="left">
+                <label ><span class="color-red f-bold f-left">*</span>Status:</label>
+                <select ng-model="project.status">
+                  <option value="">Select Status</option>
+                  <option value="Not started yet">New Project</option>
+                  <option value="Active">Active</option>
+                  <option value="Complted">Completed</option>
+                  <option value="Hold">Work On Hold</option>
+                  &lt;!&ndash; <option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>&ndash;&gt;
+                </select>
+              </div>
+              <div class="form-group" align="left">
+                <label ><span class="color-red f-bold f-left">*</span>Entity:</label>
+                <select ng-model="project.company">
+                  <option value="">Select Company</option>
+                  <option value="Yitsol">YITSOL</option>
+                  <option value="Nibble Matrix">Nibble Matrix</option>
+                  <option value="Active Life">Active Life</option>
+                  <option value="Array">Array</option>
+
+                  &lt;!&ndash;<option value="">{{x.model}}</option>&ndash;&gt;
+                </select>
+              </div>-->
+              <!--  <div class="form-group" align="left">
+                  <label for="status"><span class="color-red f-bold f-left">*</span>Status:</label>
+                  <input type="text" class="form-control" id="status" ng-model="resource.status" placeholder="Enter Status"   data-toggle="tooltip" data-placement="top" required>
+                </div>
+                <div class="form-group" align="left">
+                  <label for="type"><span class="color-red f-bold f-left">*</span>Type:</label>
+                  <input type="text" class="form-control" id="type" ng-model="resource.type" placeholder="Enter type"   data-toggle="tooltip" data-placement="top" required>
+                </div>-->
+              <!--<<<<<<< HEAD-->
+              <input type="submit" value="Save" />
+              <input type="button" ng-click="reset()" value="Reset" />
+
+
+            </form>
+          </div>
+          <div class="modal-footer">
+
+          </div>
+          <!--=======
+
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-default" ng-click="reset()" value="Reset" />Reset</form>
+                                  <button class="btn btn-success" value="Save" />Save</button>
+                            </div>
+
+                            </form>
+                          </div>
+          >>>>>>> ccdbb49ba56e80a4f3770b10e41f979ff5293e3e-->
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="resourceEdit" resource="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content" align="center">
+          <div class="modal-header">
+            <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+            <h4 class="modal-title">Edit Resource</h4>
+          </div>
+          <div class="modal-body">
+
+            <div>
+              <div class=" text-center color-red f-bold" ng-show="resourceCreationError">{{resourceUserError}}</div>
+              <form class="simple-form"  ng-submit="updateRequest()">
+                <!--<span class="color-red f-bold f-left">*All fields are mandatory</span><br>-->
+                <div class="form-group" align="left">
+                  <label ><span class="color-red f-bold f-left">*</span>Emp Id:</label>
+                  <input type="text" class="form-control" ng-model="editRequest.Emp Id" placeholder="Enter Project ID"  data-toggle="tooltip" data-placement="top" required>
+                </div>
+                <div class="form-group" align="left">
+                  <label > <span class="color-red f-bold f-left">*</span>Email Id:</label>
+                  <input type="text" class="form-control"  ng-model="editProjectname" placeholder="Enter Project Name" data-toggle="tooltip" data-placement="top" required>
+                </div>
+               <!-- <div class="form-group" align="left">
+                  <label > <span class="color-red f-bold f-left">*</span>From Dt:</label>
+                  <input type="text" class="form-control"  ng-model="editRequest.from dt" placeholder="Enter Project Description" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
+                </div>-->
+               <!-- <div class="form-group" align="left">
+                  <label > <span class="color-red f-bold f-left">*</span>To Dt:</label>
+                  <input type="text" class="form-control"  ng-model="editRequest.to dt" placeholder="Enter Project Technology" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
+                </div>-->
+                <div class="form-group" align="left">
+                  <label ><span class="color-red f-bold f-left">*</span>From Dt:</label>
+                  <!--<input type="text"  class="form-control" ng-model="editProject.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>-->
+                  <input ng-model="editRequest.from dt" type="text" ng-calendar ng-model="myDate" format="%d/%m/%Y" />
+                </div>
+                <div class="form-group" align="left">
+                  <label ><span class="color-red f-bold f-left">*</span>To Dt:</label>
+                  <!--<input type="text"  class="form-control" ng-model="editProject.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>-->
+                  <input ng-model="editRequest.to dt" type="text" ng-calendar ng-model="myDate" format="%d/%m/%Y" />
+                </div>
+                <div class="form-group" align="left">
+                  <label ><span class="color-red f-bold f-left">*</span>No Of Days:</label>
+                  <input type="text" class="form-control" ng-model="editRequest.no of days" placeholder="Enter Project ID"  data-toggle="tooltip" data-placement="top" required>
+                </div>
+               <!-- <div class="form-group" align="left">
+                  <label ><span class="color-red f-bold f-left">*</span>No Of Days:</label>
+                  &lt;!&ndash;<input type="text"  class="form-control" ng-model="editProject.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>&ndash;&gt;
+                  <input ng-model="editRequest.no of days" type="text" ng-calendar ng-model="myDate" format="%d/%m/%Y" />
+                </div>-->
+
+                <!--<div class="form-group" align="left">
+                  <label ><span class="color-red f-bold f-left">*</span>Request For Leave:</label>
+                  &lt;!&ndash;<input type="text" class="form-control" ng-model="editProject.endDate" placeholder="Select End Date"    data-toggle="tooltip" data-placement="top" required>&ndash;&gt;
+                  <input ng-model="editRequest.requestforleave" type="text" ng-calendar ng-model="myDate2" format="%d/%m/%Y" />
+                </div>-->
+                <div class="form-group" align="left">
+                  <label ><span class="color-red f-bold f-left">*</span>Request For Leave:</label>
+                  <input type="text" class="form-control" ng-model="editRequest.Requestfor leave" placeholder="Enter Project ID"  data-toggle="tooltip" data-placement="top" required>
+                </div>
+                <div class="form-group" align="left">
+                  <label > <span class="color-red f-bold f-left">*</span>Dt Submitted:</label>
+                  <input type="text" class="form-control"  ng-model="editRequest.dt submitted" placeholder="Enter Project Technology" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
+                </div>
+
+               <!-- <div class="form-group" align="left">
+                  <label ><span class="color-red f-bold f-left">*</span>Status:</label>
+                  <select ng-model="editProject.status">
+                    <option value="">Select Status</option>
+                    <option value="Not started yet">New Project</option>
+                    <option value="Active">Active</option>
+                    <option value="Complted">Completed</option>
+                    <option value="Hold">Work On Hold</option>
+                    &lt;!&ndash; <option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>&ndash;&gt;
+                  </select>
+                </div>-->
+                <!--<div class="form-group" align="left">
+                  <label ><span class="color-red f-bold f-left">*</span>Entity:</label>
+                  <select ng-model="editProject.company">
+                    <option value="">Select Company</option>
+                    <option value="Yitsol">YITSOL</option>
+                    <option value="Nibble Matrix">Nibble Matrix</option>
+                    <option value="Active Life">Active Life</option>
+                    <option value="Array">Array</option>
+
+                    &lt;!&ndash;<option value="">{{x.model}}</option>&ndash;&gt;
+                  </select> </div>-->
+                <input type="submit" value="Save" />
+                <input type="button" data-dismiss="modal" value="Close"/>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--************************************add and update*********************************************-->
+
+
+
+
+
+    <table datatable="ng" class="table table-striped table-condensed table-hover" border="1" align="left">
+      <thead>
+
+      <tr>
+        <th class="empId" custom-sort order="'paNumb'" sort="sort">Emp Id&nbsp;</th>
+        <th class="emailId" custom-sort order="'projectName'" sort="sort">Email Id&nbsp;</th>
+        <th class="fromDt" custom-sort order="'projectManager'" sort="sort">From DT&nbsp;</th>
+        <th class="toDt" custom-sort order="'projectManager'" sort="sort">To Dt&nbsp;</th>
+        <th class="noOfDays" custom-sort order="'projectManager'" sort="sort">No Of Days&nbsp;</th>
+        <th class="reasonForLeave" custom-sort order="'start_date'" sort="sort">Reason For Leave&nbsp;</th>
+        <th class="dtSubmitted" custom-sort order="'endDate'" sort="sort">Dt Submitted&nbsp;</th>
+       <!-- <th class="status" custom-sort order="'status'" sort="sort">Status&nbsp;</th>
+        <th class="entity" custom-sort order="'entity'" sort="sort">Entity&nbsp;</th>-->
+        <!--  <th class="createdBy" custom-sort order="'createdBy'" sort="sort">Created By&nbsp;</th>
+            <th class="created_DT_TM" custom-sort order="'created_DT_TM'" sort="sort">Created_DT_TM&nbsp;</th>
+            <th class="modifiedBy" custom-sort order="'modifiedBy'" sort="sort">Modified By&nbsp;</th>
+          <th class="lastUpdated_DT_TM" custom-sort order="'lastUpdated_DT_TM'" sort="sort">LastUpdated_DT_TM&nbsp;</th>-->
+       <!-- <th class="edit" custom-sort order="'edit'" sort="sort">Actions&nbsp;</th>-->
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr ng-repeat="requests in requestsData track by $index">
+        <td> {{request.empid}}</td>
+        <td> {{request.emailid}}</td>
+        <td>{{request.from_dt}}</td>
+        <td>{{request.to_dt}}</td>
+        <td>{{request.no_of_days}}</td>
+        <td>{{request.reasonforleave}}</td>
+        <td>{{projects.dtsubmitted}}</td>
+       <!-- <td> {{projects.status}}</td>-->
+        <!--
+                  {
+                  "endDate": "30/07/2016",
+                  "status": "Not started yet",
+                  "id": "12",
+                  "name": "Yitsol",
+                  "startDate": "30/07/2016",
+                  "manager": "vinod",
+                  "company": "Yitsol"
+                  }-->
+
+        <td> {{requests.company}}</td>
+        <!--<td>{{projects.createdBy}}</td>
+        <td>{{projects.createdTime}}</td>
+        <td>{{projects.modifiedBy}}</td>
+        <td>{{projects.lastUpdated_DT_TM}}</td>-->
+        <td>
+          <button class="glyphicon glyphicon-pencil pall10 m-right5" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#projectEdit" ng-click="editProject12(projects)"></button>
+
+        </td>
+
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
