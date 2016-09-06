@@ -128,11 +128,11 @@
                     <!--<input type="text" class="form-control" id="reportingMgr" ng-model="resource.reportingMgr" placeholder="Enter Reporting Manager Name"    data-toggle="tooltip" data-placement="top" required>-->
                   <!--</div>-->
                   <div class="form-group" align="left">
-                    <label ><span class="color-red f-bold f-left">*</span>Select Manager:</label>
-                    <select ng-model="resource.reportingMgr">
-                      <option value="">Select Manager</option>
-                      <option ng-repeat="manager in managerList" value="{{manager.resourceName}}">{{manager.resourceName}}</option>
-                    </select></div>
+                  <label ><span class="color-red f-bold f-left">*</span>Select Manager:</label>
+                  <select ng-model="resource.reportingMgr">
+                    <option value="">Select Manager</option>
+                    <option ng-repeat="manager in managerList" value="{{manager.resourceName}}">{{manager.resourceName}}</option>
+                  </select></div>
                   <div class="form-group" align="left">
                     <label ><span class="color-red f-bold f-left">*</span>Employee Role:</label>
                     <select ng-model="resource.role">

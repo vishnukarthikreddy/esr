@@ -1,9 +1,9 @@
 <div class="contentArea">
   <div class="">
-    <div class="pageTitle">Leave Request</div>
+    <div class="pageTitle">Resource Leaves</div>
     <hr class="hline1" />
   </div>
-  <div ng-controller="LeaveRequestController">
+  <div ng-controller="ResourceLeavesController">
     <button type="button" class="btn btn-danger btn-md pull-right m-btm10" data-toggle="modal" data-target="#myModal" ng-click="reset()">Create</button>
 
     <!-- Modal -->
@@ -24,9 +24,34 @@
                 <input type="text" class="form-control" ng-model="request.emp id" placeholder="Enter Emp Id"  data-toggle="tooltip" data-placement="top" required>
               </div>
               <div class="form-group" align="left">
-                <label > <span class="color-red f-bold f-left">*</span>Emp Name:</label>
-                <input type="text" class="form-control"  ng-model="request.empName" placeholder="Enter Emp Name" title="Enter Emp Name"  data-toggle="tooltip" data-placement="top" required>
+                <label > <span class="color-red f-bold f-left">*</span> Financial Year:</label>
+                <input type="text" class="form-control"  ng-model="request. financialYear" placeholder="Enter  Financial Year" title="Enter Emp Name"  data-toggle="tooltip" data-placement="top" required>
               </div>
+              <div class="form-group" align="left">
+                <label ><span class="color-red f-bold f-left">*</span>CLs Entitled:</label>
+                <input type="text" class="form-control" ng-model="request.clsEntitled" placeholder="Enter CLs Entitled"  data-toggle="tooltip" data-placement="top" required>
+              </div>
+              <div class="form-group" align="left">
+                <label ><span class="color-red f-bold f-left">*</span>CLs Availed:</label>
+                <input type="text" class="form-control" ng-model="request.clsAvailed" placeholder="Enter CLs_Availed"  data-toggle="tooltip" data-placement="top" required>
+              </div>
+              <div class="form-group" align="left">
+                <label ><span class="color-red f-bold f-left">*</span>SLs Entitled:</label>
+                <input type="text" class="form-control" ng-model="request.slsEntitled" placeholder="Enter SLs_Entitled"  data-toggle="tooltip" data-placement="top" required>
+              </div>
+              <div class="form-group" align="left">
+                <label ><span class="color-red f-bold f-left">*</span> SLs_Availed:</label>
+                <input type="text" class="form-control" ng-model="request. slsAvailed" placeholder="Enter  SLs_Availed"  data-toggle="tooltip" data-placement="top" required>
+              </div>
+              <div class="form-group" align="left">
+                <label ><span class="color-red f-bold f-left">*</span> ELs_Entitled:</label>
+                <input type="text" class="form-control" ng-model="request. slsAvailed" placeholder="Enter  ELs_Entitled"  data-toggle="tooltip" data-placement="top" required>
+              </div>
+              <div class="form-group" align="left">
+                <label ><span class="color-red f-bold f-left">*</span> ELs_Availed:</label>
+                <input type="text" class="form-control" ng-model="request. elsAvailed" placeholder="Enter  ELs_Availed"  data-toggle="tooltip" data-placement="top" required>
+              </div>
+
               <!--<div class="form-group" align="left">
                 <label > <span class="color-red f-bold f-left">*</span>From Dt:</label>
                 <input type="text" class="form-control"  ng-model="request.from dt" placeholder="Enter Project Description" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
@@ -35,24 +60,24 @@
                 <label > <span class="color-red f-bold f-left">*</span>TO Dt:</label>
                 <input type="text" class="form-control"  ng-model="request.to dt" placeholder="Enter Project Technology" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
               </div>-->
-              <div class="form-group" align="left">
+             <!-- <div class="form-group" align="left">
 
                 <label ><span class="color-red f-bold f-left">*</span>Start Dt:</label>
-                <!--<input type="text"  class="form-control" ng-model="project.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>-->
+                &lt;!&ndash;<input type="text"  class="form-control" ng-model="project.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>&ndash;&gt;
                 <input placeholder="Select Start Date" type="text" ng-calendar ng-model="request.startDt" format="%d-%m-%Y" />
               </div>
 
               <div class="form-group" align="left">
 
                 <label ><span class="color-red f-bold f-left">*</span>End Dt:</label>
-                <!--<input type="text"  class="form-control" ng-model="project.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>-->
+                &lt;!&ndash;<input type="text"  class="form-control" ng-model="project.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>&ndash;&gt;
                 <input placeholder="Select Start Date" type="text" ng-calendar ng-model="request.endDt" format="%d-%m-%Y" />
               </div>
               <div class="form-group" align="left">
                 <label > <span class="color-red f-bold f-left">*</span>No Of Days:</label>
                 <input type="text" class="form-control"  ng-model="request.noOfDays" placeholder="Enter No Of Days" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
-              </div>
-              <div class="form-group" align="left">
+              </div>-->
+             <!-- <div class="form-group" align="left">
                 <label ><span class="color-red f-bold f-left">*</span>Leave Type:</label>
                 <select ng-model="editRequest.type">
                   <option value="">Select Leave Type</option>
@@ -74,50 +99,50 @@
               <div class="form-group" align="left">
                 <label > <span class="color-red f-bold f-left">*</span>HR Approval Status:</label>
                 <input type="text" class="form-control"  ng-model="request.hrApprovalStatus" placeholder="Enter HR Approval Status" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
-              </div>
-             <!-- <div class="form-group" align="left">
-
-                <label ><span class="color-red f-bold f-left">*</span>Start Date:</label>
-                &lt;!&ndash;<input type="text"  class="form-control" ng-model="project.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>&ndash;&gt;
-                <input placeholder="Select Start Date" type="text" ng-calendar ng-model="project.startDate" format="%d-%m-%Y" />
-              </div>
-
-              <div class="form-group" align="left">
-                <label ><span class="color-red f-bold f-left">*</span>End Date:</label>
-                &lt;!&ndash;<input type="text" class="form-control" ng-model="project.endDate" placeholder="Select End Date"    data-toggle="tooltip" data-placement="top" required>&ndash;&gt;
-                <input placeholder="Select End Date" type="text" ng-calendar ng-model="project.endDate" format="%d-%m-%Y" />
-              </div>
--->
-
-            <!--  <div class="form-group" align="left">
-                <label ><span class="color-red f-bold f-left">*</span>Select Manager:</label>
-                <select ng-model="project.manager">
-                  <option value="">Select Manager</option>
-                  <option ng-repeat="manager in managerList" value="{{manager.resourceName}}">{{manager.resourceName}}</option>
-                </select></div>
-              <div class="form-group" align="left">
-                <label ><span class="color-red f-bold f-left">*</span>Status:</label>
-                <select ng-model="project.status">
-                  <option value="">Select Status</option>
-                  <option value="Not started yet">New Project</option>
-                  <option value="Active">Active</option>
-                  <option value="Complted">Completed</option>
-                  <option value="Hold">Work On Hold</option>
-                  &lt;!&ndash; <option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>&ndash;&gt;
-                </select>
-              </div>
-              <div class="form-group" align="left">
-                <label ><span class="color-red f-bold f-left">*</span>Entity:</label>
-                <select ng-model="project.company">
-                  <option value="">Select Company</option>
-                  <option value="Yitsol">YITSOL</option>
-                  <option value="Nibble Matrix">Nibble Matrix</option>
-                  <option value="Active Life">Active Life</option>
-                  <option value="Array">Array</option>
-
-                  &lt;!&ndash;<option value="">{{x.model}}</option>&ndash;&gt;
-                </select>
               </div>-->
+              <!-- <div class="form-group" align="left">
+
+                 <label ><span class="color-red f-bold f-left">*</span>Start Date:</label>
+                 &lt;!&ndash;<input type="text"  class="form-control" ng-model="project.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>&ndash;&gt;
+                 <input placeholder="Select Start Date" type="text" ng-calendar ng-model="project.startDate" format="%d-%m-%Y" />
+               </div>
+
+               <div class="form-group" align="left">
+                 <label ><span class="color-red f-bold f-left">*</span>End Date:</label>
+                 &lt;!&ndash;<input type="text" class="form-control" ng-model="project.endDate" placeholder="Select End Date"    data-toggle="tooltip" data-placement="top" required>&ndash;&gt;
+                 <input placeholder="Select End Date" type="text" ng-calendar ng-model="project.endDate" format="%d-%m-%Y" />
+               </div>
+ -->
+
+              <!--  <div class="form-group" align="left">
+                  <label ><span class="color-red f-bold f-left">*</span>Select Manager:</label>
+                  <select ng-model="project.manager">
+                    <option value="">Select Manager</option>
+                    <option ng-repeat="manager in managerList" value="{{manager.resourceName}}">{{manager.resourceName}}</option>
+                  </select></div>
+                <div class="form-group" align="left">
+                  <label ><span class="color-red f-bold f-left">*</span>Status:</label>
+                  <select ng-model="project.status">
+                    <option value="">Select Status</option>
+                    <option value="Not started yet">New Project</option>
+                    <option value="Active">Active</option>
+                    <option value="Complted">Completed</option>
+                    <option value="Hold">Work On Hold</option>
+                    &lt;!&ndash; <option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>&ndash;&gt;
+                  </select>
+                </div>
+                <div class="form-group" align="left">
+                  <label ><span class="color-red f-bold f-left">*</span>Entity:</label>
+                  <select ng-model="project.company">
+                    <option value="">Select Company</option>
+                    <option value="Yitsol">YITSOL</option>
+                    <option value="Nibble Matrix">Nibble Matrix</option>
+                    <option value="Active Life">Active Life</option>
+                    <option value="Array">Array</option>
+
+                    &lt;!&ndash;<option value="">{{x.model}}</option>&ndash;&gt;
+                  </select>
+                </div>-->
               <!--  <div class="form-group" align="left">
                   <label for="status"><span class="color-red f-bold f-left">*</span>Status:</label>
                   <input type="text" class="form-control" id="status" ng-model="resource.status" placeholder="Enter Status"   data-toggle="tooltip" data-placement="top" required>
@@ -172,14 +197,14 @@
                   <label > <span class="color-red f-bold f-left">*</span>Emp Name:</label>
                   <input type="text" class="form-control"  ng-model="editEmpName" placeholder="Enter Emp Name" data-toggle="tooltip" data-placement="top" required>
                 </div>
-               <!-- <div class="form-group" align="left">
-                  <label > <span class="color-red f-bold f-left">*</span>From Dt:</label>
-                  <input type="text" class="form-control"  ng-model="editRequest.from dt" placeholder="Enter Project Description" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
-                </div>-->
-               <!-- <div class="form-group" align="left">
-                  <label > <span class="color-red f-bold f-left">*</span>To Dt:</label>
-                  <input type="text" class="form-control"  ng-model="editRequest.to dt" placeholder="Enter Project Technology" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
-                </div>-->
+                <!-- <div class="form-group" align="left">
+                   <label > <span class="color-red f-bold f-left">*</span>From Dt:</label>
+                   <input type="text" class="form-control"  ng-model="editRequest.from dt" placeholder="Enter Project Description" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
+                 </div>-->
+                <!-- <div class="form-group" align="left">
+                   <label > <span class="color-red f-bold f-left">*</span>To Dt:</label>
+                   <input type="text" class="form-control"  ng-model="editRequest.to dt" placeholder="Enter Project Technology" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
+                 </div>-->
                 <div class="form-group" align="left">
 
                   <label ><span class="color-red f-bold f-left">*</span>Start Date:</label>
@@ -196,11 +221,11 @@
                   <label ><span class="color-red f-bold f-left">*</span>No Of Days:</label>
                   <input type="text" class="form-control" ng-model="editRequest.no of days" placeholder="Enter No Of Days"  data-toggle="tooltip" data-placement="top" required>
                 </div>
-               <!-- <div class="form-group" align="left">
-                  <label ><span class="color-red f-bold f-left">*</span>No Of Days:</label>
-                  &lt;!&ndash;<input type="text"  class="form-control" ng-model="editProject.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>&ndash;&gt;
-                  <input ng-model="editRequest.no of days" type="text" ng-calendar ng-model="myDate" format="%d/%m/%Y" />
-                </div>-->
+                <!-- <div class="form-group" align="left">
+                   <label ><span class="color-red f-bold f-left">*</span>No Of Days:</label>
+                   &lt;!&ndash;<input type="text"  class="form-control" ng-model="editProject.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>&ndash;&gt;
+                   <input ng-model="editRequest.no of days" type="text" ng-calendar ng-model="myDate" format="%d/%m/%Y" />
+                 </div>-->
 
                 <!--<div class="form-group" align="left">
                   <label ><span class="color-red f-bold f-left">*</span>Request For Leave:</label>
@@ -224,17 +249,17 @@
                   <input type="text" class="form-control"  ng-model="editRequest.hr approval status" placeholder="Enter MGR Approval Status" title="Enter MGR Approval Status"  data-toggle="tooltip" data-placement="top" required>
                 </div>
 
-               <!-- <div class="form-group" align="left">
-                  <label ><span class="color-red f-bold f-left">*</span>Status:</label>
-                  <select ng-model="editProject.status">
-                    <option value="">Select Status</option>
-                    <option value="Not started yet">New Project</option>
-                    <option value="Active">Active</option>
-                    <option value="Complted">Completed</option>
-                    <option value="Hold">Work On Hold</option>
-                    &lt;!&ndash; <option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>&ndash;&gt;
-                  </select>
-                </div>-->
+                <!-- <div class="form-group" align="left">
+                   <label ><span class="color-red f-bold f-left">*</span>Status:</label>
+                   <select ng-model="editProject.status">
+                     <option value="">Select Status</option>
+                     <option value="Not started yet">New Project</option>
+                     <option value="Active">Active</option>
+                     <option value="Complted">Completed</option>
+                     <option value="Hold">Work On Hold</option>
+                     &lt;!&ndash; <option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>&ndash;&gt;
+                   </select>
+                 </div>-->
                 <!--<div class="form-group" align="left">
                   <label ><span class="color-red f-bold f-left">*</span>Entity:</label>
                   <select ng-model="editProject.company">
@@ -268,23 +293,41 @@
 
       <tr>
         <th class="empId" custom-sort order="'paNumb'" sort="sort">Emp Id&nbsp;</th>
-        <th class="emailId" custom-sort order="'projectName'" sort="sort">Emp Name&nbsp;</th>
-        <th class="fromDt" custom-sort order="'projectManager'" sort="sort">Start Dt&nbsp;</th>
-        <th class="toDt" custom-sort order="'projectManager'" sort="sort">End Dt&nbsp;</th>
-        <th class="noOfDays" custom-sort order="'projectManager'" sort="sort">No Of Days&nbsp;</th>
-        <th class="reasonForLeave" custom-sort order="'start_date'" sort="sort">Leave Type&nbsp;</th>
-        <th class="dtSubmitted" custom-sort order="'endDate'" sort="sort">Reason for Leave
+        <th class="financialYear" custom-sort order="'projectName'" sort="sort">Financial Year&nbsp;</th>
+        <th class="clsEntitled leaveth" custom-sort order="'projectManager'" sort="sort">CLs
+        <table class="">
+          <thead>
+          <tr>
+          <th class="inlineth boardr-right">CLs Entitled&nbsp;</th>
+          <th class="inlineth">CLs Availed&nbsp;</th>
+          </tr>
+          </thead>
+        </table></th>
+
+        <!--<th class=" clsAvailed" custom-sort order="'projectManager'" sort="sort">CLs Availed&nbsp;</th>-->
+       <!-- <th class="slsEntitled" custom-sort order="'projectManager'" sort="sort">SLs Entitled&nbsp;</th>-->
+        <th class="slsEntitled leaveth1" custom-sort order="'projectManager'" sort="sort">SLs
+          <table>
+            <th class="inlineth1 boardr-right1">SLs Entitled&nbsp;</th>
+            <th class="inlineth1">SLs Availed&nbsp;</th>
+          </table></th>
+       <!-- <th class="slsAvailed" custom-sort order="'start_date'" sort="sort">SLs Availed&nbsp;</th>-->
+        <!--<th class="elsEntitled" custom-sort order="'endDate'" sort="sort">ELs Entitled
           &nbsp;</th>
-        <th class="reasonForLeave" custom-sort order="'start_date'" sort="sort">MGR Approval Status&nbsp;</th>
-        <th class="reasonForLeave" custom-sort order="'start_date'" sort="sort"> HR Approval Status &nbsp;</th>
-       <th class="status" custom-sort order="'status'" sort="sort">Status&nbsp;</th>
-   <!--     <th class="entity" custom-sort order="'entity'" sort="sort">Entity&nbsp;</th>-->
+
+        <th class=" elsAvailed" custom-sort order="'start_date'" sort="sort">  ELs Availed &nbsp;</th>-->
+        <th class="elsEntitled leaveth2" custom-sort order="'projectManager'" sort="sort">ELs
+          <table>
+            <th class="inlineth2 boardr-right2">ELs Entitled&nbsp;</th>
+            <th class="inlineth2">ELs Availed&nbsp;</th>
+          </table></th>
+        <!-- <th class="status" custom-sort order="'status'" sort="sort">Status&nbsp;</th>
+         <th class="entity" custom-sort order="'entity'" sort="sort">Entity&nbsp;</th>-->
         <!--  <th class="createdBy" custom-sort order="'createdBy'" sort="sort">Created By&nbsp;</th>
             <th class="created_DT_TM" custom-sort order="'created_DT_TM'" sort="sort">Created_DT_TM&nbsp;</th>
             <th class="modifiedBy" custom-sort order="'modifiedBy'" sort="sort">Modified By&nbsp;</th>
           <th class="lastUpdated_DT_TM" custom-sort order="'lastUpdated_DT_TM'" sort="sort">LastUpdated_DT_TM&nbsp;</th>-->
-       <!-- <th class="edit" custom-sort order="'edit'" sort="sort">Actions&nbsp;</th>-->
-    <!--    <th class="edit" custom-sort order="'edit'" sort="sort">Actions&nbsp;</th>-->
+        <!-- <th class="edit" custom-sort order="'edit'" sort="sort">Actions&nbsp;</th>-->
       </tr>
       </thead>
 
@@ -297,7 +340,7 @@
         <td>{{request.no_of_days}}</td>
         <td>{{request.reasonforleave}}</td>
         <td>{{projects.dtsubmitted}}</td>
-       <!-- <td> {{projects.status}}</td>-->
+        <!-- <td> {{projects.status}}</td>-->
         <!--
                   {
                   "endDate": "30/07/2016",

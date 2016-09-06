@@ -214,3 +214,48 @@ a:focus, a:hover {
 
   background-color: #9d9d9d;
 }
+
+.inlineth{
+  width: 125px;
+  text-align: left;
+  /* border: 1px solid red; */
+  border-top: 1px solid #fff;
+  padding: 0px 13px;
+}
+.leaveth{
+
+  width: 250px;
+}
+.inlineth1{
+  width: 125px;
+  text-align: left;
+  /* border: 1px solid red; */
+  border-top: 1px solid #fff;
+  padding: 0px 13px;
+}
+.leaveth1{
+
+  width: 250px;
+}
+.inlineth2{
+  width: 125px;
+  text-align: left;
+  /* border: 1px solid red; */
+  border-top: 1px solid #fff;
+  padding: 0px 13px;
+}
+.leaveth2{
+
+  width: 250px;
+}
+
+.boardr-right {
+  border-right: 1px solid #fff;
+}
+.boardr-right1 {
+  border-right: 1px solid #fff;
+}
+.boardr-right2 {
+  border-right: 1px solid #fff;
+}
+

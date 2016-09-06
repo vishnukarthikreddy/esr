@@ -49,6 +49,10 @@ app.config(function($routeProvider) {
         templateUrl:'Leave Request.html',
         controller:'LeaveRequestController'
       })
+      .when('/ResourceLeaves',{
+        templateUrl:'Resource Leaves.html',
+        controller:'ResourceLeavesController'
+      })
 
 
       .otherwise({redirectTo: '/'});
@@ -603,7 +607,7 @@ app.controller('usersController', function($scope,$http,$rootScope) {
 
 //****************************WeeklyStatusController************************//
 app.controller('LeaveRequestController',function($scope,$http,$rootScope){
-  
+
   $scope.master = {};
   console.log("projects controller entered");
   $scope.getLeaveRequests = function() {
@@ -622,12 +626,14 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope){
   $scope.getLeaveRequests();
   $scope.editRequest={
     "empId":"",
-    "emailId":"",
-    "fromDt":"",
-    "toDt":"",
+    "empName":"",
+    "startDt":"",
+    "endDt":"",
     "noOfDays":"",
-    "reasonForLeave":"",
-    "dtSubmitted":"",
+    "leaveType":"",
+    "MGR Approval Status":"",
+    "HR Approval Status":"",
+
 
   }
   $scope.editRequest=function(request) {
@@ -757,6 +763,10 @@ app.controller('StatusController', function($scope,$http,$rootScope) {
 
 
 });
+/*anil*/
+app.controller('ResourceLeavesController',function($scope,$http,$rootScope) {
+
+})
 //****************************WeeklyStatusController************************//
 
 //****************************Status entry Controller************************//
