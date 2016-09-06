@@ -41,6 +41,10 @@ app.config(function($routeProvider) {
           templateUrl: '/report.html',
           controller: 'reportController'
         })
+      .when('/rsr-resourcesleaves', {
+        templateUrl: '/rsr-resourcesleaves.html',
+        controller: 'resourcesleavesController'
+      })
       .when('/manager', {
         templateUrl: '/ManagerCreate.html',
         controller: 'managerController'
@@ -1014,3 +1018,16 @@ $scope.editManager=function(manager){
 
 });
 //****************************manager Controller************************
+app.controller('resourcesleavesController', function($http, $scope, $window, $location, $rootScope){
+  $http({
+    method: 'GET',
+    url: 'http://139.162.42.96:4545/api/Calendars',
+    headers: {"Content-Type": "application/json", "Accept": "application/json"}
+  }).success(function (response) {
+    console.log('Users Response :' + JSON.stringify(response));
+    $rootScope.calenderData = response;
+
+  }).error(function (response) {
+    console.log('Error Response :' + JSON.stringify(response));
+  });
+});

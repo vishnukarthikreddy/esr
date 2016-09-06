@@ -55,5 +55,13 @@
   "email": {
     "dataSource": "yitsolDB",
     "public": true
+  },
+  "TypeOfTask": {
+    "dataSource": "yitsolDB",
+    "public": true
+  },
+  "leaveRequest": {
+    "dataSource": "yitsolDB",
+    "public": true
   }
 }
