@@ -1,12 +1,12 @@
 {
-  "name": "TaskType",
+  "name": "leaveRequest",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "task": {
+    "empId": {
       "type": "string",
       "required": true
     }
