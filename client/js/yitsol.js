@@ -57,6 +57,10 @@ app.config(function($routeProvider) {
         templateUrl:'Resource Leaves.html',
         controller:'ResourceLeavesController'
       })
+      .when('/TaskTypeMaster',{
+        templateUrl:'TaskTypeMaster.html',
+        controller:'TaskTypeMasterController'
+      })
 
 
       .otherwise({redirectTo: '/'});
@@ -610,64 +614,70 @@ app.controller('usersController', function($scope,$http,$rootScope) {
 //****************************UsersController************************//
 
 //****************************WeeklyStatusController************************//
-app.controller('LeaveRequestController',function($scope,$http,$rootScope){
+app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window) {
 
   $scope.master = {};
   console.log("projects controller entered");
-  $scope.getLeaveRequests = function() {
+  $scope.getLeaveRequests = function () {
     $http({
-      method: 'post',
+      method: 'GET',
       url: 'http://localhost:4545/api/LeaveRequests',
       headers: {"Content-Type": "application/json", "Accept": "application/json"}
     }).success(function (response) {
       console.log('Users Response :' + JSON.stringify(response));
-      $rootScope.projectsData = response;
+      $scope.projectsData = response;
 
     }).error(function (response) {
       console.log('Error Response :' + JSON.stringify(response));
     });
   };
   $scope.getLeaveRequests();
-  $scope.editRequest={
-    "empId":"",
-    "empName":"",
-    "startDt":"",
-    "endDt":"",
-    "noOfDays":"",
-    "leaveType":"",
-    "MGR Approval Status":"",
-    "HR Approval Status":"",
+
+
+  $scope.editLeaveRequest = {
+    "empId": "",
+    "empName": "",
+    "startDt": "",
+    "endDt": "",
+    "noOfDays": "",
+    "leaveType": "",
+    "mgrApprovalStatus": "",
+    "hrApprovalStatus": "",
+    "reasonforleave": ""
 
 
   }
-  $scope.editRequest=function(request) {
+  $scope.editLeaveRequest1 = function (Leaverequest) {
+   // alert(JSON.stringify(Leaverequest))
+    $scope.editLeaveRequest.id = Leaverequest.id;
+    $scope.editLeaveRequest.empId = Leaverequest.empId;
+    $scope.editLeaveRequest.empName = Leaverequest.empName;
+    $scope.editLeaveRequest.startDt = Leaverequest.startDt;
+    $scope.editLeaveRequest.endDt = Leaverequest.endDt;
+    $scope.editLeaveRequest.noOfDays = Leaverequest.noOfDays;
+    $scope.editLeaveRequest.reasonForLeave = Leaverequest.reasonForLeave;
+    $scope.editLeaveRequest.leaveType = Leaverequest.leaveType;
+    $scope.editLeaveRequest.mgrApprovalStatus = Leaverequest.mgrApprovalStatus;
+    $scope.editLeaveRequest.hrApprovalStatus = Leaverequest.hrApprovalStatus;
 
-    $scope.editRequest.empId= request.empId;
-    $scope.editRequest.emailId = request.emailid;
-    $scope.editRequest.fromDt= request.fromDt;
-    $scope.editRequest.toDt = request.toDt;
-    $scope.editRequest.noOfDays = request.noOfDays;
-    $scope.editRequest.reasonForLeave = request.reasonForLeave;
-    $scope.editRequest.dtSubmitted = request.dtSubmitted;
-
-    $('#resourceEdit').modal('show');
+    $('#projectEdit').modal('show');
   }
-  $scope.updateProject=function(){
+  $scope.updateProject = function () {
 //alert('hai');
-    var requestDetails=$scope.editProject;
-    requestDetails['name']=$scope.editProjectname;
-    requestDetails['updatedBy']=loginDetails.name;
-    requestDetails['updatedTime']=new Date();
+   /* var requestDetails = $scope.editProject;
+    requestDetails['name'] = $scope.editProjectname;
+    requestDetails['updatedBy'] = loginDetails.name;
+    requestDetails['updatedTime'] = new Date();*/
 
 
-    console.log('request details'+JSON.stringify(requestDetails));
+    //console.log('request details' + JSON.stringify(requestDetails));
     $http({
       method: 'PUT',
-      url: 'http://localhost:4545/api/Requests/'+$scope.editRequest.id,
+      url: 'http://localhost:4545/api/LeaveRequests/' + $scope.editLeaveRequest.id,
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
-      data:requestDetails
+      data: $scope.editLeaveRequest
     }).success(function (response) {
-      $scope.getRequests();
+      $scope.getLeaveRequests();
       $('#resourceEdit').modal('hide');
       // $('#createCalendar').modal('hide');
       /*console.log('Users Response :' + JSON.stringify(response));
@@ -681,8 +691,32 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope){
 
 
   }
+  /* var loginDetails=JSON.parse($window.localStorage.getItem('profileDetails'));
+   $scope.request={
+   "noOfDays":"",
+   "name":loginDetails.empName
+   }
 
-  $scope.reset = function() {
+
+
+   console.log("$scope.request.noOfDays"+$scope.request.noOfDays);
+   $scope.formatString = function(format) {
+   var day   = parseInt(format.substring(0,2));
+   var month  = parseInt(format.substring(3,5));
+   var year   = parseInt(format.substring(6,10));
+   var date = new Date(year, month-1, day);
+   return date;
+   }
+   $scope.calData=function()
+   {
+
+   var date1 = new Date($scope.formatString($scope.request.startDt));
+   var date2 = new Date($scope.formatString($scope.request.endDt));
+   var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+   var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+   $scope.request.noOfDays=diffDays;
+   }*/
+  $scope.reset = function () {
 
     $scope.request = angular.copy($scope.master);
   };
@@ -711,21 +745,49 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope){
   var loginDetails=JSON.parse($window.localStorage.getItem('profileDetails'));
 */
 
+  var loginDetails=JSON.parse($window.localStorage.getItem('profileDetails'));
+  $scope.request={
+    "noOfDays":"",
+    "name":loginDetails.empName
+  }
+
+
+
+  console.log("$scope.request.noOfDays"+$scope.request.noOfDays);
+  $scope.formatString = function(format) {
+    var day   = parseInt(format.substring(0,2));
+    var month  = parseInt(format.substring(3,5));
+    var year   = parseInt(format.substring(6,10));
+    var date = new Date(year, month-1, day);
+    return date;
+  }
+  $scope.calData=function()
+  {
+
+    var date1 = new Date($scope.formatString($scope.request.startDt));
+    var date2 = new Date($scope.formatString($scope.request.endDt));
+    var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    $scope.request.noOfDays=diffDays;
+  }
   $scope.createRequest=function(){
 //alert('hai');
     var requestDetails=$scope.request;
+     // 9
+
     requestDetails['createdBy']=loginDetails.name;
     requestDetails['createdTime']=new Date();
+  /*  requestDetails['numberOfDays']=d;*/
 
 
-    console.log('request details'+JSON.stringify(projectDetails));
+  console.log("requestDetails"+JSON.stringify(requestDetails));
     $http({
       method: 'POST',
-      url: 'http://localhost:4545/api/Requests',
+      url: 'http://localhost:4545/api/leaveRequests',
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data:requestDetails
     }).success(function (response) {
-      $scope.getRequests();
+      $scope.getLeaveRequests();
       $('#myModal').modal('hide');
       // $('#createCalendar').modal('hide');
       /*console.log('Users Response :' + JSON.stringify(response));
@@ -770,7 +832,12 @@ app.controller('StatusController', function($scope,$http,$rootScope) {
 /*anil*/
 app.controller('ResourceLeavesController',function($scope,$http,$rootScope) {
 
+
 })
+app.controller('TaskTypeMasterController',function($scope,$http,$rootScope) {
+
+})
+
 //****************************WeeklyStatusController************************//
 
 //****************************Status entry Controller************************//

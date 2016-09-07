@@ -7,10 +7,6 @@
     "pretest": "eslint .",
     "posttest": "nsp check"
   },
-
-
-
-
   "dependencies": {
     "compression": "^1.0.3",
     "cors": "^2.5.2",
@@ -18,7 +14,7 @@
     "loopback": "^2.22.0",
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^2.4.0",
-    "loopback-connector-mongodb": "^1.15.1",
+    "loopback-connector-mongodb": "^1.15.2",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^1.0.1"
   },

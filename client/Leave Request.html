@@ -21,7 +21,7 @@
               <!--<span class="color-red f-bold f-left">*All fields are mandatory</span><br>-->
               <div class="form-group" align="left">
                 <label ><span class="color-red f-bold f-left">*</span>Emp Id:</label>
-                <input type="text" class="form-control" ng-model="request.emp id" placeholder="Enter Emp Id"  data-toggle="tooltip" data-placement="top" required>
+                <input type="text" class="form-control" ng-model="request.empId" placeholder="Enter Emp Id"  data-toggle="tooltip" data-placement="top" required>
               </div>
               <div class="form-group" align="left">
                 <label > <span class="color-red f-bold f-left">*</span>Emp Name:</label>
@@ -48,17 +48,19 @@
                 <!--<input type="text"  class="form-control" ng-model="project.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>-->
                 <input placeholder="Select Start Date" type="text" ng-calendar ng-model="request.endDt" format="%d-%m-%Y" />
               </div>
+              <button calss="btn btn-default" ng-click="calData()">GetDays</button>
               <div class="form-group" align="left">
                 <label > <span class="color-red f-bold f-left">*</span>No Of Days:</label>
-                <input type="text" class="form-control"  ng-model="request.noOfDays" placeholder="Enter No Of Days" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
+                <input type="text" class="form-control"  ng-model="request.noOfDays" placeholder="Enter No Of Days" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required readonly>
               </div>
+
               <div class="form-group" align="left">
                 <label ><span class="color-red f-bold f-left">*</span>Leave Type:</label>
-                <select ng-model="editRequest.type">
+                <select ng-model="request.type">
                   <option value="">Select Leave Type</option>
-                  <option value="Yitsol">CL</option>
-                  <option value="Nibble Matrix">SL</option>
-                  <option value="Active Life">EL</option>
+                  <option value="CL">CL</option>
+                  <option value="SL">SL</option>
+                  <option value="EL">EL</option>
 
                 </select> </div>
 
@@ -149,7 +151,7 @@
         </div>
       </div>
     </div>
-    <div class="modal fade" id="resourceEdit" resource="dialog">
+    <div class="modal fade" id="projectEdit" resource="dialog">
       <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -162,15 +164,15 @@
 
             <div>
               <div class=" text-center color-red f-bold" ng-show="resourceCreationError">{{resourceUserError}}</div>
-              <form class="simple-form"  ng-submit="updateRequest()">
+              <form class="simple-form"  ng-submit="updateProject()">
                 <!--<span class="color-red f-bold f-left">*All fields are mandatory</span><br>-->
                 <div class="form-group" align="left">
                   <label ><span class="color-red f-bold f-left">*</span>Emp Id:</label>
-                  <input type="text" class="form-control" ng-model="editRequest.Emp Id" placeholder="Enter Project ID"  data-toggle="tooltip" data-placement="top" required>
+                  <input type="text" class="form-control" ng-model="editLeaveRequest.empId" placeholder="Enter Project ID"  data-toggle="tooltip" data-placement="top" required>
                 </div>
                 <div class="form-group" align="left">
                   <label > <span class="color-red f-bold f-left">*</span>Emp Name:</label>
-                  <input type="text" class="form-control"  ng-model="editEmpName" placeholder="Enter Emp Name" data-toggle="tooltip" data-placement="top" required>
+                  <input type="text" class="form-control"  ng-model="editLeaveRequest.empName" placeholder="Enter Emp Name" data-toggle="tooltip" data-placement="top" required>
                 </div>
                <!-- <div class="form-group" align="left">
                   <label > <span class="color-red f-bold f-left">*</span>From Dt:</label>
@@ -184,17 +186,17 @@
 
                   <label ><span class="color-red f-bold f-left">*</span>Start Date:</label>
                   <!--<input type="text"  class="form-control" ng-model="project.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>-->
-                  <input placeholder="Select Start Date" type="text" ng-calendar ng-model="project.startDate" format="%d-%m-%Y" />
+                  <input placeholder="Select Start Date" type="text" ng-calendar ng-model="editLeaveRequest.startDt" format="%d-%m-%Y" />
                 </div>
 
                 <div class="form-group" align="left">
                   <label ><span class="color-red f-bold f-left">*</span>End Dt:</label>
                   <!--<input type="text"  class="form-control" ng-model="editProject.startDate" placeholder="Select Start Date" maxlength="21"    data-toggle="tooltip" data-placement="top" required>-->
-                  <input ng-model="editRequest.end dt" type="text" ng-calendar ng-model="myDate" format="%d/%m/%Y" />
+                  <input ng-model="editLeaveRequest.endDt" type="text" ng-calendar ng-model="myDate" format="%d/%m/%Y" />
                 </div>
                 <div class="form-group" align="left">
                   <label ><span class="color-red f-bold f-left">*</span>No Of Days:</label>
-                  <input type="text" class="form-control" ng-model="editRequest.no of days" placeholder="Enter No Of Days"  data-toggle="tooltip" data-placement="top" required>
+                  <input type="text" class="form-control"   ng-model="editLeaveRequest.noOfDays" placeholder="Enter No Of Days"  data-toggle="tooltip" data-placement="top" required>
                 </div>
                <!-- <div class="form-group" align="left">
                   <label ><span class="color-red f-bold f-left">*</span>No Of Days:</label>
@@ -209,21 +211,27 @@
                 </div>-->
                 <div class="form-group" align="left">
                   <label ><span class="color-red f-bold f-left">*</span>Leave Type:</label>
-                  <input type="text" class="form-control" ng-model="editRequest.Leave Type" placeholder="Enter Leave Type"  data-toggle="tooltip" data-placement="top" required>
+                 <!-- <input type="text" class="form-control" ng-model="editRequest.LeaveType" placeholder="Enter Leave Type"  data-toggle="tooltip" data-placement="top" required>-->
+
+                  <select ng-model="editLeaveRequest.leaveType">
+                    <option value="CL">CL</option>
+                    <option value="SL">SL</option>
+                    <option value="EL">EL</option>
+                  </select>
+
                 </div>
                 <div class="form-group" align="left">
                   <label > <span class="color-red f-bold f-left">*</span>Reason for Leave:</label>
-                  <input type="text" class="form-control"  ng-model="editRequest.reason for leave" placeholder="Enter Reason for Leave" title="Reason for Leave"  data-toggle="tooltip" data-placement="top" required>
+                  <input type="text" class="form-control"  ng-model="editLeaveRequest.reasonforleave" placeholder="Enter Reason for Leave" title="Reason for Leave"  data-toggle="tooltip" data-placement="top" required>
                 </div>
                 <div class="form-group" align="left">
                   <label > <span class="color-red f-bold f-left">*</span>MGR Approval Status:</label>
-                  <input type="text" class="form-control"  ng-model="editRequest.mgr approval status" placeholder="MGR Approval Status" title="MGR Approval Status"  data-toggle="tooltip" data-placement="top" required>
+                  <input type="text" class="form-control"  ng-model="editLeaveRequest.mgrApprovalStatus" placeholder="MGR Approval Status" title="MGR Approval Status"  data-toggle="tooltip" data-placement="top" required>
                 </div>
                 <div class="form-group" align="left">
                   <label > <span class="color-red f-bold f-left">*</span>HR Approval Status:</label>
-                  <input type="text" class="form-control"  ng-model="editRequest.hr approval status" placeholder="Enter MGR Approval Status" title="Enter MGR Approval Status"  data-toggle="tooltip" data-placement="top" required>
+                  <input type="text" class="form-control"  ng-model="editLeaveRequest.hrApprovalStatus" placeholder="Enter MGR Approval Status" title="Enter MGR Approval Status"  data-toggle="tooltip" data-placement="top" required>
                 </div>
-
                <!-- <div class="form-group" align="left">
                   <label ><span class="color-red f-bold f-left">*</span>Status:</label>
                   <select ng-model="editProject.status">
@@ -276,7 +284,8 @@
         <th class="dtSubmitted" custom-sort order="'endDate'" sort="sort">Reason for Leave
           &nbsp;</th>
         <th class="reasonForLeave" custom-sort order="'start_date'" sort="sort">MGR Approval Status&nbsp;</th>
-        <th class="reasonForLeave" custom-sort order="'start_date'" sort="sort"> HR Approval Status &nbsp;</th>
+        <!--<th class="hrApprovalStatus" custom-sort order="'start_date'" sort="sort">HR Approval Status &nbsp;</th>-->
+        <th>HR Approval Status</th>
        <th class="status" custom-sort order="'status'" sort="sort">Status&nbsp;</th>
    <!--     <th class="entity" custom-sort order="'entity'" sort="sort">Entity&nbsp;</th>-->
         <!--  <th class="createdBy" custom-sort order="'createdBy'" sort="sort">Created By&nbsp;</th>
@@ -289,34 +298,22 @@
       </thead>
 
       <tbody>
-      <tr ng-repeat="requests in requestsData track by $index">
-        <td> {{request.empid}}</td>
-        <td> {{request.emailid}}</td>
-        <td>{{request.from_dt}}</td>
-        <td>{{request.to_dt}}</td>
-        <td>{{request.no_of_days}}</td>
-        <td>{{request.reasonforleave}}</td>
-        <td>{{projects.dtsubmitted}}</td>
-       <!-- <td> {{projects.status}}</td>-->
-        <!--
-                  {
-                  "endDate": "30/07/2016",
-                  "status": "Not started yet",
-                  "id": "12",
-                  "name": "Yitsol",
-                  "startDate": "30/07/2016",
-                  "manager": "vinod",
-                  "company": "Yitsol"
-                  }-->
-
-        <td> {{requests.company}}</td>
+      <tr ng-repeat="requests in projectsData track by $index">
+        <td> {{requests.empId}}</td>
+        <td> {{requests.empName}}</td>
+        <td>{{requests.startDt}}</td>
+        <td>{{requests.endDt}}</td>
+        <td>{{requests.noOfDays}}</td>
+        <td>{{requests.type}}</td>
+        <td>{{requests.reasonForLeave}}</td>
+        <td>{{requests.mgrApprovalStatus}}</td>
+        <td>{{requests.hrApprovalStatus}}</td>
         <!--<td>{{projects.createdBy}}</td>
         <td>{{projects.createdTime}}</td>
         <td>{{projects.modifiedBy}}</td>
         <td>{{projects.lastUpdated_DT_TM}}</td>-->
         <td>
-          <button class="glyphicon glyphicon-pencil pall10 m-right5" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#projectEdit" ng-click="editProject12(projects)"></button>
-
+          <button class="glyphicon glyphicon-pencil pall10 m-right5" data-backdrop="static" data-keyboard="false"  ng-click="editLeaveRequest1(requests)"></button>
         </td>
 
       </tr>

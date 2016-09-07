@@ -74,7 +74,8 @@ body .dhtmlxcalendar_material.dhtmlxcalendar_in_input {
 }
 .loginFormMain .form-group { width: 100%; }
 .contentArea {
-  padding: 25px;
+  padding: 0px 0px 0px 0px;
+  margin-top: 90px;
 }
 .pageTitle {
   color: #c53131;
@@ -151,6 +152,18 @@ body .dhtmlxcalendar_material.dhtmlxcalendar_in_input {
   right: 0px;
   color: #fff !important;
 }
+
+.fsize{
+  font-size: 15px !important;
+  color: #ffffff !important;
+  margin: auto;
+  padding: 5px 0;
+  position: absolute;
+  left: 678px;
+  right: 9px;
+  top: 68px;
+}
+
 .yitsol-title h5 {
   margin: -4px 0;
   font-size: 24px;
@@ -220,7 +233,7 @@ a:focus, a:hover {
   text-align: left;
   /* border: 1px solid red; */
   border-top: 1px solid #fff;
-  padding: 0px 13px;
+  padding: 0px 25px;
 }
 .leaveth{
 
@@ -231,7 +244,7 @@ a:focus, a:hover {
   text-align: left;
   /* border: 1px solid red; */
   border-top: 1px solid #fff;
-  padding: 0px 13px;
+  padding: 0px 25px;
 }
 .leaveth1{
 
@@ -242,7 +255,7 @@ a:focus, a:hover {
   text-align: left;
   /* border: 1px solid red; */
   border-top: 1px solid #fff;
-  padding: 0px 13px;
+  padding: 0px 25px;
 }
 .leaveth2{
 
@@ -258,4 +271,21 @@ a:focus, a:hover {
 .boardr-right2 {
   border-right: 1px solid #fff;
 }
-
+.taskreq{
+  width: 60px !important;
+  text-align: left;
+  padding: 16px 10px !important
+}
+.taskreq1{
+  width: 120px !important;
+  text-align: left;
+  padding: 16px 10px !important
+}
+.bag{
+  margin-top: 55px;
+}
+.bag1{
+  background: #777;
+  color: #fff;
+}
+/**************/

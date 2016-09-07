@@ -11,6 +11,12 @@
       "required": true
     }
   },
+  "properties": {
+    "leaveType": {
+      "type": "string",
+      "required": true
+    }
+  },
   "validations": [],
   "relations": {},
   "acls": [],
