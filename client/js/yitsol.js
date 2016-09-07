@@ -621,7 +621,7 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
   $scope.getLeaveRequests = function () {
     $http({
       method: 'GET',
-      url: 'http://localhost:4545/api/LeaveRequests',
+      url: 'http://139.162.42.96:4545/api/LeaveRequests',
       headers: {"Content-Type": "application/json", "Accept": "application/json"}
     }).success(function (response) {
       console.log('Users Response :' + JSON.stringify(response));
@@ -673,7 +673,7 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
     //console.log('request details' + JSON.stringify(requestDetails));
     $http({
       method: 'PUT',
-      url: 'http://localhost:4545/api/LeaveRequests/' + $scope.editLeaveRequest.id,
+      url: 'http://139.162.42.96:4545/api/LeaveRequests/' + $scope.editLeaveRequest.id,
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data: $scope.editLeaveRequest
     }).success(function (response) {
@@ -783,7 +783,7 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
   console.log("requestDetails"+JSON.stringify(requestDetails));
     $http({
       method: 'POST',
-      url: 'http://localhost:4545/api/leaveRequests',
+      url: 'http://139.162.42.96:4545/api/leaveRequests',
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data:requestDetails
     }).success(function (response) {
