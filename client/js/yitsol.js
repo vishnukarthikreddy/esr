@@ -656,6 +656,7 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
     $scope.editLeaveRequest.endDt = Leaverequest.endDt;
     $scope.editLeaveRequest.noOfDays = Leaverequest.noOfDays;
     $scope.editLeaveRequest.reasonForLeave = Leaverequest.reasonForLeave;
+    alert("hiii:"+$scope.editLeaveRequest.reasonForLeave);
     $scope.editLeaveRequest.leaveType = Leaverequest.leaveType;
     $scope.editLeaveRequest.mgrApprovalStatus = Leaverequest.mgrApprovalStatus;
     $scope.editLeaveRequest.hrApprovalStatus = Leaverequest.hrApprovalStatus;

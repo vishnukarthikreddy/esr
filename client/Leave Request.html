@@ -56,7 +56,7 @@
 
               <div class="form-group" align="left">
                 <label ><span class="color-red f-bold f-left">*</span>Leave Type:</label>
-                <select ng-model="request.type">
+                <select ng-model="request.leaveType">
                   <option value="">Select Leave Type</option>
                   <option value="CL">CL</option>
                   <option value="SL">SL</option>
@@ -222,7 +222,7 @@
                 </div>
                 <div class="form-group" align="left">
                   <label > <span class="color-red f-bold f-left">*</span>Reason for Leave:</label>
-                  <input type="text" class="form-control"  ng-model="editLeaveRequest.reasonforleave" placeholder="Enter Reason for Leave" title="Reason for Leave"  data-toggle="tooltip" data-placement="top" required>
+                  <input type="text" class="form-control"  ng-model="editLeaveRequest.reasonForLeave" placeholder="Enter Reason for Leave" title="Reason for Leave"  data-toggle="tooltip" data-placement="top" required>
                 </div>
                 <div class="form-group" align="left">
                   <label > <span class="color-red f-bold f-left">*</span>MGR Approval Status:</label>
@@ -255,6 +255,7 @@
                     &lt;!&ndash;<option value="">{{x.model}}</option>&ndash;&gt;
                   </select> </div>-->
                 <input type="submit" value="Save" />
+                <input type="button" ng-click="reset()" value="Reset" />
                 <input type="button" data-dismiss="modal" value="Close"/>
 
               </form>
