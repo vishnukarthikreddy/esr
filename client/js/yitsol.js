@@ -621,7 +621,7 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
   $scope.getLeaveRequests = function () {
     $http({
       method: 'GET',
-      url: 'http://139.162.42.96:4545/api/LeaveRequests',
+      url: 'http://localhost:4545/api/LeaveRequests',
       headers: {"Content-Type": "application/json", "Accept": "application/json"}
     }).success(function (response) {
       console.log('Users Response :' + JSON.stringify(response));
@@ -673,7 +673,7 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
     //console.log('request details' + JSON.stringify(requestDetails));
     $http({
       method: 'PUT',
-      url: 'http://139.162.42.96:4545/api/LeaveRequests/' + $scope.editLeaveRequest.id,
+      url: 'http://localhost:4545/api/LeaveRequests/' + $scope.editLeaveRequest.id,
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data: $scope.editLeaveRequest
     }).success(function (response) {
@@ -783,7 +783,7 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
   console.log("requestDetails"+JSON.stringify(requestDetails));
     $http({
       method: 'POST',
-      url: 'http://139.162.42.96:4545/api/leaveRequests',
+      url: 'http://localhost:4545/api/leaveRequests',
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data:requestDetails
     }).success(function (response) {
@@ -831,6 +831,125 @@ app.controller('StatusController', function($scope,$http,$rootScope) {
 });
 /*anil*/
 app.controller('ResourceLeavesController',function($scope,$http,$rootScope) {
+  $scope.master = {};
+  console.log("projects controller entered");
+  $scope.getLeaves = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:4545/api/employeeLeaveMasters',
+      headers: {"Content-Type": "application/json", "Accept": "application/json"}
+    }).success(function (response) {
+      console.log('Users Response :' + JSON.stringify(response));
+      $rootScope.projectsData = response;
+
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+    });
+  };
+  $scope.getLeaves();
+
+  $scope.editLeave={
+    "empId":"",
+    "financialYear":"",
+    "CLsEntitled":"",
+    "CLsAvailed":"",
+    "SLsEntitled":"",
+    "SLsAvailed":"",
+    "ELsEntitled":"",
+    "ELsAvailed":""
+
+  }
+
+  $scope.editLeave12=function(Leave){
+
+    $scope.editLeave.empId=Leave.empId;
+    $scope.editLeave.financialYear=Leave.financialYear;
+    $scope.editLeave.CLsEntitled=Leave.CLsEntitled;
+    $scope.editLeave.CLsAvailed=Leave.CLsAvailed;
+    $scope.editLeave.SLsEntitled=Leave.SLsEntitled;
+    $scope.editLeave.SLsAvailed=Leave.SLsAvailed;
+    $scope.editLeave.ELsEntitled=Leave.ELsEntitled;
+    $scope.editLeave.ELsAvailed=Leave.ELsAvailed;
+
+    $('#resourceEdit').modal('show');
+
+
+   $scope.editProject =project;
+     $scope.showeditprojectpopup();
+  }
+  $scope.updateLeave=function(){
+//alert('hai');
+    var leaveDetails=$scope.editLeave;
+    projectDetails['name']=$scope.editProjectname;
+    projectDetails['updatedBy']=loginDetails.name;
+    projectDetails['updatedTime']=new Date();
+
+
+    /*console.log('project details'+JSON.stringify(projectDetails));*/
+    $http({
+      method: 'PUT',
+      url: 'http://localhost:4545/api/employeeLeaveMasters/'+$scope.editLeave.id,
+      headers: {"Content-Type": "application/json", "Accept": "application/json"},
+      data:leaveDetails
+    }).success(function (response) {
+      $scope.getLeaves();
+      $('#resourceEdit').modal('hide');
+      // $('#createCalendar').modal('hide');
+      /*console.log('Users Response :' + JSON.stringify(response));
+       $rootScope.projectsData = response;*/
+
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+    });
+
+    // alert('create Project');
+
+
+  }
+
+  $scope.reset = function() {
+
+    $scope.project = angular.copy($scope.master);
+  };
+
+  $scope.project = {};
+  $scope.reset();
+
+
+ /* $scope.getManager();
+
+  console.log(JSON.stringify(JSON.parse($window.localStorage.getItem('profileDetails'))));
+  var loginDetails=JSON.parse($window.localStorage.getItem('profileDetails'));
+*/
+
+  $scope.createLeave1=function(){
+  alert('hai');
+  /*  var projectDetails=$scope.project;
+    projectDetails['createdBy']=loginDetails.name;
+    projectDetails['createdTime']=new Date();*/
+
+
+  /*  console.log('project details'+JSON.stringify(projectDetails));*/
+    $http({
+      method: 'POST',
+      url: 'http://localhost:4545/api/employeeLeaveMasters',
+      headers: {"Content-Type": "application/json", "Accept": "application/json"},
+      "data": $scope.editLeave
+    }).success(function (response) {
+
+      $scope.getLeaves();
+      $('#myModal').modal('hide');
+      // $('#createCalendar').modal('hide');
+      /*console.log('Users Response :' + JSON.stringify(response));
+       $rootScope.projectsData = response;*/
+
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+    });
+
+    // alert('create Project');
+
+  }
 
 
 })

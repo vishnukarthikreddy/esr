@@ -6,12 +6,6 @@
     "validateUpsert": true
   },
   "properties": {
-    "empId": {
-      "type": "string",
-      "required": true
-    }
-  },
-  "properties": {
     "leaveType": {
       "type": "string",
       "required": true

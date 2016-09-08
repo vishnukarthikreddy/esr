@@ -6,24 +6,6 @@
     "validateUpsert": true
   },
   "properties": {
-    "work": {
-      "type": "string",
-      "required": true
-    }
-  },
-  "properties": {
-    "leave": {
-      "type": "string",
-      "required": true
-    }
-  },
-  "properties": {
-    "comp Off": {
-      "type": "string",
-      "required": true
-    }
-  },
-  "properties": {
     "holiday": {
       "type": "string",
       "required": true

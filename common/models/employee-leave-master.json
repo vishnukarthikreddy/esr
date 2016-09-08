@@ -1,0 +1,46 @@
+{
+  "name": "employeeLeaveMaster",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "empId": {
+      "type": "string",
+      "default": ""
+    },
+    "financialYear": {
+      "type": "string",
+      "default": ""
+    },
+    "CLsEntitled": {
+      "type": "string",
+      "default": ""
+    },
+    "CLsAvailed": {
+      "type": "string",
+      "default": ""
+    },
+    "SLsEntitled": {
+      "type": "string",
+      "default": ""
+    },
+    "SLsAvailed": {
+      "type": "string",
+      "default": ""
+    },
+    "ELsEntitled": {
+      "type": "string",
+      "default": ""
+    },
+    "ELsAvailed": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

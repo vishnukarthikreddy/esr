@@ -63,5 +63,9 @@
   "leaveRequest": {
     "dataSource": "yitsolDB",
     "public": true
+  },
+  "employeeLeaveMaster": {
+    "dataSource": "yitsolDB",
+    "public": true
   }
 }

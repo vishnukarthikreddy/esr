@@ -17,39 +17,39 @@
           </div>
           <div class="modal-body">
             <div class=" text-center color-red f-bold" ng-show="resourceCreationError">{{createResourceError}}</div>
-            <form class="simple-form" ng-submit="createRequest()">
+            <form class="simple-form" ng-submit="createLeave1()">
               <!--<span class="color-red f-bold f-left">*All fields are mandatory</span><br>-->
               <div class="form-group" align="left">
                 <label ><span class="color-red f-bold f-left">*</span>Emp Id:</label>
-                <input type="text" class="form-control" ng-model="request.empId" placeholder="Enter Emp Id"  data-toggle="tooltip" data-placement="top" required>
+                <input type="text" class="form-control" ng-model="editLeave.empId" placeholder="Enter Emp Id"  data-toggle="tooltip" data-placement="top" required>
               </div>
               <div class="form-group" align="left">
                 <label > <span class="color-red f-bold f-left">*</span> Financial Year:</label>
-                <input type="text" class="form-control"  ng-model="request. financialYear" placeholder="Enter  Financial Year" title="Enter Emp Name"  data-toggle="tooltip" data-placement="top" required>
+                <input type="text" class="form-control"  ng-model="editLeave.financialYear" placeholder="Enter  Financial Year" title="Enter Emp Name"  data-toggle="tooltip" data-placement="top" required>
               </div>
               <div class="form-group" align="left">
                 <label ><span class="color-red f-bold f-left">*</span>CLs Entitled:</label>
-                <input type="text" class="form-control" ng-model="request.clsEntitled" placeholder="Enter CLs Entitled"  data-toggle="tooltip" data-placement="top" required>
+                <input type="text" class="form-control" ng-model="editLeave.CLsEntitled" placeholder="Enter CLs Entitled"  data-toggle="tooltip" data-placement="top" required>
               </div>
               <div class="form-group" align="left">
                 <label ><span class="color-red f-bold f-left">*</span>CLs Availed:</label>
-                <input type="text" class="form-control" ng-model="request.clsAvailed" placeholder="Enter CLs_Availed"  data-toggle="tooltip" data-placement="top" required>
+                <input type="text" class="form-control" ng-model="editLeave.CLsAvailed" placeholder="Enter CLs_Availed"  data-toggle="tooltip" data-placement="top" required>
               </div>
               <div class="form-group" align="left">
                 <label ><span class="color-red f-bold f-left">*</span>SLs Entitled:</label>
-                <input type="text" class="form-control" ng-model="request.slsEntitled" placeholder="Enter SLs_Entitled"  data-toggle="tooltip" data-placement="top" required>
+                <input type="text" class="form-control" ng-model="editLeave.SLsEntitled" placeholder="Enter SLs_Entitled"  data-toggle="tooltip" data-placement="top" required>
               </div>
               <div class="form-group" align="left">
                 <label ><span class="color-red f-bold f-left">*</span> SLs_Availed:</label>
-                <input type="text" class="form-control" ng-model="request. slsAvailed" placeholder="Enter  SLs_Availed"  data-toggle="tooltip" data-placement="top" required>
+                <input type="text" class="form-control" ng-model="editLeave.SLsAvailed" placeholder="Enter  SLs_Availed"  data-toggle="tooltip" data-placement="top" required>
               </div>
               <div class="form-group" align="left">
                 <label ><span class="color-red f-bold f-left">*</span> ELs_Entitled:</label>
-                <input type="text" class="form-control" ng-model="request. slsAvailed" placeholder="Enter  ELs_Entitled"  data-toggle="tooltip" data-placement="top" required>
+                <input type="text" class="form-control" ng-model="editLeave.ELsEntitled" placeholder="Enter  ELs_Entitled"  data-toggle="tooltip" data-placement="top" required>
               </div>
               <div class="form-group" align="left">
                 <label ><span class="color-red f-bold f-left">*</span> ELs_Availed:</label>
-                <input type="text" class="form-control" ng-model="request. elsAvailed" placeholder="Enter  ELs_Availed"  data-toggle="tooltip" data-placement="top" required>
+                <input type="text" class="form-control" ng-model="editLeave.ELsAvailed" placeholder="Enter  ELs_Availed"  data-toggle="tooltip" data-placement="top" required>
               </div>
 
               <!--<div class="form-group" align="left">
@@ -187,7 +187,7 @@
 
             <div>
               <div class=" text-center color-red f-bold" ng-show="resourceCreationError">{{resourceUserError}}</div>
-              <form class="simple-form"  ng-submit="updateRequest()">
+              <form class="simple-form"  ng-submit="updateLeave()">
                 <!--<span class="color-red f-bold f-left">*All fields are mandatory</span><br>-->
                 <div class="form-group" align="left">
                   <label ><span class="color-red f-bold f-left">*</span>Emp Id:</label>
@@ -332,14 +332,15 @@
       </thead>
 
       <tbody>
-      <tr ng-repeat="requests in requestsData track by $index">
-        <td> {{request.empid}}</td>
-        <td> {{request.emailid}}</td>
-        <td>{{request.from_dt}}</td>
-        <td>{{request.to_dt}}</td>
-        <td>{{request.no_of_days}}</td>
-        <td>{{request.reasonforleave}}</td>
-        <td>{{projects.dtsubmitted}}</td>
+      <tr ng-repeat="request in editLeave track by $index">
+        <td> {{request.empId}}</td>
+        <td> {{request.financialYear}}</td>
+        <td>{{request.CLsEntitled}}</td>
+        <td>{{request.CLsAvailed}}</td>
+        <td>{{request.SLsEntitled}}</td>
+        <td>{{request.SLsAvailed}}</td>
+        <td>{{request.ELsEntitled}}</td>
+        <td>{{request.ELsAvailed}}</td>
         <!-- <td> {{projects.status}}</td>-->
         <!--
                   {
