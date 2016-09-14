@@ -487,7 +487,7 @@ $scope.editProject={
 
   $scope.getManager();
 
-  console.log(JSON.stringify(JSON.parse($window.localStorage.getItem('profileDetails'))));
+  //console.log(JSON.stringify(JSON.parse($window.localStorage.getItem('profileDetails'))));
   var loginDetails=JSON.parse($window.localStorage.getItem('profileDetails'));
 
   $scope.createProject=function(){
@@ -569,6 +569,9 @@ app.controller('calenderController', function($http, $scope, $window, $location,
   }
 
     $scope.reset = function() {
+
+
+
         $scope.calender = angular.copy($scope.master);
     };
 
@@ -833,7 +836,7 @@ app.controller('StatusController', function($scope,$http,$rootScope) {
 /*anil*/
 app.controller('ResourceLeavesController',function($scope,$http,$rootScope) {
   $scope.master = {};
-  console.log("projects controller entered");
+  console.log("resourceLeaves controller entered");
   $scope.getLeaves = function() {
     $http({
       method: 'GET',
@@ -841,7 +844,7 @@ app.controller('ResourceLeavesController',function($scope,$http,$rootScope) {
       headers: {"Content-Type": "application/json", "Accept": "application/json"}
     }).success(function (response) {
       console.log('Users Response :' + JSON.stringify(response));
-      $rootScope.projectsData = response;
+      $scope.editLeave = response;
 
     }).error(function (response) {
       console.log('Error Response :' + JSON.stringify(response));
@@ -849,7 +852,7 @@ app.controller('ResourceLeavesController',function($scope,$http,$rootScope) {
   };
   $scope.getLeaves();
 
-  $scope.editLeave={
+  $scope.resourceLeave={
     "empId":"",
     "financialYear":"",
     "CLsEntitled":"",
@@ -861,18 +864,30 @@ app.controller('ResourceLeavesController',function($scope,$http,$rootScope) {
 
   }
 
-  $scope.editLeave12=function(Leave){
 
-    $scope.editLeave.empId=Leave.empId;
-    $scope.editLeave.financialYear=Leave.financialYear;
-    $scope.editLeave.CLsEntitled=Leave.CLsEntitled;
-    $scope.editLeave.CLsAvailed=Leave.CLsAvailed;
-    $scope.editLeave.SLsEntitled=Leave.SLsEntitled;
-    $scope.editLeave.SLsAvailed=Leave.SLsAvailed;
-    $scope.editLeave.ELsEntitled=Leave.ELsEntitled;
-    $scope.editLeave.ELsAvailed=Leave.ELsAvailed;
-
+  $scope.editLeave2=function(leave){
+   // alert(leave)
+    $scope.resourceLeave=leave;
     $('#resourceEdit').modal('show');
+
+
+  }
+
+
+  $scope.editLeave=function(resourceLeave){
+    alert(" "+resourceLeave)
+  $('#resourceEdit').modal('show');
+    console.log('project details'+JSON.stringify(Leave));
+    $scope.editLeave.empId=resourceLeave.empId;
+    $scope.editLeave.financialYear=resourceLeave.financialYear;
+    $scope.editLeave.CLsEntitled=resourceLeave.CLsEntitled;
+    $scope.editLeave.CLsAvailed=resourceLeave.CLsAvailed;
+    $scope.editLeave.SLsEntitled=resourceLeave.SLsEntitled;
+    $scope.editLeave.SLsAvailed=resourceLeave.SLsAvailed;
+    $scope.editLeave.ELsEntitled=resourceLeave.ELsEntitled;
+    $scope.editLeave.ELsAvailed=resourceLeave.ELsAvailed;
+    //$('#projectEdit').modal('show');
+    //$('#resourceEdit').modal('show');
 
 
    $scope.editProject =project;
@@ -881,17 +896,17 @@ app.controller('ResourceLeavesController',function($scope,$http,$rootScope) {
   $scope.updateLeave=function(){
 //alert('hai');
     var leaveDetails=$scope.editLeave;
-    projectDetails['name']=$scope.editProjectname;
-    projectDetails['updatedBy']=loginDetails.name;
-    projectDetails['updatedTime']=new Date();
+    editLeave['name']=$scope.editResourceLeavename;
+    editLeave['updatedBy']=loginDetails.name;
+    editLeave['updatedTime']=new Date();
 
 
     /*console.log('project details'+JSON.stringify(projectDetails));*/
     $http({
       method: 'PUT',
-      url: 'http://localhost:4545/api/employeeLeaveMasters/'+$scope.editLeave.id,
+      url: 'http://localhost:4545/api/employeeLeaveMasters/'+$scope.resourceLeave.id,
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
-      data:leaveDetails
+      "data":leaveDetails
     }).success(function (response) {
       $scope.getLeaves();
       $('#resourceEdit').modal('hide');
@@ -924,7 +939,7 @@ app.controller('ResourceLeavesController',function($scope,$http,$rootScope) {
 */
 
   $scope.createLeave1=function(){
-  alert('hai');
+ /* alert('hai'+JSON.stringify($scope.editLeave));*/
   /*  var projectDetails=$scope.project;
     projectDetails['createdBy']=loginDetails.name;
     projectDetails['createdTime']=new Date();*/
@@ -935,11 +950,14 @@ app.controller('ResourceLeavesController',function($scope,$http,$rootScope) {
       method: 'POST',
       url: 'http://localhost:4545/api/employeeLeaveMasters',
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
-      "data": $scope.editLeave
+      "data": leaveDetails
     }).success(function (response) {
 
+
+
+      $('#resourceEdit').modal('hide');
+
       $scope.getLeaves();
-      $('#myModal').modal('hide');
       // $('#createCalendar').modal('hide');
       /*console.log('Users Response :' + JSON.stringify(response));
        $rootScope.projectsData = response;*/
@@ -1109,8 +1127,8 @@ app.controller('managerController', function($scope,$http,$window,$rootScope) {
 $scope.getManager();
   var loginPersonDetail=JSON.parse($window.localStorage.getItem('profileDetails'));
 
-  console.log(JSON.parse($window.localStorage.getItem('profileDetails')));
-console.log('login user details are'+JSON.stringify($rootScope.loginPersonDetails));
+ //console.log(JSON.parse($window.localStorage.getItem('profileDetails')));
+//console.log('login user details are'+JSON.stringify($rootScope.loginPersonDetails));
 $scope.editManager=function(manager){
   $scope.editManager=manager;
 }
@@ -1160,7 +1178,7 @@ $scope.editManager=function(manager){
       //=$scope.manager;
     //manager
     if(validateAccessToken()){
-      console.log(JSON.stringify(JSON.parse($window.localStorage.getItem('profileDetails'))));
+      //console.log(JSON.stringify(JSON.parse($window.localStorage.getItem('profileDetails'))));
       var loginDetails=$window.localStorage.getItem('profileDetails');
 
       console.log('login details'+JSON.stringify(loginDetails));

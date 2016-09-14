@@ -289,3 +289,28 @@ a:focus, a:hover {
   color: #fff;
 }
 /**************/
+.createEmployeeModal tr td{
+  border-top: 0px !important;
+  text-align: left !important;
+}
+.createEmployeeModalHeader{
+border-bottom: 0px !important;
+}
+.els{
+  text-align: left;
+  padding-left: 72px!important;
+}
+.drop09 {
+  width: 100%;
+  padding: 5px;
+}
+.hight09 {
+  height: 325px;
+}
+
+
+
+
+.emp {
+  width: 33%!important;
+}
