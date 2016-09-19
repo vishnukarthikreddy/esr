@@ -176,10 +176,10 @@ body .dhtmlxcalendar_material.dhtmlxcalendar_in_input {
   color: #999; !important,
 }
 #statusId {
-  padding-left: 47px;
+  padding-left: 71px;
 }
 #status{
-  padding-left: 46px;
+  padding-left: 71px;
 }
 #manager{
   padding-left: 46px;
@@ -302,7 +302,7 @@ border-bottom: 0px !important;
 }
 .drop09 {
   width: 100%;
-  padding: 5px;
+  padding: 0px;
 }
 .hight09 {
   height: 325px;
@@ -313,4 +313,85 @@ border-bottom: 0px !important;
 
 .emp {
   width: 33%!important;
+}
+
+
+
+
+.width26 {
+  width: 26%;
+}
+
+
+
+.width14{
+  width: 14%;
+}
+.paddgleft-right0{
+  padding-right: 0px !important;padding-left: 0px !important;
+}
+.m-top20{ margin-top: 20px; }
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.table1 {
+  color: #ffffff;
+}
+
+
+#padding {
+  padding-left: 39px;
+  padding-top: 5px;
+}
+#padding1 {
+  padding-left: 39px;
+  padding-top: 5px;
+}
+#padding2 {
+  padding-left: 39px;
+  padding-top: 5px;
+}
+#padding3 {
+  padding-left: 39px;
+  padding-top: 5px;
+}
+#padding4 {
+  padding-left: 39px;
+  padding-top: 5px;
+}
+#padding5 {
+  padding-left: 39px;
+  padding-top: 5px;
+}
+#padding6 {
+  padding-left: 39px;
+  padding-top: 5px;
+}
+#padding7 {
+  padding-left: 39px;
+  padding-top: 5px;
+}
+#padding8 {
+  padding-left: 39px;
+  padding-top: 5px;
+}
+#padding9 {
+  padding-left: 39px;
+  padding-top: 5px;
+}
+#padding10 {
+  padding-left: 39px;
+  padding-top: 5px;
+}
+element.style {
+  text-align: right;
+}
+#padding11 {
+  padding-left: 39px;
+  padding-top: 5px;
 }
