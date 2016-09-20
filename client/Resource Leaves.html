@@ -24,20 +24,14 @@
                 <div class="col-lg-6">
                   <label> <span class="color-red f-bold f-left">*</span>Emp Name:</label>
 
-                    <select  class="drop09">
+                    <select ng-model="resourceLeave.empId"  class="drop09">
                       <option class=" " value="">Select Emp Name</option>
-                      <option value="{{resource.resourceName}}" ng-repeat="resource in  dataOfResource"  >{{resource.resourceName}}</option>
+                      <option value="{{resource.id}}"  ng-repeat="resource in  dataOfResource"  >{{resource.resourceName}}</option>
                       </select>
 
 
 
-                  <!--<input type="text"  ng-model="resourceLeave.empName" class="drop09">-->
-                  <!--<select ng-model="resourceLeave.empName" class="drop09">
-                    <option value="2015-16">2015-16</option>
-                    <option value="2016-17">2016-17</option>
-                    <option value="2017-18">2017-18</option>
-                    <option value="2018-19">2018-19</option>
-                  </select>-->
+
                 </div>
                 <div class="col-lg-6">
                   <label> <span class="color-red f-bold f-left">*</span>Financial Year:</label>
@@ -227,36 +221,25 @@
           </thead>
         </table></th>
 
-        <!--<th class=" clsAvailed" custom-sort order="'projectManager'" sort="sort">CLs Availed&nbsp;</th>-->
-       <!-- <th class="slsEntitled" custom-sort order="'projectManager'" sort="sort">SLs Entitled&nbsp;</th>-->
         <th class="slsEntitled leaveth1" custom-sort order="'projectManager'" sort="sort">SLs
           <table>
             <th class="inlineth1 boardr-right1"> Entitled&nbsp;</th>
             <th class="inlineth1"> Availed&nbsp;</th>
           </table></th>
-       <!-- <th class="slsAvailed" custom-sort order="'start_date'" sort="sort">SLs Availed&nbsp;</th>-->
-        <!--<th class="elsEntitled" custom-sort order="'endDate'" sort="sort">ELs Entitled
-          &nbsp;</th>
 
-        <th class=" elsAvailed" custom-sort order="'start_date'" sort="sort">  ELs Availed &nbsp;</th>-->
         <th class="elsEntitled leaveth2" custom-sort order="'projectManager'" sort="sort">ELs
           <table>
             <th class="inlineth2 boardr-right2">Entitled&nbsp;</th>
             <th class="inlineth2">Availed&nbsp;</th>
           </table></th>
-        <!-- <th class="status" custom-sort order="'status'" sort="sort">Status&nbsp;</th>-->
-       <!--  <th class="entity" custom-sort order="'entity'" sort="sort">Entity&nbsp;</th>-->
-        <!--  <th class="createdBy" custom-sort order="'createdBy'" sort="sort">Created By&nbsp;</th>
-            <th class="created_DT_TM" custom-sort order="'created_DT_TM'" sort="sort">Created_DT_TM&nbsp;</th>
-            <th class="modifiedBy" custom-sort order="'modifiedBy'" sort="sort">Modified By&nbsp;</th>
-          <th class="lastUpdated_DT_TM" custom-sort order="'lastUpdated_DT_TM'" sort="sort">LastUpdated_DT_TM&nbsp;</th>-->
+
          <th class="edit" custom-sort order="'edit'" sort="sort">Actions&nbsp;</th>
       </tr>
       </thead>
 
       <tbody>
       <tr ng-repeat="request in editLeave track by $index">
-        <td> {{request.empId}}</td>
+        <td> {{request.resourceName}}</td>
         <td> {{request.financialYear}}</td>
         <td>
           <table class="">
