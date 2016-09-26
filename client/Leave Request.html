@@ -23,25 +23,25 @@
               <div class="col-lg-3 paddgleft-right0 ">
                 <input type="text"  ng-model="nameOfLoginPerson" class="drop09">
               </div>
-              <div class=" col-lg-2 paddgleft-right0 "> <label>FinancialYear:</label></div>
+              <div class=" col-lg-3 paddgleft-right0 "> <label>FinancialYear:</label></div>
               <div class="col-lg-3 paddgleft-right0">
-                <input type="text"  ng-model="request.financialYear" class="drop09">
+                <input type="text"  ng-model="request.financialYear" class="drop09" required>
               </div>
               <div class="col-lg-12 paddgleft-right0 m-top20">
                 <div class="col-lg-2 paddgleft-right0"> <label>Start Dt:</label></div>
                 <div class="col-lg-2 paddgleft-right0">
-                  <input type="text" ng-calendar format="%d-%m-%Y"  ng-model="request.startDt" class="drop09">
+                  <input type="text" ng-calendar format="%d-%m-%Y"  ng-model="request.startDt" class="drop09" required="">
                 </div>
 
                 <div class="col-lg-2 paddgleft-right0"> <label>End Dt:</label></div>
                 <div class="col-lg-2 paddgleft-right0">
-                  <input type="text" ng-calendar format="%d-%m-%Y"  ng-model="request.endDt" class="drop09">
-                  <button calss="btn btn-default" ng-click="calData()">GetDays</button>
+                  <input type="text" ng-calendar format="%d-%m-%Y"  ng-model="request.endDt" class="drop09" ng-blur="calData()" required>
+                  <!--<button calss="btn btn-default" ng-click="calData()">GetDays</button>-->
                 </div>
 
-                <div class="col-lg-2 paddgleft-right0"> <label>no.of.days</label></div>
+                <div class="col-lg-2 paddgleft-right0"> <label>No.of.days:</label></div>
                 <div class="col-lg-1 paddgleft-right0">
-                  <input type="text"  ng-model="request.noOfDays" class="drop09">
+                  <input type="text"  ng-model="request.noOfDays" class="drop09" required>
                 </div>
               </div>
               <div class="col-lg-12 m-top20">
@@ -52,7 +52,7 @@
 -->
                 <div class="col-lg-6">
                   <label> <span class="color-red f-bold f-left">*</span>LeaveType:</label>
-                  <select ng-model="request.leaveType" class="drop09">
+                  <select ng-model="request.leaveType" class="drop09" required>
                     <option value="CL">CL</option>
                     <option value="SL">SL</option>
                     <option value="EL">EL</option>
@@ -62,7 +62,7 @@
 
                 <div class="col-lg-6">
                   <label>ReasonForLeave:</label>
-                  <input type="text"  ng-model="request.reasonForLeave" class="drop09">
+                  <input type="text"  ng-model="request.reasonForLeave" class="drop09" required>
                 </div>
                 <div class="col-lg-12 m-top20">
                 <div class="col-lg-6">
@@ -478,8 +478,8 @@
 
       <tbody>
       <tr ng-repeat="requests in projectsData track by $index">
-       <td> {{requests.empName}}</td>
-        <td> {{requests.financialYear}}</td>
+       <td> {{requests.createdBy}}</td>
+        <td>{{requests.financialYear}}</td>
         <td>{{requests.startDt}}</td>
         <td>{{requests.endDt}}</td>
         <td>{{requests.noOfDays}}</td>

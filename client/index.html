@@ -55,7 +55,7 @@
   <script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
 
 
-  
+
 
   <!--<script src="js/angular.min.js"></script>-->
   <script src="js/angular.min.js"></script>
@@ -82,15 +82,13 @@
   <!--<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
   <!--Bootstrap Core JavaScript-->
 
-
-  <script src="js/yitsol.js"></script>
-
-
   <script src="js/angular-ui-notification.min.js"></script>
   <script>
 
     var userDetails = window.localStorage.getItem('userDetails');
-    console.log("userDetails" + userDetails);
+//    var role=window.localStorage.getItem('role')
+//    alert("role: "+role);
+//    alert("userDetails" + JSON.stringify(userDetails));
     if (!userDetails) {
       window.location.href = "/login.html";
     }
@@ -99,16 +97,20 @@
       window.localStorage.removeItem('userDetails');
       window.location.href = "/login.html";
     }
-     var role=window.localStorage.getItem('role')
-     alert(role)
-     if(role=='employee'){
-       document.getElementById("mangerId").style.display  = "block";
-     }else {
-       document.getElementById("empId").style.display  = "block";
-     }
+
+
+
+    //     if(role=='employee'){
+    //       document.getElementById("mangerId").style.display  = "block";
+    //     }else {
+    //       document.getElementById("empId").style.display  = "block";
+    //     }
 
 
   </script>
+
+  <script src="js/yitsol.js"></script>
+
 
   <!--zing chart-->
   <!--<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js" ></script>-->
@@ -180,7 +182,7 @@
         </li>-->
 
 
-        <li id="mangerId">
+        <li id="mangerId" ng-show="managerShow">
           <a data-toggle="collapse" data-target="#Report123" data-parent="#sidenav01" class="cursor-pointer"
              role="button"><i class="fa fa-fw fa fa-users"></i>
             Manager Tool Kit&nbsp;&nbsp; <i class="fa fa-angle-double-down"></i></a>
@@ -231,7 +233,7 @@
           </div>
         </li>
 
-        <li id="empId">
+        <li id="empId" ng-show="employeeShow">
           <a style="color:#4bb1cf" data-toggle="collapse" data-target="#Report12" data-parent="#sidenav01" class="cursor-pointer"
              role="button"><i class="fa fa-fw fa fa-users"></i>
             Employee Tool Kit &nbsp;<i class="fa fa-angle-double-down"></i></a>

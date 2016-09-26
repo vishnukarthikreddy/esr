@@ -6,7 +6,7 @@
 
 
 
-  <div ng-controller="LeavesController">
+  <div ng-controller="LeaveRequestController">
 
 
     <table class="table table-striped table-condensed table-hover" border="1" align="left">
@@ -15,7 +15,7 @@
       <tr>
         <th class="Emp Name" custom-sort order="'Emp Name'" sort="sort">Emp Name&nbsp;</th>
         <th class="period" custom-sort order="'period'" sort="sort">Financial Year&nbsp;</th>
-        <th class="project" custom-sort order="'project'" sort="sort">Req Date&nbsp;</th>
+        <!--<th class="project" custom-sort order="'project'" sort="sort">Req Date&nbsp;</th>-->
         <th class="task" custom-sort order="'task'" sort="Task">Req Type&nbsp;</th>
         <th class="day_Of_Week" custom-sort order="'day_Of_Week'" sort="sort">From Dt&nbsp;</th>
         <th class="no_Of_Hrs" custom-sort order="'no_Of_Hrs'" sort="sort">To Dt&nbsp;</th>
@@ -25,23 +25,37 @@
 
 
         <th class="dt_Approved" custom-sort order="'dt_Approved'" sort="sort">HR Approval&nbsp;</th>
+        <th class="dt_Approved" custom-sort order="'dt_Approved'" sort="sort">Status&nbsp;</th>
 
 
       </tr>
       </thead>
 
       <tbody>
-      <tr ng-repeat="status in statusData track by $index">
-        <td> {{status.empId}}</td>
-        <td> {{status.period}}</td>
-        <td>{{status.project}}</td>
-        <td>{{status.task}}</td>
-        <td>{{status.day_Of_Week}}</td>
-        <td>{{status.no_Of_Hrs}}</td>
-        <td> {{status.dt_Submitted}}</td>
-        <td> {{status.mgr_Approval}}</td>
-        <td>{{status.mgr_Id}}</td>
-        <td>{{status.dt_Approved}}</td>
+      <tr ng-repeat="status in projectsData track by $index">
+        <td> {{status.createdBy}}</td>
+        <td> {{status.financialYear}}</td>
+        <!--<td>{{status.reqDate}}</td>-->
+        <td>{{status.leaveType}}</td>
+        <td>{{status.startDt}}</td>
+        <td>{{status.endDt}}</td>
+        <td> {{status.noOfDays}}</td>
+        <td> {{status.reasonForLeave}}</td>
+
+        <td> <select ng-model="status.hrStatus" ng-change="hrApprove(status.hrStatus)" class="drop09">
+          <option value="pending">pending</option>
+          <option value="accepted">Accepted</option>
+          <option value="rejected">Rejected</option>
+
+        </select></td>
+        <td>
+          <select ng-model="status.mgrStatus" ng-change="mgrApprove(status.mgrStatus)" class="drop09">
+            <option value="pending">pending</option>
+            <option value="accepted">Accepted</option>
+            <option value="rejected">Rejected</option>
+
+          </select></td>
+        <td><button ng-click="leaveupdateStatus(status.id)">Update</button></td>
 
 
       </tr>
