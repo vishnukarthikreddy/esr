@@ -101,7 +101,7 @@ body .dhtmlxcalendar_material.dhtmlxcalendar_in_input {
   padding: 15px 0;
   font-weight: normal;
 }
- /*profile*/
+/*profile*/
 .profile-table{
   width: 50%;
   text-align: center;
@@ -177,6 +177,15 @@ body .dhtmlxcalendar_material.dhtmlxcalendar_in_input {
 }
 #statusId {
   padding-left: 71px;
+}
+#manager1{
+  padding-left: 69px;
+}
+#project1 {
+  padding-left: 69px;
+}
+#business1 {
+  padding-left: 69px;
 }
 #status{
   padding-left: 71px;
@@ -294,7 +303,7 @@ a:focus, a:hover {
   text-align: left !important;
 }
 .createEmployeeModalHeader{
-border-bottom: 0px !important;
+  border-bottom: 0px !important;
 }
 .els{
   text-align: left;
@@ -308,7 +317,9 @@ border-bottom: 0px !important;
   height: 325px;
 }
 
-
+#drop09{
+  width:25%;
+}
 
 
 .emp {
@@ -399,4 +410,8 @@ element.style {
 .system-config .form-control {
   display: block;
   width: 25% !important;
+}
+.form-control{
+  height: 29px!important;
+  width: 85% !important;
 }

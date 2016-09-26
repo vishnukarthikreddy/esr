@@ -1,13 +1,24 @@
 <div class="m-top75 container-fluid system-config">
-<div class="row">
+  <div ng-controller="SystemConfigController">
+
   <div class="col-lg-6 text-right">
     <label>Current Financial Year:</label>
   </div>
-  <div class="col-lg-6">
-    <input class="form-control"  id="contact-firstname" ng-model="" placeholder="Enter Year" required="" type="text">
-  </div>
-</div>
+ <!-- <div class="col-lg-6">
+    <input class="form-control" ng-model="update1.financialYear" placeholder="Enter Year" required="" type="text">
+  </div>-->
+    <div class="col-lg-6">
+
+      <select ng-model="update1.update"  id="drop09">
+        <option class=" " value="">Select Year</option>
+        <option value="2015-16">2015-16</option>
+        <option value="2016-17">2016-17</option>
+        <option value="2017-18">2017-18</option>
+        <option value="2018-19">2018-19</option>
+      </select>
+    </div>
 </div>
 <div class="col-lg-12">
-  <input type="submit" class="btn btn-primary center-block" value="Update" style="margin-top: 20px"/>
+  <input type="submit" class="btn btn-primary center-block" value="Update" ng-click="createUpdate()" style="margin-top: 20px"/>
+</div>
 </div>

@@ -5,7 +5,13 @@
   </div>
   <div ng-controller="ResourceLeavesController">
     <button type="button" class="btn btn-danger btn-md pull-right m-btm10" data-toggle="modal" data-target="#myModal" ng-click="getMasterData()">Create</button>
+    <div class="col-lg-3 text-right">
+      <label> Financial Year:</label>
 
+    </div>
+    <div class="col-lg-3">
+      <input class="form-control" ng-model="update1.financialYear" placeholder="Enter Year" required="" type="text">
+    </div>
     <!-- Modal -->
     <div class="modal fade" id="myModal" resource="dialog">
       <div class="modal-dialog">
@@ -211,6 +217,7 @@
       <tr>
         <th class="empId width26 " class=emp custom-sort order="'paNumb'" sort="sort">Emp Name&nbsp;</th>
         <th class="financialYear width14" custom-sort order="'projectName'" sort="sort">Financial Year&nbsp;</th>
+        <th class="managerName width14" custom-sort order="'projectName'" sort="sort">Manager Name&nbsp;</th>
         <th class="clsEntitled leaveth" custom-sort order="'projectManager'" sort="sort">CLs
         <table class="">
           <thead>
@@ -241,6 +248,8 @@
       <tr ng-repeat="request in editLeave track by $index">
         <td> {{request.resourceName}}</td>
         <td> {{request.financialYear}}</td>
+        <td> {{request.reportingMgr}}</td>
+
         <td>
           <table class="">
             <thead>

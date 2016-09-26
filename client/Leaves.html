@@ -43,16 +43,16 @@
         <td> {{status.reasonForLeave}}</td>
 
         <td> <select ng-model="status.hrStatus" ng-change="hrApprove(status.hrStatus)" class="drop09">
-          <option value="pending">pending</option>
-          <option value="accepted">Accepted</option>
-          <option value="rejected">Rejected</option>
+          <option value="Pending">Pending</option>
+          <option value="Accepted">Accepted</option>
+          <option value="Rejected">Rejected</option>
 
         </select></td>
         <td>
           <select ng-model="status.mgrStatus" ng-change="mgrApprove(status.mgrStatus)" class="drop09">
-            <option value="pending">pending</option>
-            <option value="accepted">Accepted</option>
-            <option value="rejected">Rejected</option>
+            <option value="Pending">Pending</option>
+            <option value="Accepted">Accepted</option>
+            <option value="Rejected">Rejected</option>
 
           </select></td>
         <td><button ng-click="leaveupdateStatus(status.id)">Update</button></td>
