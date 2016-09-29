@@ -415,3 +415,14 @@ element.style {
   height: 29px!important;
   width: 85% !important;
 }
+#center2{
+  padding-top: 2px;
+}
+#btn.default{
+ background-color:  #e6e6e6;
+}
+.btn-export,.btn-export:focus,.btn-export:hover {
+  color: #333;
+  background-color: rgba(107, 56, 56, 0.27);
+  border-color: #adadad;
+}

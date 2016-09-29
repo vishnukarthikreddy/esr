@@ -32,14 +32,14 @@
       </thead>
 
       <tbody>
-      <tr ng-repeat="status in projectsData track by $index">
-        <td> {{status.createdBy}}</td>
-        <td> {{status.financialYear}}</td>
+      <tr ng-repeat="status in projectsData11 track by $index" >
+        <td>{{status.createdBy}}</td>
+        <td>{{requestfinancialYear}}</td>
         <!--<td>{{status.reqDate}}</td>-->
         <td>{{status.leaveType}}</td>
         <td>{{status.startDt}}</td>
         <td>{{status.endDt}}</td>
-        <td> {{status.noOfDays}}</td>
+        <td>{{status.noOfDays}}</td>
         <td> {{status.reasonForLeave}}</td>
 
         <td> <select ng-model="status.hrStatus" ng-change="hrApprove(status.hrStatus)" class="drop09">
@@ -55,7 +55,7 @@
             <option value="Rejected">Rejected</option>
 
           </select></td>
-        <td><button ng-click="leaveupdateStatus(status.id)">Update</button></td>
+        <td><button ng-click="leaveUpdateStatus(status.id)">Update</button></td>
 
 
       </tr>

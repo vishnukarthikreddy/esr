@@ -4,15 +4,25 @@
     <hr class="hline1" />
   </div>
   <div ng-controller="ResourceLeavesController">
-    <button type="button" class="btn btn-danger btn-md pull-right m-btm10" data-toggle="modal" data-target="#myModal" ng-click="getMasterData()">Create</button>
-    <div class="col-lg-3 text-right">
+    <button type="button" class="btn btn-danger btn-md pull-right m-btm10"  data-toggle="modal" data-target="#myModal" ng-click="getMasterData()">Create</button>
+    <div class="col-lg-4 text-right">
       <label> Financial Year:</label>
+      <select ng-model="searchText" ng-change="getFinancialYear(searchText)">
+        <option value="">Select Year</option>
+        <option>2016-17</option>
+        <option>2017-18</option>
+        <option>2018-19</option>
+        <option>2019-20</option>
+
+      </select>
 
     </div>
-    <div class="col-lg-3">
-      <input class="form-control" ng-model="update1.financialYear" placeholder="Enter Year" required="" type="text">
-    </div>
-    <!-- Modal -->
+    <div class="col-lg-6 text-right">
+    <button class="btn btn-export m-right5"  id="center2" ng-click="exportToExcel('#projectMilestone')">
+      <span class="glyphicon glyphicon-share"></span> Export to Excel
+    </button>
+      </div>
+      <!-- Modal -->
     <div class="modal fade" id="myModal" resource="dialog">
       <div class="modal-dialog">
         <!-- Modal content-->
@@ -23,7 +33,7 @@
           </div>
           <div class="modal-body">
             <div class=" text-center color-red f-bold" ng-show="resourceCreationError">{{createResourceError}}</div>
-            <form class="simple-form" id="reset" ng-submit="createLeave1()">
+            <form class="simple-form" id="myModal" ng-submit="createLeave1()">
 
 
               <div class="col-lg-12">
@@ -245,8 +255,9 @@
       </thead>
 
       <tbody>
-      <tr ng-repeat="request in editLeave track by $index">
-        <td> {{request.resourceName}}</td>
+      <tr ng-repeat="request in editLeave123">
+        <!--<td>{{request1}}</td>-->
+       <td> {{request.resourceName}}</td>
         <td> {{request.financialYear}}</td>
         <td> {{request.reportingMgr}}</td>
 
