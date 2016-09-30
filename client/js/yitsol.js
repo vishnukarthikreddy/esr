@@ -672,7 +672,7 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
 
     $http({
       method: 'GET',
-      url: 'http://139.162.42.96:4545:/api/leaveRequests?filter={"where":{"userId":"'+$scope.userInfo.userId+'"}}',
+      url: 'http://139.162.42.96:4545/api/leaveRequests?filter={"where":{"userId":"'+$scope.userInfo.userId+'"}}',
       headers: {"Content-Type": "application/json", "Accept": "application/json"}
     }).success(function (response) {
       console.log('Users Response :' + JSON.stringify(response));
