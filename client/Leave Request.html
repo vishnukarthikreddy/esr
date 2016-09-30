@@ -45,11 +45,7 @@
                 </div>
               </div>
               <div class="col-lg-12 m-top20">
-                <!--<div class="col-lg-6">
-                <label>LeaveType: </label>
-                <input type="text"  ng-model="resourceLeave.empId" class="drop09">
-              </div>
--->
+
                 <div class="col-lg-6">
                   <label> <span class="color-red f-bold f-left">*</span>LeaveType:</label>
                   <select ng-model="request.leaveType" class="drop09" required>
@@ -68,8 +64,6 @@
                 <div class="col-lg-6">
                   <label>Manager Approval Status:</label>
                  <input type="text"  ng-model="request.mgrApprovalStatus" placeholder="Pending" class="drop09" readonly>
-                  <!--<select ng-model="request.mgrApprovalStatus" class="drop09">
-                    <option value="">Pending</option>
 
                     </select>-->
                 </div>
@@ -77,8 +71,6 @@
                 <div class="col-lg-6">
                   <label>Hr Approval Status</label>
                  <input type="text"  ng-model="request.hrApprovalStatus" placeholder="Pending" class="drop09" readonly>
-                <!--  <select ng-model="request.hrApprovalStatus" class="drop09">
-                    <option value="">Pending</option>
 
                   </select>-->
                 </div>
@@ -158,12 +150,12 @@
                   <div class="col-lg-12 m-top20">
                     <div class="col-lg-6">
                       <label>Manager Approval Status:</label>
-                      <input type="text"  ng-model="editLeaveRequest.mgrApprovalStatus" class="drop09" readonly>
+                      <input type="text"  ng-model="editLeaveRequest.mgrApprovalStatus" placeholder="Pending" class="drop09" readonly>
                     </div>
 
                     <div class="col-lg-6">
                       <label>Hr Approval Status</label>
-                      <input type="text"  ng-model="editLeaveRequest.hrApprovalStatus" class="drop09" readonly>
+                      <input type="text"  ng-model="editLeaveRequest.hrApprovalStatus" placeholder="Pending" class="drop09" readonly>
                     </div>
                   </div>
                 </div>
@@ -222,10 +214,7 @@
         <td>{{requests.reasonForLeave}}</td>
         <td>{{requests.hrStatus}}</td>
         <td>{{requests.mgrStatus}}</td>
-        <!--<td>{{projects.createdBy}}</td>
-        <td>{{projects.createdTime}}</td>
-        <td>{{projects.modifiedBy}}</td>
-        <td>{{projects.lastUpdated_DT_TM}}</td>-->
+
         <td>
           <button class="glyphicon glyphicon-pencil pall10 m-right5" data-backdrop="static" data-keyboard="false"  ng-click="editLeaveRequest1(requests)"></button>
         </td>

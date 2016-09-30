@@ -2,6 +2,7 @@
 .loginFormMain {
   border: 1px solid #ccc;
   padding: 25px;
+  background-color: #e4b9b9;
   margin-top: 40px;
 }
 .curser{cursor: pointer;}

@@ -658,17 +658,21 @@ app.controller('usersController', function($scope,$http,$rootScope) {
 });
 //****************************UsersController************************//
 
-//****************************WeeklyStatusController************************//
-app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window) {
+//****************************LeaveRequestController************************//
+
+
+app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window,Notification) {
 
   $scope.master = {};
-  console.log("projects controller entered");
+  console.log("LeaveRequestController entered");
   $scope.getLeaveRequests = function () {
+
+    $scope.userInfo=JSON.parse($window.localStorage.getItem('userDetails'));
 
 
     $http({
       method: 'GET',
-      url: 'http://localhost:4545/api/leaveRequests',
+      url: 'http://139.162.42.96:4545:/api/leaveRequests?filter={"where":{"userId":"'+$scope.userInfo.userId+'"}}',
       headers: {"Content-Type": "application/json", "Accept": "application/json"}
     }).success(function (response) {
       console.log('Users Response :' + JSON.stringify(response));
@@ -678,9 +682,12 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
     }).error(function (response) {
       console.log('Error Response :' + JSON.stringify(response));
     });
+
+
+
     $http({
       method: 'GET',
-      url: 'http://localhost:4545/api/leaveRequests?filter={"where":{"or":[{"hrStatus":{"neq":"Accepted"}},{ "statusFlag": "false"},{"mgrStatus":{"neq":"Accepted"}}]}}',
+      url: 'http://139.162.42.96:4545/api/leaveRequests?filter={"where":{"or":[{"hrStatus":{"eq":"Pending"}},{"mgrStatus":{"eq":"Pending"}}]}}',
       headers: {"Content-Type": "application/json", "Accept": "application/json"}
     }).success(function (response) {
       console.log('Users Response :' + JSON.stringify(response));
@@ -691,29 +698,8 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
       console.log('Error Response :' + JSON.stringify(response));
     });
 
-   /* $http({
-      method: 'GET',
-      url: 'http://localhost:4545/api/leaveRequests?filter={"where":{"or":[{"hrStatus":{"neq":"Accepted"}},{"statusFlag":"false"},{"mgrStatus":{"neq":"Accepted"}}]}},',
-      headers: {"Content-Type": "application/json", "Accept": "application/json"}
-    }).success(function (response) {
-
-      $scope.leaveAccepted = response
-    }).error(function (response) {
-      console.log('Error Response :' + JSON.stringify(response));
-    });
 
 
-
-    $http({
-      method: 'GET',
-      url: 'http://localhost:4545/api/leaveRequests?filter={"where":{"and":[{"hrStatus":"Accepted"},{"mgrStatus":"Accepted"}]}}',
-      headers: {"Content-Type": "application/json", "Accept": "application/json"}
-    }).success(function (response) {
-
-      $scope.leaveAccepted = response;
-    }).error(function (response) {
-      console.log('Error Response :' + JSON.stringify(response));
-    });*/
   };
   $scope.getLeaveRequests();
 
@@ -733,7 +719,7 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
 
   }
   $scope.editLeaveRequest1 = function (Leaverequest) {
-    // alert(JSON.stringify(Leaverequest))
+
     $scope.editLeaveRequest.id = Leaverequest.id;
 
     $scope.editLeaveRequest.resourceName = Leaverequest.resourceName;
@@ -755,19 +741,15 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
 
     $http({
       method: 'PUT',
-      url: 'http://localhost:4545/api/leaveRequests/' + $scope.editLeaveRequest.id,
+      url: 'http://139.162.42.96:4545/api/leaveRequests/' + $scope.editLeaveRequest.id,
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data: $scope.editLeaveRequest
     }).success(function (response) {
       $scope.getLeaveRequests();
       $('#projectEdit').modal('hide');
-
-
     }).error(function (response) {
       console.log('Error Response :' + JSON.stringify(response));
     });
-
-    // alert('create Project');
 
 
   }
@@ -788,6 +770,11 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
     "noOfDays": "",
     "name": loginDetails.empName
   }
+
+
+  /*    UPDATE STATUS     */
+
+
   $scope.status = {}
   $scope.hrApprove = function (hr) {
     $scope.status.hrStatus = hr;
@@ -796,45 +783,37 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
     $scope.status.mgrStatus = mg;
   }
   $scope.leaveUpdateStatus = function (id) {
-    $scope.status.statusFlag = true;
+    $window.location.reload();
+
 /*
     alert("798:"+id);
 */
     console.log("$rootScope.status" + JSON.stringify($scope.status));
-   /* alert("799:"+JSON.stringify($scope.status));*/
-
 
     $http({
       method: 'PUT',
-      url: 'http://localhost:4545/api/leaveRequests/' + id,
+      url: 'http://139.162.42.96:4545/api/leaveRequests/' + id,
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data: $scope.status
     }).success(function (response) {
       console.log("response" + JSON.stringify(response));
       //$scope.getLeaveRequests();
 
-
-
       $http({
         method: 'GET',
-        url: 'http://localhost:4545/api/leaveRequests?filter={"where":{"or":[{"hrStatus":{"neq":"Accepted"}},{ "statusFlag": "false"},{"mgrStatus":{"neq":"Accepted"}}]}}',
+        url: 'http://139.162.42.96:4545/api/leaveRequests?filter={"where":{"or":[{"hrStatus":{"eq":"Pending"}},{"mgrStatus":{"eq":"Pending"}}]}}',
         headers: {"Content-Type": "application/json", "Accept": "application/json"}
       }).success(function (response) {
-
         $scope.projectsData11 = response
       }).error(function (response) {
         console.log('Error Response :' + JSON.stringify(response));
       });
-
     }).error(function (response) {
       console.log('Error Response :' + JSON.stringify(response));
     });
-
-
-
   }
 
-
+  /*    UPDATE STATUS  END   */
 
   console.log("loginDetails" + JSON.stringify(loginDetails));
 
@@ -855,30 +834,30 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
     $scope.request.noOfDays = diffDays;
   }
   $scope.createRequest = function () {
+    $scope.userInfo=JSON.parse($window.localStorage.getItem('userDetails'));
 
-    /*
-     alert('hai');
-     $scope.requestDetails.name=nameOfLoginPerson;
-     alert("hiiiii")
-     */
     var requestDetails = $scope.request;
     // 9
 
     requestDetails['createdBy'] = loginDetails.resourceName
+    requestDetails['userId'] =$scope.userInfo.userId;
     console.log("login details" + JSON.stringify(loginDetails))
     requestDetails['createdTime'] = new Date();
     requestDetails['hrStatus'] = 'Pending';
     requestDetails['mgrStatus'] = 'Pending';
-    requestDetails['statusFlag']='false';
+  /*  requestDetails['statusFlag']='false';*/
     requestDetails['financialYear']=$scope.requestfinancialYear
     /*  requestDetails['numberOfDays']=d;*/
     $scope.leavesUpdate = {}
     console.log('user details :' + JSON.stringify(loginDetails));
 
     $scope.getLeaves = function () {
+
+/*       LEAVES FUNCTINALITY      */
+
       $http({
         method: 'GET',
-        url: 'http://localhost:4545/api/employeeLeaveMasters?filter={"where":{"empId":"' + loginDetails.id + '"}}',
+        url: 'http://139.162.42.96:4545/api/employeeLeaveMasters?filter={"where":{"empId":"' + loginDetails.id + '"}}',
         headers: {"Content-Type": "application/json", "Accept": "application/json"}
       }).success(function (response) {
         console.log("requestDetails" + JSON.stringify(requestDetails));
@@ -886,17 +865,19 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
         $scope.leaveId = response[0].id
 
         var numberOfDays;
+        var noOfDays = false;
         if (requestDetails.leaveType == "CL") {
           console.log("response[0].CLsAvailed" + response[0].CLsAvailed);
           console.log("requestDetails.noOfDays" + requestDetails.noOfDays);
           if (Number(response[0].CLsAvailed) >= Number(requestDetails.noOfDays)) {
             console.log("asdfasdf")
+
             numberOfDays = response[0].CLsAvailed - requestDetails.noOfDays;
             $scope.leavesUpdate.CLsEntitled = Number(response[0].CLsEntitled) + Number(requestDetails.noOfDays);
             $scope.leavesUpdate.CLsAvailed = numberOfDays;
-
+            noOfDays = true;
           } else {
-            alert("no avl leaves cl")
+            Notification.error("You don't have available leaves");
           }
         } else if (requestDetails.leaveType == "SL") {
           if (Number(response[0].SLsAvailed) >= Number(requestDetails.noOfDays)) {
@@ -904,8 +885,9 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
 
             $scope.leavesUpdate.SLsEntitled = Number(response[0].SLsEntitled) + Number(requestDetails.noOfDays);
             $scope.leavesUpdate.SLsAvailed = numberOfDays;
+            noOfDays = true;
           } else {
-            alert("no avl leaves sl")
+            Notification.error("You don't have available leaves");
           }
         } else if (requestDetails.leaveType == "EL") {
           if (Number(response[0].ELsAvailed) >= Number(requestDetails.noOfDays)) {
@@ -913,37 +895,40 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
 
             $scope.leavesUpdate.ELsEntitled = Number(response[0].ELsEntitled) + Number(requestDetails.noOfDays);
             $scope.leavesUpdate.ELsAvailed = numberOfDays;
+            noOfDays = true;
           } else {
-            alert("no avl leaves el")
+            Notification.error("You don't have available leaves");
           }
         }
         console.log("number of days" + numberOfDays)
         console.log("response" + JSON.stringify($scope.leavesUpdate));
-        if ($scope.leavesUpdate) {
-          $http({
-            method: 'PUT',
-            url: 'http://localhost:4545/api/employeeLeaveMasters/' + $scope.leaveId,
-            headers: {"Content-Type": "application/json", "Accept": "application/json"},
-            data: $scope.leavesUpdate
-          }).success(function (response) {
-            console.log("response" + JSON.stringify(response));
-            $('#resourceEdit').modal('hide');
 
-          }).error(function (response) {
-            console.log('Error Response :' + JSON.stringify(response));
-          });
-        }
+        if (noOfDays) {
+
+          if ($scope.leavesUpdate) {
+            $http({
+              method: 'PUT',
+              url: 'http://139.162.42.96:4545/api/employeeLeaveMasters/' + $scope.leaveId,
+              headers: {"Content-Type": "application/json", "Accept": "application/json"},
+              data: $scope.leavesUpdate
+            }).success(function (response) {
+              console.log("response" + JSON.stringify(response));
+              $('#resourceEdit').modal('hide');
+
+            }).error(function (response) {
+              console.log('Error Response :' + JSON.stringify(response));
+            });
+          }
 
 
+          /*       LEAVES FUNCTINALITY      */
 
-
-       /* alert("sadsad:" + JSON.stringify(requestDetails))*/
-
+        /* alert("sadsad:" + JSON.stringify(requestDetails))*/
 
 
         $http({
           method: 'POST',
-          url: 'http://localhost:4545/api/leaveRequests',
+          url: 'http://139.162.42.96:4545/api/leaveRequests',
           headers: {"Content-Type": "application/json", "Accept": "application/json"},
           data: requestDetails
         }).success(function (response) {
@@ -957,6 +942,7 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
         }).error(function (response) {
           console.log('Error Response :' + JSON.stringify(response));
         });
+      }
       }).error(function (response) {
         console.log('Error Response :' + JSON.stringify(response));
       });
@@ -965,11 +951,12 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
    $scope.getLeaves();
 
   }
-//getfinacialyear
+
+/*    GET FINANCIALYEAR    */
 
   $http({
       method: 'GET',
-      url: 'http://localhost:4545/api/SystemConfigs',
+      url: 'http://139.162.42.96:4545/api/SystemConfigs',
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
 
     }).success(function (response) {
@@ -982,6 +969,11 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
     })
 
   })
+
+
+/*   LEAVE REQUEST CONTROLLER END     */
+
+
 app.controller('StatusController', function($scope,$http,$rootScope) {
 
     console.log("status controller entered");
@@ -1015,19 +1007,18 @@ app.controller('StatusController', function($scope,$http,$rootScope) {
 app.controller('ResourceLeavesController',function($scope,$http,$rootScope,$window,Notification) {
   $rootScope.role = $window.localStorage.getItem("role");
   // var role=$window.localStorage.getItem('role');
-  if($rootScope.role=='employee'){
+  if ($rootScope.role == 'employee') {
     // alert(role=='employee')
-    $rootScope.managerShow=false;
-    $rootScope.employeeShow=true;
-  }else {
-    $rootScope.managerShow=true;
-    $rootScope.employeeShow=true;
+    $rootScope.managerShow = false;
+    $rootScope.employeeShow = true;
+  } else {
+    $rootScope.managerShow = true;
+    $rootScope.employeeShow = true;
   }
 
   $scope.master = {};
   console.log("resourceLeaves controller entered");
-  $scope.getMasterData=function () {
-
+  $scope.getMasterData = function () {
 
 
     $http({
@@ -1038,55 +1029,54 @@ app.controller('ResourceLeavesController',function($scope,$http,$rootScope,$wind
     }).success(function (response) {
       console.log('Users Response :' + JSON.stringify(response));
       $scope.dataOfResource = response;
-     /* alert("815:"+JSON.stringify($scope.dataOfResource));*/
+      /* alert("815:"+JSON.stringify($scope.dataOfResource));*/
     }).error(function (response) {
       console.log('Error Response :' + JSON.stringify(response));
     });
   }
 
 
+  /* $scope.getLeaves = function() {
+   alert("1000");
+   $http({
+   method: 'GET',
+   url: 'http://localhost:4545/api/employeeLeaveMasters',
+   headers: {"Content-Type": "application/json", "Accept": "application/json"}
+   }).success(function (response) {
+   console.log('Users Response :' + JSON.stringify(response));
+   $scope.editLeave = response;
 
- /* $scope.getLeaves = function() {
-    alert("1000");
-    $http({
-      method: 'GET',
-      url: 'http://localhost:4545/api/employeeLeaveMasters',
-      headers: {"Content-Type": "application/json", "Accept": "application/json"}
-    }).success(function (response) {
-      console.log('Users Response :' + JSON.stringify(response));
-      $scope.editLeave = response;
+   }).error(function (response) {
+   console.log('Error Response :' + JSON.stringify(response));
+   });
+   };*/
+  /*anil2*/
 
-    }).error(function (response) {
-      console.log('Error Response :' + JSON.stringify(response));
-    });
-  };*/
-    /*anil2*/
-
-
+$scope.getResourceLeave = function() {
 
   $http({
     method: 'GET',
-    url: 'http://localhost:4545/api/employeeLeaveMasters',
+    url: 'http://139.162.42.96:4545/api/employeeLeaveMasters',
     headers: {"Content-Type": "application/json", "Accept": "application/json"}
   }).success(function (response) {
     //alert("1021:"+JSON.stringify(response));
     console.log('Users Response :' + JSON.stringify(response));
     $rootScope.editLeave123 = response;
-   /* alert("1025:"+$rootScope.editLeave);*/
-    console.log("1025:"+$rootScope.editLeave);
+    /* alert("1025:"+$rootScope.editLeave);*/
+    console.log("1025:" + $rootScope.editLeave);
 
   }).error(function (response) {
     console.log('Error Response :' + JSON.stringify(response));
   });
 
-
+}
 
 
     $scope.getFinancialYear = function(searchText) {
      // alert("1015" +searchText);
       $http({
         method: 'GET',
-        url: 'http://localhost:4545/api/employeeLeaveMasters?filter={"where":{"financialYear":"'+searchText+'"}}',
+        url: 'http://139.162.42.96:4545/api/employeeLeaveMasters?filter={"where":{"financialYear":"'+searchText+'"}}',
         headers: {"Content-Type": "application/json", "Accept": "application/json"}
       }).success(function (response) {
         //alert("1021:"+JSON.stringify(response));
@@ -1135,7 +1125,7 @@ app.controller('ResourceLeavesController',function($scope,$http,$rootScope,$wind
 
     $('#resourceEdit').modal('show');
 
-   $scope.editProject =project;
+  /* $scope.editProject =project;*/
      //$scope.showeditprojectpopup();
 
     $scope.dataOfResource = response;
@@ -1144,9 +1134,7 @@ app.controller('ResourceLeavesController',function($scope,$http,$rootScope,$wind
 
   $scope.createLeave3=function() {
 
-    console.log('Users Response:' + JSON.stringify($scope.editLeave1.id));
-    console.log('$scope.editLeave:' + JSON.stringify($scope.editLeave1));
-
+    alert("edit response:" + JSON.stringify($scope.editLeave1))
 
 
     var pat1=/^\d{0,2}$/;
@@ -1154,13 +1142,14 @@ app.controller('ResourceLeavesController',function($scope,$http,$rootScope,$wind
 
       $http({
         method: 'PUT',
-        url: 'http://localhost:4545/api/employeeLeaveMasters/' + $scope.editLeave1.id,
+        url: 'http://139.162.42.96:4545/api/employeeLeaveMasters/' + $scope.editLeave1.id,
         headers: {"Content-Type": "application/json", "Accept": "application/json"},
         "data": $scope.editLeave1
 
       }).success(function (response) {
 
-       // $scope.getLeaves();
+        //$scope.getLeaves();
+        $scope.getResourceLeave();
         $('#resourceEdit').modal('hide');
 
       }).error(function (response) {
@@ -1199,7 +1188,7 @@ app.controller('ResourceLeavesController',function($scope,$http,$rootScope,$wind
 
         $http({
           method: 'GET',
-          url: 'http://localhost:4545/api/Resources/'+resourseLeave,
+          url: 'http://139.162.42.96:4545/api/Resources/'+resourseLeave,
           headers: {"Content-Type": "application/json", "Accept": "application/json"}
         }).success(function (response) {
           console.log("response"+JSON.stringify(response));
@@ -1229,7 +1218,7 @@ app.controller('ResourceLeavesController',function($scope,$http,$rootScope,$wind
           if(pat1.test($scope.resourceLeave.CLsEntitled!= '' &&$scope.resourceLeave.CLsAvailed!= '' &&$scope.resourceLeave.SLsEntitled!= '' &&$scope.resourceLeave.SLsAvailed!= '' &&$scope.resourceLeave.ELsEntitled!= '' &&$scope.resourceLeave.ELsAvailed)) {
           $http({
             method: 'POST',
-            url: 'http://localhost:4545/api/employeeLeaveMasters',
+            url: 'http://139.162.42.96:4545/api/employeeLeaveMasters',
             headers: {"Content-Type": "application/json", "Accept": "application/json"},
             "data": $scope.resourceLeave
           }).success(function (response) {
@@ -1256,6 +1245,8 @@ app.controller('ResourceLeavesController',function($scope,$http,$rootScope,$wind
       console.log("resourseLeave"+resourseLeave);
 
     }
+
+  $scope.getResourceLeave();
 })
 
 app.controller('TaskTypeMasterController',function($scope,$http,$rootScope) {
@@ -1281,7 +1272,7 @@ app.controller('SystemConfigController',function($scope,$http,$rootScope,Notific
 
     $http({
       method: 'POST',
-      url: 'http://localhost:4545/api/SystemConfigs',
+      url: 'http://139.162.42.96:4545/api/SystemConfigs',
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       "data": $rootScope.update1
     }).success(function (response) {
