@@ -1007,6 +1007,23 @@ app.controller('StatusController', function($scope,$http,$rootScope) {
 app.controller('ResourceLeavesController',function($scope,$http,$rootScope,$window,Notification) {
   $rootScope.role = $window.localStorage.getItem("role");
   // var role=$window.localStorage.getItem('role');
+  $scope.getMasterData = function () {
+
+
+    $http({
+
+      method: 'GET',
+      url: 'http://139.162.42.96:4545/api/Resources',
+      headers: {"Content-Type": "application/json", "Accept": "application/json"}
+    }).success(function (response) {
+      console.log('Users Response :' + JSON.stringify(response));
+      $scope.dataOfResource = response;
+      /*alert("815:"+JSON.stringify($scope.dataOfResource));*/
+    }).error(function (response) {
+      console.log('Error Response :' + JSON.stringify(response));
+    });
+  }
+  $scope.getMasterData();
   if ($rootScope.role == 'employee') {
     // alert(role=='employee')
     $rootScope.managerShow = false;
@@ -1029,7 +1046,7 @@ app.controller('ResourceLeavesController',function($scope,$http,$rootScope,$wind
     }).success(function (response) {
       console.log('Users Response :' + JSON.stringify(response));
       $scope.dataOfResource = response;
-      /* alert("815:"+JSON.stringify($scope.dataOfResource));*/
+       /*alert("815:"+JSON.stringify($scope.dataOfResource));*/
     }).error(function (response) {
       console.log('Error Response :' + JSON.stringify(response));
     });

@@ -3,7 +3,7 @@
     <div class="pageTitle">Resource Leaves</div>
     <hr class="hline1" />
   </div>
-  <div ng-controller="ResourceLeavesController">
+  <div >
     <button type="button" class="btn btn-danger btn-md pull-right m-btm10"  data-toggle="modal" data-target="#myModal" ng-click="getMasterData()">Create</button>
     <div class="col-lg-4 text-right">
       <label> Financial Year:</label>
@@ -139,8 +139,12 @@
 
               <div class="col-lg-12">
                 <div class="col-lg-6">
-                  <label> emp name</label>
-                  <input type="text"  ng-model="editLeave1.empId" class="drop09">
+                  <label> Emp name</label>
+                  <select ng-model="editLeave1.resourceName"  class="drop09">
+                    <option class=" " value="">Select Emp Name</option>
+                    <option value="{{editLeave1.id}}" ng-repeat="editLeave1 in dataOfResource">{{editLeave1.resourceName}}</option>
+                  </select>
+
                 </div>
                 <div class="col-lg-6">
                   <label> <span class="color-red f-bold f-left">*</span>Financial Year:</label>

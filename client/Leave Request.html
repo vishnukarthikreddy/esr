@@ -74,8 +74,7 @@
 
                   </select>
                 </div>
-
-                      </div>
+</div>
               </div>
               <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4" style="margin-bottom: 20px">
                 <div class="col-lg-6">
@@ -93,7 +92,10 @@
       </div>
     </div>
 
+
+
   <!--edit popup-->
+
 
     <div class="modal fade" id="projectEdit" resource="dialog">
       <div class="modal-dialog">
@@ -127,7 +129,55 @@
                 </div>
                 <div class="col-lg-12 m-top20">
 
-</div></form></div></div></div></div></div>
+
+                  <div class="col-lg-6">
+                    <label> <span class="color-red f-bold f-left">*</span>LeaveType:</label>
+                    <select ng-model="editLeaveRequest.leaveType" class="drop09">
+                      <option value="CL">CL</option>
+                      <option value="SL">SL</option>
+                      <option value="EL">EL</option>
+
+                    </select>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <label>ReasonForLeave:</label>
+                    <input type="text"  ng-model="editLeaveRequest.reasonForLeave" class="drop09">
+                  </div>
+                  <div class="col-lg-12 m-top20">
+                    <div class="col-lg-6">
+                      <label>Manager Approval Status:</label>
+                      <input type="text"  ng-model="editLeaveRequest.mgrApprovalStatus" placeholder="Pending" class="drop09" readonly>
+                    </div>
+
+                    <div class="col-lg-6">
+                      <label>Hr Approval Status</label>
+                      <input type="text"  ng-model="editLeaveRequest.hrApprovalStatus" placeholder="Pending" class="drop09" readonly>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4" style="margin-bottom: 20px">
+                  <div class="col-lg-6">
+                    <input type="submit" class="btn btn-primary" value="Save" style="margin-top: 20px"/>
+                  </div>
+                  <div class="col-lg-6">
+                    <input type="button" class="btn btn-primary" ng-click="reset()" value="Reset" style="margin-top: 20px;" />
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+</div>
+
+    <!--************************************add and update*********************************************-->
+
+
+
 
 
     <table datatable="ng" class="table table-striped table-condensed table-hover" border="1" align="left">
