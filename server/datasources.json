@@ -1,3 +1,4 @@
+
 {
   "db": {
     "name": "db",
@@ -5,12 +6,13 @@
   },
   "yitsolDB": {
     "host": "",
-    "port": 27017,
-    "url": "",
-    "database": "",
+    "port": "27017",
+    "url":"",
+    "database": "yitsolDB",
     "password": "",
     "name": "yitsolDB",
     "user": "",
     "connector": "mongodb"
   }
+
 }
