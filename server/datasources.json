@@ -5,7 +5,7 @@
   },
   "yitsolDB": {
     "host": "",
-    "port": 0,
+    "port": 27017,
     "url": "",
     "database": "",
     "password": "",
