@@ -25,18 +25,18 @@ app.config(function($routeProvider) {
             templateUrl: '/rsr-users.html',
             controller: 'usersController'
         })
-        .when('/status', {
+        .when('/rsr-weekly-status', {
             templateUrl: '/rsr-weekly-status.html',
-            controller: 'StatusController'
-        })
-        .when('/statusEntry', {
-          templateUrl: '/statusEntry.html',
-          controller: 'StatusEntryController'
+            controller: 'WeeklyStatusController'
         })
         .when('/Status', {
           templateUrl: '/Status.html',
-          controller: 'StatusController'
+          controller: 'StatusEntryController'
         })
+       /* .when('/Statusentryu', {
+          templateUrl: '/statusEntry1.html',
+          controller: 'StatusController'
+        })*/
         .when('/report', {
           templateUrl: '/report.html',
           controller: 'reportController'
@@ -91,7 +91,7 @@ function validateAccessToken(){
 
 }
 /** index controlle **/
-app.controller('indexController', function($http, $scope, $window, $location, $rootScope) {
+app.controller('indexController', function($http, $scope, $window, $location, $rootScope,Notification) {
   console.log("indexController");
   $rootScope.role = $window.localStorage.getItem("role");
   // var role=$window.localStorage.getItem('role');
@@ -583,7 +583,7 @@ app.controller('calenderController', function($http, $scope, $window, $location,
             console.log('Error Response :' + JSON.stringify(response));
         });
     };
-    $scope.getCalender();
+  $scope.getCalender();
 
   $scope.createCalendar = function() {
     var createCalendar={
@@ -829,7 +829,7 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
 
     var date1 = new Date($scope.formatString($scope.request.startDt));
     var date2 = new Date($scope.formatString($scope.request.endDt));
-    var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    var timeDiff = Math.abs(date2.getTime() - date1.getTime()+1);
     var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
     $scope.request.noOfDays = diffDays;
   }
@@ -867,8 +867,8 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
         var numberOfDays;
         var noOfDays = false;
         if (requestDetails.leaveType == "CL") {
-          console.log("response[0].CLsAvailed" + response[0].CLsAvailed);
-          console.log("requestDetails.noOfDays" + requestDetails.noOfDays);
+          /*console.log("response[0].CLsAvailed" + response[0].CLsAvailed);
+          console.log("requestDetails.noOfDays" + requestDetails.noOfDays);*/
           if (Number(response[0].CLsAvailed) >= Number(requestDetails.noOfDays)) {
             console.log("asdfasdf")
 
@@ -1232,6 +1232,7 @@ $scope.getResourceLeave = function() {
 
 
           var pat1=/^\d{0,2}$/;
+
           if(pat1.test($scope.resourceLeave.CLsEntitled!= '' &&$scope.resourceLeave.CLsAvailed!= '' &&$scope.resourceLeave.SLsEntitled!= '' &&$scope.resourceLeave.SLsAvailed!= '' &&$scope.resourceLeave.ELsEntitled!= '' &&$scope.resourceLeave.ELsAvailed)) {
           $http({
             method: 'POST',
@@ -1312,17 +1313,42 @@ app.controller('SystemConfigController',function($scope,$http,$rootScope,Notific
 //****************************WeeklyStatusController************************//
 
 //****************************Status entry Controller************************//
-app.controller('StatusEntryController', function($scope,$http,$rootScope) {
+app.controller('StatusEntryController', function($scope,$http,$rootScope,$window) {
+  $scope.todayDate = new Date();
+  $scope.selectedDate=function(selectedCar){
+    var range = []
 
+    $scope.dates=selectedCar;
+    var fromDate=$scope.dates.split('To')[0];
+    var toDate=$scope.dates.split('To')[1];
+
+    start = new Date(fromDate);
+    future = new Date(toDate);
+
+    mil = 86400000 //24h
+    for (var i=start.getTime(); i<=future.getTime();i=i+mil) {
+
+      range.push(new Date(i))
+
+      //or for timestamp
+      //range.push(toDate)
+      console.log("range" + range)
+    }
+
+
+    $scope.rangeDates=range;
+
+  }
   $scope.getCalender = function() {
     $http({
       method: 'GET',
       url: 'http://139.162.42.96:4545/api/Calendars',
       headers: {"Content-Type": "application/json", "Accept": "application/json"}
     }).success(function (response) {
-      console.log('Users Response :' + JSON.stringify(response));
-      $rootScope.calenderData = response;
 
+      $rootScope.calenderData = response;
+      $scope.selectedDate($rootScope.calenderData[0].period)
+      console.log('Users calenderData :' + JSON.stringify($rootScope.calenderData));
     }).error(function (response) {
       console.log('Error Response :' + JSON.stringify(response));
     });
@@ -1343,6 +1369,26 @@ app.controller('StatusEntryController', function($scope,$http,$rootScope) {
     });
   };
 
+  var range = []
+  start = new Date("August 13,2011");
+  future = new Date("October 13, 2011");
+  range = []
+  mil = 86400000 //24h
+  for (var i=start.getTime(); i<future.getTime();i=i+mil) {
+
+    range.push(new Date(i))
+
+
+  }
+
+  /*var values = {name: 'misko', gender: 'male'};
+  var log = [];
+  angular.forEach(values, function(value, key) {
+    this.push(key + ': ' + value);
+  }, log);
+  expect(log).toEqual(['name: misko', 'gender: male']);*/
+
+
   $scope.getProjects();
 
   $scope.rowCount=[];
@@ -1357,6 +1403,8 @@ app.controller('StatusEntryController', function($scope,$http,$rootScope) {
 
     $scope.people.push(person);
   };*/
+
+
   $scope.timeList= [];
 var timeDetails={
   "project":"",
@@ -1368,14 +1416,14 @@ var timeDetails={
   "friday":'',
   "saturday":'',
   "sunday":'',
-  "total":''
+  "tot":''
 };
 
   $scope.timeList.push(timeDetails);
   $scope.rowsLength=1;
   $scope.addIme = function(){
-    console.log('lenght is'+    $scope.timeList.length);
-    console.log('monday value'+$scope.timeList[0].monday);
+   // console.log('lenght is'+    $scope.timeList.length);
+   // console.log('monday value'+$scope.timeList[0].monday);
     $scope.timeList[0].total= $scope.timeList[0].monday+$scope.timeList[0].monday;
 
 
@@ -1410,12 +1458,50 @@ var timeDetails={
     $scope.timeList.splice(index, 1);
   };
 
+$scope.findTotal=function () {
+  var arr = document.getElementsByClassName('qty');
+  var tot = 0;
+  for (var i = 0; i < arr.length; i++) {
+    if (parseInt(arr[i].value))
+      tot += parseInt(arr[i].value);
+  }
+
+  // document.getElementById('total').value = tot;
+  //alert(tot)
+  $scope.tot=tot;
+  /*$scope.tot=parseInt(timeList[$index].monday+timeList[$index].tuesday)*/
+  //console.log("total:" + $scope.tot)
+  console.log("total:" + JSON.stringify($scope.tot))
+}
+
+$scope.createStatus=function(){
+  $scope.timeList['tot']=$scope.tot;
+ alert("response "+JSON.stringify($scope.timeList))
+  console.log(' Response :' + JSON.stringify($scope.timeList));
+
+  $http({
+    method: 'POST',
+    url: 'http://139.162.42.96:4545/api/WeeklyStatusEntries',
+    headers: {"Content-Type": "application/json", "Accept": "application/json"},
+    "data": $scope.timeList
+  }).success(function (response) {
+    //$window.location.reload();
+  }).error(function (response) {
+    console.log('Error Response :' + JSON.stringify(response));
+  })
+
+  }
+
+
 });
 
 //****************************manager Approval Controller************************//
 app.controller('StatusController', function($scope,$http,$rootScope) {
-
+  $scope.todayDate = new Date();
   $scope.rowCount=[];
+$scope.Project=function(){
+
+}
 //  var data=
 
 

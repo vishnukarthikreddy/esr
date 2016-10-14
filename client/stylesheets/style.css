@@ -177,10 +177,10 @@ body .dhtmlxcalendar_material.dhtmlxcalendar_in_input {
   color: #999; !important,
 }
 #statusId {
-  padding-left: 71px;
+  padding-left: 40px;
 }
 #manager1{
-  padding-left: 69px;
+  padding-left: 40px;
 }
 #project1 {
   padding-left: 69px;
@@ -404,7 +404,7 @@ element.style {
   text-align: right;
 }
 #padding11 {
-  padding-left: 39px;
+  padding-left: 72px;
   padding-top: 5px;
 }
 .m-top75{margin-top: 75px}
@@ -426,4 +426,9 @@ element.style {
   color: #333;
   background-color: rgba(107, 56, 56, 0.27);
   border-color: #adadad;
+}
+.btn-addproject {
+  color: #333;
+  background-color: rgba(51, 122, 183, 0.25);
+  border-color: #ccc;
 }

@@ -71,5 +71,9 @@
   "SystemConfig": {
     "dataSource": "yitsolDB",
     "public": true
+  },
+  "WeeklyStatusEntry": {
+    "dataSource": "yitsolDB",
+    "public": true
   }
 }
