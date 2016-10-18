@@ -12,8 +12,8 @@ module.exports = function(Email) {
       port: 465,
       secure: true,
       auth: {
-        user: 'ishafoodcourt@gmail.com',   //ishafoodcourt@gmail.com,  pwd:  Monica@2016
-        pass: 'Monica@2016'
+        user: 'lalamkiran1993@gmail.com',   //ishafoodcourt@gmail.com,  pwd:  Monica@2016
+        pass: 'sandy@10'
       }
     }));
     //  var transporter = nodemailer.createTransport('smtps://stay.valuable%40vdeets.com:pass@recovervdeets%401');
