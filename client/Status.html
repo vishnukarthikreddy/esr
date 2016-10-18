@@ -73,7 +73,7 @@
             </select>
           </td>
           <td><input ng-blur="findTotal()" class="qty" type="text" ng-model='timeList[$index].monday'></td>
-          <td><input ng-blur="findTotal()" class="qty" type="text" ng-model='timeList[$index].tuesday'> </td>
+          <td><input ng-blur="findTotal()" class="qty" type="text" ng-model='timeList[$index].tuesday'></td>
           <td><input ng-blur="findTotal()" class="qty" type="text"  ng-model='timeList[$index].wednesday'></td>
           <td><input ng-blur="findTotal()" class="qty" type="text" ng-model='timeList[$index].thursday'></td>
           <td><input ng-blur="findTotal()" class="qty" type="text" ng-model='timeList[$index].friday'></td>
@@ -87,15 +87,15 @@
         <tr>
           <th>Total</th>
           <td></td>
-          <td><input type="text"></td>
-          <td><input type="text"></td>
-          <td><input type="text"></td>
-          <td><input type="text"></td>
-          <td><input type="text"></td>
-          <td><input type="text"></td>
-          <td><input type="text"></td>
+          <td>{{(timeList[$index].monday)}}</td>
+          <td>{{(timeList[$index].monday)}}</td>
           <td></td>
-          <td><input type="text"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         </tbody>
     </table>
