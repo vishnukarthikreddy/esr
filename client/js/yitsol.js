@@ -686,7 +686,7 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
 
     $http({
       method: 'GET',
-      url: 'http://139.162.45.69:4545/api/leaveRequests?filter={"where":{"or":[{"hrStatus":{"eq":"Pending"}},{"mgrStatus":{"eq":"Pending"}}]}}',
+      url: 'http://139.162.45.69:4545/api/leaveRequests?filter={"where":{"or":[{"mgrStatus":{"eq":"Pending"}},{"hrStatus":{"eq":"Pending"}}]}}',
       headers: {"Content-Type": "application/json", "Accept": "application/json"}
     }).success(function (response) {
       console.log('Users Response :' + JSON.stringify(response));
@@ -795,12 +795,12 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data: $scope.status
     }).success(function (response) {
-      console.log("response" + JSON.stringify(response));
+      alert("response" + JSON.stringify($scope.status));
       //$scope.getLeaveRequests();
 
       $http({
         method: 'GET',
-        url: 'http://139.162.45.69:4545/api/leaveRequests?filter={"where":{"or":[{"hrStatus":{"eq":"Pending"}},{"mgrStatus":{"eq":"Pending"}}]}}',
+        url: 'http://139.162.45.69:4545/api/leaveRequests?filter={"where":{"or":[{"mgrStatus":{"eq":"Pending"}},{"hrStatus":{"eq":"Pending"}}]}}',
         headers: {"Content-Type": "application/json", "Accept": "application/json"}
       }).success(function (response) {
         $scope.projectsData11 = response
@@ -845,7 +845,7 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
     requestDetails['hrStatus'] = 'Pending';
     requestDetails['mgrStatus'] = 'Pending';
   /*  requestDetails['statusFlag']='false';*/
-    requestDetails['financialYear']=$scope.requestfinancialYear
+ /*   requestDetails['financialYear']=$scope.requestfinancialYear*/
     /*  requestDetails['numberOfDays']=d;*/
     $scope.leavesUpdate = {}
     console.log('user details :' + JSON.stringify(loginDetails));
@@ -953,7 +953,7 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
 
 /*    GET FINANCIALYEAR    */
 
-  $http({
+  /*$http({
       method: 'GET',
       url: 'http://139.162.45.69:4545/api/SystemConfigs',
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
@@ -965,7 +965,7 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
 
     }).error(function (response) {
       console.log('Error Response :' + JSON.stringify(response));
-    })
+    })*/
 
   })
 
