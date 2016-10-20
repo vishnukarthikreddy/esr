@@ -795,7 +795,7 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data: $scope.status
     }).success(function (response) {
-      alert("response" + JSON.stringify($scope.status));
+
       //$scope.getLeaveRequests();
 
       $http({
@@ -1150,7 +1150,7 @@ $scope.getResourceLeave = function() {
 
   $scope.createLeave3=function() {
 
-    alert("edit response:" + JSON.stringify($scope.editLeave1))
+ /*   alert("edit response:" + JSON.stringify($scope.editLeave1))*/
 
 
     var pat1=/^\d{0,2}$/;
@@ -1487,7 +1487,7 @@ $scope.timeSheet={
 $scope.createStatus=function(){
 
   $scope.timeList['tot']=$scope.tot;
- alert("response "+JSON.stringify($scope.timeList))
+/* alert("response "+JSON.stringify($scope.timeList))*/
   console.log(' Response :' + JSON.stringify($scope.timeList));
   console.log(" $rootScope.calenderData"+JSON.stringify($rootScope.calenderData));
   for(var j=0;j<$rootScope.calanderlist.length;j++){
