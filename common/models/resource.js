@@ -44,7 +44,7 @@ console.log("email"+JSON.stringify(ResourceNext));
           EmailN.create({
             "to": ResourceNext.email,
             "from": "info@yitsol.com",
-            "subject": "ActiveLife :Your temporary password for ActiveLifePlus",
+            "subject": "Yitsol :Your temporary password for Yitsol",
             "text": "",
             "html": "Your temporary password is " + otp + " .Change your password after login. " + "<br>Thank You"
           }, function (err, email) {
