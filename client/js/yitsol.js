@@ -57,6 +57,7 @@ app.config(function($routeProvider) {
         templateUrl:'Resource Leaves.html',
         controller:'ResourceLeavesController'
       })
+
       .when('/TaskTypeMaster',{
         templateUrl:'TaskTypeMaster.html',
         controller:'TaskTypeMasterController'
@@ -68,6 +69,10 @@ app.config(function($routeProvider) {
       .when('/SystemConfig',{
         templateUrl:'SystemConfig.html',
         controller:'SystemConfigController'
+      })
+      .when('/HRportal',{
+        templateUrl:'HRportal.html',
+        controller:'HrController'
       })
 
 
@@ -96,6 +101,7 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
   $rootScope.role = $window.localStorage.getItem("role");
   // var role=$window.localStorage.getItem('role');
   if($rootScope.role=='employee'){
+
     // alert(role=='employee')
     $rootScope.managerShow=false;
     $rootScope.employeeShow=true;
@@ -185,6 +191,16 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
           $window.localStorage.setItem("role",response.role);
 
          /* alert("cv: "+ $window.localStorage.getItem("role"));*/
+          if($rootScope.role=='employee'){
+             /*$location.url("#/HRportal");*/
+            // alert(role=='employee')
+            $rootScope.managerShow=false;
+            $rootScope.employeeShow=true;
+
+          }else {
+            $rootScope.managerShow=true;
+            $rootScope.employeeShow=true;
+          }
 
           $scope.loginDetails= response;
           window.location.href = "/index.html#/rsr-resources";
@@ -735,15 +751,65 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
     $('#projectEdit').modal('show');
   }
 
+
   $scope.updateProject1 = function () {
+  // alert("756");
+    $http({
+      method: 'GET',
+      url: 'http://139.162.45.69:4545/api/employeeLeaveMasters?filter={"where":{"empId":"' + loginDetails.id + '"}}',
+      headers: {"Content-Type": "application/json", "Accept": "application/json"}
+    }).success(function (response) {
+      alert("762");
+      console.log("requestDetails" + JSON.stringify(requestDetails));
+      console.log("response" + JSON.stringify(response));
+      $scope.leaveId = response[0].id
 
+      var numberOfDays;
+      var noOfDays = false;
+      if (requestDetails.leaveType == "CL") {
 
+        /*console.log("response[0].CLsAvailed" + response[0].CLsAvailed);
+         console.log("requestDetails.noOfDays" + requestDetails.noOfDays);*/
+        if (Number(response[0].CLsAvailed) >= Number(requestDetails.noOfDays)) {
+          console.log("asdfasdf")
+
+          numberOfDays = response[0].CLsAvailed - requestDetails.noOfDays;
+          /* $scope.leavesUpdate.CLsEntitled = Number(response[0].CLsEntitled) + Number(requestDetails.noOfDays);*/
+          $scope.leavesUpdate.CLsAvailed = numberOfDays;
+          noOfDays = true;
+        } else {
+          Notification.error("You don't have available leaves");
+        }
+      } else if (requestDetails.leaveType == "SL") {
+        if (Number(response[0].SLsAvailed) >= Number(requestDetails.noOfDays)) {
+          numberOfDays = response[0].SLsAvailed - requestDetails.noOfDays;
+
+          /*$scope.leavesUpdate.SLsEntitled = Number(response[0].SLsEntitled) + Number(requestDetails.noOfDays);*/
+          $scope.leavesUpdate.SLsAvailed = numberOfDays;
+          noOfDays = true;
+        } else {
+          Notification.error("You don't have available leaves");
+        }
+      } else if (requestDetails.leaveType == "EL") {
+        if (Number(response[0].ELsAvailed) >= Number(requestDetails.noOfDays)) {
+          numberOfDays = response[0].ELsAvailed - requestDetails.noOfDays;
+
+          /* $scope.leavesUpdate.ELsEntitled = Number(response[0].ELsEntitled) + Number(requestDetails.noOfDays);*/
+          $scope.leavesUpdate.ELsAvailed = numberOfDays;
+          noOfDays = true;
+        } else {
+          Notification.error("You don't have available leaves");
+        }
+      }
+
+    });
     $http({
       method: 'PUT',
       url: 'http://139.162.45.69:4545/api/leaveRequests/' + $scope.editLeaveRequest.id,
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data: $scope.editLeaveRequest
     }).success(function (response) {
+
       $scope.getLeaveRequests();
       $('#projectEdit').modal('hide');
     }).error(function (response) {
@@ -796,7 +862,7 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
       data: $scope.status
     }).success(function (response) {
 
-      //$scope.getLeaveRequests();
+      $scope.getLeaveRequests();
 
       $http({
         method: 'GET',
@@ -872,7 +938,7 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
             console.log("asdfasdf")
 
             numberOfDays = response[0].CLsAvailed - requestDetails.noOfDays;
-            $scope.leavesUpdate.CLsEntitled = Number(response[0].CLsEntitled) + Number(requestDetails.noOfDays);
+           /* $scope.leavesUpdate.CLsEntitled = Number(response[0].CLsEntitled) + Number(requestDetails.noOfDays);*/
             $scope.leavesUpdate.CLsAvailed = numberOfDays;
             noOfDays = true;
           } else {
@@ -882,7 +948,7 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
           if (Number(response[0].SLsAvailed) >= Number(requestDetails.noOfDays)) {
             numberOfDays = response[0].SLsAvailed - requestDetails.noOfDays;
 
-            $scope.leavesUpdate.SLsEntitled = Number(response[0].SLsEntitled) + Number(requestDetails.noOfDays);
+            /*$scope.leavesUpdate.SLsEntitled = Number(response[0].SLsEntitled) + Number(requestDetails.noOfDays);*/
             $scope.leavesUpdate.SLsAvailed = numberOfDays;
             noOfDays = true;
           } else {
@@ -892,7 +958,7 @@ app.controller('LeaveRequestController',function($scope,$http,$rootScope,$window
           if (Number(response[0].ELsAvailed) >= Number(requestDetails.noOfDays)) {
             numberOfDays = response[0].ELsAvailed - requestDetails.noOfDays;
 
-            $scope.leavesUpdate.ELsEntitled = Number(response[0].ELsEntitled) + Number(requestDetails.noOfDays);
+           /* $scope.leavesUpdate.ELsEntitled = Number(response[0].ELsEntitled) + Number(requestDetails.noOfDays);*/
             $scope.leavesUpdate.ELsAvailed = numberOfDays;
             noOfDays = true;
           } else {
@@ -1700,3 +1766,6 @@ app.controller('resourcesleavesController', function($http, $scope, $window, $lo
     console.log('Error Response :' + JSON.stringify(response));
   });
 });
+app.controller('HrController',function($http, $scope, $window, $location, $rootScope) {
+
+})

@@ -54,8 +54,9 @@
               <div class="col-lg-12 m-top20">
 
                 <div class="col-lg-6">
-                  <label> <span class="color-red f-bold f-left">*</span>LeaveType:</label>
+                  <label> <span class="color-red f-bold f-left"></span>LeaveType:</label>
                   <select ng-model="request.leaveType" class="drop09" required>
+                    <option class=" " value="">Select Leave Type</option>
                     <option value="CL">CL</option>
                     <option value="SL">SL</option>
                     <option value="EL">EL</option>
@@ -125,21 +126,22 @@
 
                   <div class="col-lg-2 paddgleft-right0"> <label>End Dt:</label></div>
                   <div class="col-lg-2 paddgleft-right0">
-                    <input type="text" ng-calendar format="%d-%m-%Y"  ng-model="editLeaveRequest.endDt" class="drop09">
+                    <input type="text" ng-calendar format="%d-%m-%Y"  ng-model="editLeaveRequest.endDt"  class="drop09">
                   </div>
 
 
                   <div class="col-lg-2 paddgleft-right0"> <label>no.of.days</label></div>
                   <div class="col-lg-1 paddgleft-right0">
-                    <input type="text"  ng-model="editLeaveRequest.noOfDays" class="drop09">
+                    <input type="text"  ng-model="editLeaveRequest.noOfDays"  class="drop09">
                   </div>
                 </div>
                 <div class="col-lg-12 m-top20">
 
 
                   <div class="col-lg-6">
-                    <label> <span class="color-red f-bold f-left">*</span>LeaveType:</label>
+                    <label> <span class="color-red f-bold f-left"></span>LeaveType:</label>
                     <select ng-model="editLeaveRequest.leaveType" class="drop09">
+                      <option class=" " value="">Select Leave Type</option>
                       <option value="CL">CL</option>
                       <option value="SL">SL</option>
                       <option value="EL">EL</option>
@@ -198,7 +200,6 @@
           &nbsp;</th>
         <th class="MGRApprovalStatus" custom-sort order="'start_date'" sort="sort">MGR Approval Status&nbsp;</th>
         <th class="hrApprovalStatus" custom-sort order="'start_date'" sort="sort">HR Approval Status &nbsp;</th>
-
        <th class="status" custom-sort order="'status'" sort="sort">Status&nbsp;</th>
 
       </tr>
@@ -215,6 +216,7 @@
         <td>{{requests.reasonForLeave}}</td>
         <td>{{requests.hrStatus}}</td>
         <td>{{requests.mgrStatus}}</td>
+      <!--  <td><button class="btn btn-danger" ng-click="removePerson($index)"><i class="fa fa-close"></i></button></td>-->
 
         <td>
           <button class="glyphicon glyphicon-pencil pall10 m-right5" data-backdrop="static" data-keyboard="false"  ng-click="editLeaveRequest1(requests)"></button>
