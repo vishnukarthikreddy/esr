@@ -126,7 +126,7 @@
 
                   <div class="col-lg-2 paddgleft-right0"> <label>End Dt:</label></div>
                   <div class="col-lg-2 paddgleft-right0">
-                    <input type="text" ng-calendar format="%d-%m-%Y"  ng-model="editLeaveRequest.endDt"  class="drop09">
+                    <input type="text" ng-calendar format="%d-%m-%Y"  ng-model="editLeaveRequest.endDt" ng-blur="calData2()"  class="drop09">
                   </div>
 
 
@@ -185,29 +185,31 @@
     <!--************************************add and update*********************************************-->
 
 
-
+<div>
     <table datatable="ng" class="table table-striped table-condensed table-hover" border="1" align="left">
       <thead>
 
       <tr>
-        <th class="empName" custom-sort order="'paNumb'" sort="sort">Emp Name&nbsp;</th>
-        <th class="financialYear" custom-sort order="'projectName'" sort="sort">Financial Year&nbsp;</th>
-        <th class="Startdt" custom-sort order="'projectManager'" sort="sort">Start Dt&nbsp;</th>
-        <th class="EndDt" custom-sort order="'projectManager'" sort="sort">End Dt&nbsp;</th>
-        <th class="noOfDays" custom-sort order="'projectManager'" sort="sort">No Of Days&nbsp;</th>
-        <th class="LeaveType" custom-sort order="'start_date'" sort="sort">Leave Type&nbsp;</th>
-        <th class="ReasonforLeave" custom-sort order="'endDate'" sort="sort">Reason for Leave
-          &nbsp;</th>
-        <th class="MGRApprovalStatus" custom-sort order="'start_date'" sort="sort">MGR Approval Status&nbsp;</th>
-        <th class="hrApprovalStatus" custom-sort order="'start_date'" sort="sort">HR Approval Status &nbsp;</th>
-       <th class="status" custom-sort order="'status'" sort="sort">Status&nbsp;</th>
+        <th>Emp Name&nbsp;</th>
+        <th>Financial Year&nbsp;</th>
+        <th>Start Dt&nbsp;</th>
+        <th>End Dt&nbsp;</th>
+        <th>No Of Days&nbsp;</th>
+        <th>Leave Type&nbsp;</th>
+        <th>Reason for Leave
+          </th>
+        <th>MGR Approval Status&nbsp;</th>
+        <th>HR Approval Status &nbsp;</th>
+
+        <th>Delete</th>
+        <th>Status</th>
 
       </tr>
       </thead>
 
       <tbody>
       <tr ng-repeat="requests in projectsData  track by $index">
-       <td> {{requests.createdBy}}</td>
+        <td>{{requests.createdBy}}</td>
         <td>{{requests.financialYear}}</td>
         <td>{{requests.startDt}}</td>
         <td>{{requests.endDt}}</td>
@@ -216,15 +218,15 @@
         <td>{{requests.reasonForLeave}}</td>
         <td>{{requests.hrStatus}}</td>
         <td>{{requests.mgrStatus}}</td>
-      <!--  <td><button class="btn btn-danger" ng-click="removePerson($index)"><i class="fa fa-close"></i></button></td>-->
+        <td><span ng-disabled="isShow"><button class="btn btn-danger"  ng-click="removePerson(requests.id)"><i class="fa fa-close"></i></button></span></td>
 
         <td>
-          <button class="glyphicon glyphicon-pencil pall10 m-right5" data-backdrop="static" data-keyboard="false"  ng-click="editLeaveRequest1(requests)"></button>
+          <span ng-disabled="isShow"><button class="glyphicon glyphicon-pencil pall10 m-right5" data-backdrop="static" data-keyboard="false"  ng-click="editLeaveRequest1(requests)"></button></span>
         </td>
 
       </tr>
       </tbody>
     </table>
-
+</div>
   </div>
 </div>
