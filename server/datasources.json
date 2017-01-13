@@ -5,13 +5,12 @@
     "connector": "memory"
   },
   "yitsolDB": {
-    "host": "",
-    "port": "27018",
-    "url":"",
+    "host": "127.0.0.1",
+    "port": "7676",
     "database": "yitsolDB",
-    "password": "",
+    "password": "yitsolesr123",
     "name": "yitsolDB",
-    "user": "",
+    "user": "yitsol",
     "connector": "mongodb"
   }
 
