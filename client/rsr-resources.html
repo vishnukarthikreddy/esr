@@ -91,9 +91,205 @@
     </tr>
     </tbody>
   </table>-->
+  <!--  Modal for Create Resource -->
+  <div class="modal fade" id="myModal" resource="dialog" >
+
+    <div class="modal-dialog" class="btn btn-lg btn-primary">
+
+      <!-- Modal content-->
+      <div class="modal-content" align="center">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Create Resource</h3>
+        </div>
+
+        <div class="modal-body">
+
+
+
+          <form class="simple-form"  ng-submit="createResource()">
+
+            <div class="row">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-3 col-sm-3">
+                <label for="empId">Resource ID:<span style="color:red" >*</span></label>
+              </div>
+              <div class="col-lg-6 col-sm-6">
+                <input type="text" class="form-control" id="empId" ng-model="resource.empId" placeholder="Enter Resource ID"  data-toggle="tooltip" data-placement="top" required>
+              </div>
+
+
+              <div class="col-lg-1 col-sm-1"></div>
+             </div>
+              <br>
+            <div class="row">
+
+              <div class="col-lg-1"></div>
+              <div class="col-lg-3 col-sm-3">
+                <label for="email">Email:<span style="color:red" >*</span></label>
+
+              </div>
+              <div class="col-lg-6 col-sm-6">
+                <input type="text" class="form-control" id="email"  ng-model="resource.email" placeholder="Enter Email" title="Enter Your Email"  data-toggle="tooltip" data-placement="top" required>
+              </div>
+              <div class="col-lg-1 col-sm-1"></div>
+            </div><br>
+
+            <div class="row">
+
+              <div class="col-lg-1"></div>
+              <div class="col-lg-3 col-sm-3">
+                <label for="password">Password:<span style="color:red" >*</span></label>
+
+
+              </div>
+              <div class="col-lg-6 col-sm-6">
+
+                <input type="password" class="form-control" id="password" ng-model="resource.password" placeholder="Enter Password"   data-toggle="tooltip" data-placement="top" required>
+              </div>
+              <div class="col-lg-1 col-sm-1"></div>
+            </div><br>
+            <div class="row">
+
+            <!--  <div class="col-lg-1"></div>-->
+              <div class="col-lg-4 col-sm-4">
+
+                <label for="resourceName">Resource Name:<span style="color:red" >*</span></label>
+
+
+              </div>
+              <div class="col-lg-6 col-sm-6">
+
+                <input type="text" class="form-control" id="resourceName" ng-model="resource.resourceName" placeholder="Enter Resource Name"    data-toggle="tooltip" data-placement="top" required>
+              </div>
+              <div class="col-lg-1 col-sm-1"></div>
+            </div><br>
+
+            <div class="row">
+              <div class="col-lg-0"></div>
+              <div class="col-lg-4 col-sm-4">
+                <label >Select Manager:<span style="color:red" >*</span></label>
+              </div>
+              <div class="col-lg-6 col-sm-6">
+                <select ng-model="resource.reportingMgr">
+                  <option value="">Select Manager</option>
+                  <option ng-repeat="manager in managerList" value="{{manager.resourceName}}">{{manager.resourceName}}</option>
+                </select>
+              </div>
+
+
+              <div class="col-lg-1 col-sm-1"></div>
+            </div><br>
+
+
+            <div class="row">
+              <div class="col-lg-0"></div>
+              <div class="col-lg-4 col-sm-4">
+                <label >Employee Role:<span style="color:red" >*</span></label>
+
+              </div>
+              <div class="col-lg-6 col-sm-6">
+                <select ng-model="resource.role">
+                  <option value="">Employee Role</option>
+                  <option  value="employee">Employee</option>
+                  <option  value="manager"> Manager</option>
+                  <option  value="admin">Admin</option>
+                </select>
+              </div>
+
+
+              <div class="col-lg-1 col-sm-1"></div>
+            </div><br>
+            <div class="row">
+              <div class="col-lg-0"></div>
+              <div class="col-lg-4 col-sm-4">
+                <label for="primarySkill">Primary Skill:<span style="color:red" >*</span></label>
+              </div>
+              <div class="col-lg-6 col-sm-6">
+                <input type="text" class="form-control" id="primarySkill" ng-model="resource.primarySkill" placeholder="Enter Primary Skill"   data-toggle="tooltip" data-placement="top" required>
+              </div>
+              <div class="col-lg-2 col-sm-2"></div>
+            </div><br>
+
+            <div class="row">
+              <div class="col-lg-0"></div>
+              <div class="col-lg-4 col-sm-4">
+
+                <label for="secondarySkill">Secondary Skill:</label>
+              </div>
+              <div class="col-lg-6 col-sm-6">
+                <input type="text" class="form-control" id="secondarySkill" ng-model="resource.secondarySkill" placeholder="Enter Secondary Skill"   data-toggle="tooltip" data-placement="top" required>
+
+              </div>
+              <div class="col-lg-2 col-sm-2"></div>
+            </div><br>
+
+            <div class="row">
+              <div class="col-lg-0"></div>
+              <div class="col-lg-3 col-sm-3">
+                <label >Select Status:<span style="color:red" >*</span></label>
+              </div>
+              <div class="col-lg-3 col-sm-3">
+                <select ng-model="resource.status">
+                  <option value="">Select Status</option>
+                  <option value="On-Role">On Role</option>
+                  <option value="Resigned">Resigned</option>
+                  <option value="CSP-Released">CSP-Released</option>
+
+                </select>
+              </div>
+              <div class="col-lg-3 col-sm-3">
+                <label >Select Type:<span style="color:red" >*</span></label>
+              </div>
+              <div class="col-lg-3 col-sm-3">
+                <select ng-model="resource.type">
+                  <option value="">Select Type</option>
+                  <option value="Employee">Employee</option>
+                  <option value="Contractor">Contractor</option>
+                </select>
+              </div>
+
+            </div><br>
+            <div class="row">
+              <div class="col-lg-2 col-sm-2"></div>
+              <div class="col-lg-4 col-sm-4">
+                <input type="submit" value="Update" class="btn btn-primary" />
+              </div>
+
+
+              <div class="col-lg-4 col-sm-4">
+                <input type="submit"  value="Cancel" ng-click="cancelEdit()" class="btn btn-danger" />
+              </div>
+              <div class="col-lg-2 col-sm-2"></div>
+            </div>
+
+          </form>
+
+
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+
+
+    </div>
+
+
+
+
+
+    </div>
+
 
       <!-- Modal -->
-      <div class="modal fade" id="myModal" resource="dialog">
+      <div class="modal fade" id="myModal1" resource="dialog">
         <div class="modal-dialog">
           <!-- Modal content-->
           <div class="modal-content" align="center">

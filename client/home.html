@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+  <title>YitsolTimeSheet</title>
+
+  <!--Bootstrap Core CSS-->
+
+
+  <link href="stylesheets/style.css" rel="stylesheet">
+  <link href="bower_components/angular-datatables/dist/css/angular-datatables.css" rel="stylesheet"/>
+  <link href="bower_components/datatables/media/css/jquery.dataTables.css" rel="stylesheet"/>
+
+
+
+
+  <!-- Bootstrap Core CSS -->
+  <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+  <!--  <link href="stylesheets/style.css" rel="stylesheet">-->
+  <link href="dist/ngcalendar.css" rel="stylesheet">
+
+
+
+  <link href="css/sb-admin.css" rel="stylesheet">
+
+  <!--Custom CSS-->
+
+
+  <link href="css/angular-ui-notification.min.css" rel="stylesheet">
+  <!--Morris Charts CSS-->
+  <link href="css/plugins/morris.css" rel="stylesheet">
+
+  <!--DatePicker-->
+
+  <!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">-->
+
+  <!--Custom Fonts-->
+  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+  <!--  <script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+    <script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.js"></script>-->
+  <!--<script src="js/angular.min.js"></script>-->
+
+  <!--<script src="../node_modules/chart.js/Chart.min.js"></script>-->
+  <!--<script src="../node_modules/angular-chart.js/dist/angular-chart.min.js"></script>-->
+
+  <script src="js/jquery-1.12.4.min.js"></script>
+  <script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+
+
+
+
+  <!--<script src="js/angular.min.js"></script>-->
+  <script src="js/angular.min.js"></script>
+
+  <script src="bower_components/angular-datatables/dist/angular-datatables.min.js"></script>
+  <script src="dist/ngcalendar.js"></script>
+  <!--<script src="js/angular-route.min.js"></script>-->
+  <script src="js/d3.v3.min.js"></script>
+  <!--  <script src="node_modules/angular/angular.min.js"></script>-->
+  <!--<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script
+  <!--Bootstrap Core JavaScript-->
+
+  <script src="js/jquery.js"></script>
+  <script src="../bower_components/datatables/media/js/jquery.dataTables.js"></script>
+  <!--<script src="js/angular.min.js"></script>-->
+  <script src = "js/angular.js" ></script>
+  <script src="../bower_components/angular-datatables/dist/angular-datatables.js"></script>
+  <!-- <script src = "dist/ngcalendar.js" ></script>-->
+  <script src="js/angular-route.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <!-- <script src="js/d3.v3.min.js"></script>-->
+  <!--<script src="node_modules/angular/angular.min.js"></script>-->
+  <!-- <script src="js/jquery.js"></script>-->
+  <!--<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
+  <!--Bootstrap Core JavaScript-->
+
+  <script src="js/angular-ui-notification.min.js"></script>
+  <!--<script>
+
+    var userDetails = window.localStorage.getItem('userDetails');
+    //    var role=window.localStorage.getItem('role')
+    //    alert("role: "+role);
+    //    alert("userDetails" + JSON.stringify(userDetails));
+    if (!userDetails) {
+      window.location.href = "/home.html";
+    }
+
+    function userLogout() {
+      window.localStorage.removeItem('userDetails');
+      window.location.href = "/";
+    }
+
+
+
+    //     if(role=='employee'){
+    //       document.getElementById("mangerId").style.display  = "block";
+    //     }else {
+    //       document.getElementById("empId").style.display  = "block";
+    //     }
+
+
+  </script>
+-->
+  <script src="js/yitsol.js"></script>
+
+
+  <!--zing chart-->
+  <!--<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js" ></script>-->
+  <!--<script src = "https://cdn.zingchart.com/zingchart.min.js" ></script>-->
+  <!--<script src = "https://cdn.zingchart.com/angular/zingchart-angularjs.js" ></script>-->
+
+
+  <!--HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+  WARNING: Respond.js doesn't work if you view the page via file://
+  [if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+
+</head>
+<body>
+  <div style="margin-top: 10%">
+  <img src="images/logo.png">
+    <div class="login">
+    <a href="login.html"><h3><u>login</u></h3></a>
+    </div>
+  <div class="welcome">
+  <h2 align="center">WELCOME TO YITSOL IT SOLUTIONS</h2>
+  <h3 align="center">HR Polices</h3>
+  </div>
+    <div>
+
+
+        <div class="   " style="margin-left: 1%">
+          <ul class="nav navbar-nav ">
+            <li id="usefulId" ng-show="usefulLinkShow">
+              <a data-toggle="collapse" data-target="#Report023" data-parent="#sidenav01" class="cursor-pointer"
+                 role="button"><i class="fa fa-fw fa fa-users"></i>
+                Useful Links <i class="fa fa-angle-double-down"></i></a>
+              <ul class="collapse uselin" id="Report023" >
+                <li class="cls">  <a href="#/Employee" id="padding1" class="table1"><i class="fa fa-fw fa-edit"></i>Employee On boarding</a></li>
+                <li class="cls">
+                  <a href="#/Leavepolicy" id="padding2" class="table1"><i class="fa fa-fw fa fa-calendar"></i>Leave policy</a>
+                </li>
+                <li class="cls"><a href="#/Dresscode" id="padding3" class="table1"><i class="fa fa-fw fa-dashboard"></i> dresscode</a></li>
+
+                <li class="cls">  <a href="#/Benifits" id="padding5" class="table1"><i class="fa fa-fw fa-edit"></i>Benifits</a></li>
+                <li class="cls"><a href="#/Code" id="padding6" class="table1"><i class="fa fa-fw fa-edit"></i>code of conduct</a></li>
+
+              </ul>
+            </li>
+          </ul></div>
+
+    </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
+<!--
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+  <div class="collapse navbar-collapse navbar-ex1-collapse bag1">
+    <ul class="nav navbar-nav side-nav">
+      <li id="usefulId" ng-show="usefulLinkShow">
+        <a data-toggle="collapse" data-target="#Report1" data-parent="#sidenav01" class="cursor-pointer"
+           role="button"><i class="fa fa-fw fa fa-users"></i>
+          Useful Links <i class="fa fa-angle-double-down"></i></a>
+        <ul class="collapse" id="Report1" style="" >
+          <li>  <a href="#/Employeee" id="padding1" class="table1"><i class="fa fa-fw fa-edit"></i>Employee On boarding</a></li>
+          <li>
+            <a href="#/Leavepolicy" id="padding2" class="table1"><i class="fa fa-fw fa fa-calendar"></i>Leave policy</a>
+          </li>
+          <li><a href="#/Dresscode" id="padding3" class="table1"><i class="fa fa-fw fa-dashboard"></i> dresscode</a></li>
+          <li>
+            <a href="#/benifits" id="padding4" class="table1"><i class="fa fa-fw fa-dashboard"></i> Dress code</a>
+          </li>
+          <li>  <a href="#/benifits" id="padding5" class="table1"><i class="fa fa-fw fa-edit"></i>Benifits</a></li>
+          <li><a href="#/code" id="padding6" class="table1"><i class="fa fa-fw fa-edit"></i>code of conduct</a></li>
+          <li>
+          </li>
+        </ul>
+      </li>
+    </ul></div>
+</nav>
+
+-->
