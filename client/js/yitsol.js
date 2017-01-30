@@ -1653,7 +1653,6 @@ app.controller('StatusEntryController', function($scope,$http,$rootScope,$window
     });
   };
   $scope.getCalender();
-
   $scope.getProjects = function() {
     $http({
       method: 'GET',
