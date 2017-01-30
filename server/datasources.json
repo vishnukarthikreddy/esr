@@ -6,7 +6,7 @@
   },
   "yitsolDB": {
     "host": "127.0.0.1",
-    "port": "5397",
+    "port": "5734",
     "database": "yitsolDB",
     "password": "",
     "name": "yitsolDB",
