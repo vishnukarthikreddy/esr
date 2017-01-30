@@ -432,3 +432,31 @@ element.style {
   background-color: rgba(51, 122, 183, 0.25);
   border-color: #ccc;
 }
+.uselin {
+  list-style-type: none;
+  background: grey;
+  padding: 15px;
+}
+.log{
+  margin-top: -60px;
+  margin-left:93%;
+  text-decoration: none;
+}
+.cls{
+  padding-bottom: 10px;
+}
+.logoh{
+  margin-top:-28px ;
+  margin-left: 5px;
+}
+.view{
+  margin-left: 2%;
+}
+.ind {
+  list-style-type: none;
+  color: gray;
+}
+
+.showDiv{display: none}
+.height200 { height: 500px;
+overflow: auto;}

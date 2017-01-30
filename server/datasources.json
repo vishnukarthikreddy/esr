@@ -6,11 +6,11 @@
   },
   "yitsolDB": {
     "host": "127.0.0.1",
-    "port": "7676",
+    "port": "5397",
     "database": "yitsolDB",
-    "password": "yitsolesr123",
+    "password": "",
     "name": "yitsolDB",
-    "user": "yitsol",
+    "user": "",
     "connector": "mongodb"
   }
 
