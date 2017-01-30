@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
 
   <title>YitsolTimeSheet</title>
 
@@ -13,13 +13,10 @@
   <link href="bower_components/datatables/media/css/jquery.dataTables.css" rel="stylesheet"/>
 
 
-
-
   <!-- Bootstrap Core CSS -->
   <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
   <!--  <link href="stylesheets/style.css" rel="stylesheet">-->
   <link href="dist/ngcalendar.css" rel="stylesheet">
-
 
 
   <link href="css/sb-admin.css" rel="stylesheet">
@@ -49,8 +46,6 @@
   <script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
 
 
-
-
   <!--<script src="js/angular.min.js"></script>-->
   <script src="js/angular.min.js"></script>
 
@@ -65,7 +60,7 @@
   <script src="js/jquery.js"></script>
   <script src="../bower_components/datatables/media/js/jquery.dataTables.js"></script>
   <!--<script src="js/angular.min.js"></script>-->
-  <script src = "js/angular.js" ></script>
+  <script src="js/angular.js"></script>
   <script src="../bower_components/angular-datatables/dist/angular-datatables.js"></script>
   <!-- <script src = "dist/ngcalendar.js" ></script>-->
   <script src="js/angular-route.min.js"></script>
@@ -104,6 +99,20 @@
   </script>
 -->
   <script src="js/yitsol.js"></script>
+  <script>
+
+    $(document).ready(function () {
+      $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
+        e.preventDefault();
+        $(this).siblings('a.active').removeClass("active");
+        $(this).addClass("active");
+        var index = $(this).index();
+        $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+        $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+      });
+    });
+
+  </script>
 
 
   <!--zing chart-->
@@ -120,48 +129,335 @@
   <![endif]-->
 
 
-
 </head>
 <body>
-  <div style="margin-top: 10%">
+<div style="margin-top: 10%">
   <img src="images/logo.png">
-    <div class="login">
+  <div class="login">
     <a href="login.html"><h3><u>login</u></h3></a>
-    </div>
+  </div>
   <div class="welcome">
-  <h2 align="center">WELCOME TO YITSOL IT SOLUTIONS</h2>
-  <h3 align="center">HR Polices</h3>
+    <h2 align="center">WELCOME TO YITSOL IT SOLUTIONS</h2>
+    <h3 align="center">HR Polices</h3>
   </div>
-    <div>
+  <div>
 
 
-        <div class="   " style="margin-left: 1%">
-          <ul class="nav navbar-nav ">
-            <li id="usefulId" ng-show="usefulLinkShow">
-              <a data-toggle="collapse" data-target="#Report023" data-parent="#sidenav01" class="cursor-pointer"
-                 role="button"><i class="fa fa-fw fa fa-users"></i>
-                Useful Links <i class="fa fa-angle-double-down"></i></a>
-              <ul class="collapse uselin" id="Report023" >
-                <li class="cls">  <a href="#/Employee" id="padding1" class="table1"><i class="fa fa-fw fa-edit"></i>Employee On boarding</a></li>
-                <li class="cls">
-                  <a href="#/Leavepolicy" id="padding2" class="table1"><i class="fa fa-fw fa fa-calendar"></i>Leave policy</a>
-                </li>
-                <li class="cls"><a href="#/Dresscode" id="padding3" class="table1"><i class="fa fa-fw fa-dashboard"></i> dresscode</a></li>
-
-                <li class="cls">  <a href="#/Benifits" id="padding5" class="table1"><i class="fa fa-fw fa-edit"></i>Benifits</a></li>
-                <li class="cls"><a href="#/Code" id="padding6" class="table1"><i class="fa fa-fw fa-edit"></i>code of conduct</a></li>
-
-              </ul>
+    <div class="   " style="margin-left: 1%">
+      <ul class="nav navbar-nav ">
+        <li id="usefulId" ng-show="usefulLinkShow">
+          <a data-toggle="collapse" data-target="#Report023" data-parent="#sidenav01" class="cursor-pointer"
+             role="button"><i class="fa fa-fw fa fa-users"></i>
+            Useful Links <i class="fa fa-angle-double-down"></i></a>
+          <ul class="collapse uselin" id="Report023">
+            <li class="cls"><a href="#/Employee" id="padding1" class="table1"><i class="fa fa-fw fa-edit"></i>Employee
+              On boarding</a></li>
+            <li class="cls">
+              <a href="#/Leavepolicy" id="padding2" class="table1"><i class="fa fa-fw fa fa-calendar"></i>Leave
+                policy</a>
             </li>
-          </ul></div>
+            <li class="cls"><a href="#/Dresscode" id="padding3" class="table1"><i class="fa fa-fw fa-dashboard"></i>
+              dresscode</a></li>
 
+            <li class="cls"><a href="#/Benifits" id="padding5" class="table1"><i
+              class="fa fa-fw fa-edit"></i>Benifits</a></li>
+            <li class="cls"><a href="#/Code" id="padding6" class="table1"><i class="fa fa-fw fa-edit"></i>code of
+              conduct</a></li>
+
+          </ul>
+        </li>
+
+      </ul>
     </div>
 
+  </div>
+
+</div>
+
+<body style="background-color:lavender ">
+<div class="container-fluid">
+  <div class="row">
+    <div class=" col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <img src="images/logo.png">
+    </div>
+    <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="welcome" align="center">
+        <img src="images/header.png" class="img-responsive">
+      </div>
+    </div>
+    <div class=" col-lg-3 col-md-3 col-sm-6 col-xs-12 pull-right">
+
+      <div class="">
+        <a href="login.html" class="pull-right text-info text-capitalize" style="margin-top:5px "><h3
+          style="margin-top: 75px;margin-left: -90px;">login</h3></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+<hr class="hline1"/>
+<div class="container-fluid">
+  <div class="row">
+    <h2>&emsp;Useful Links</h2>
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 bhoechie-tab-menu">
+        <div class="list-group">
+          <a href="#" class="list-group-item active text-center">
+            <h4 class=""></h4><br/>Employee On Boarding
+          </a>
+          <a href="#" class="list-group-item text-center">
+            <h4 class=""></h4><br/>Leave Policy
+          </a>
+          <a href="#" class="list-group-item text-center">
+            <h4 class=""></h4><br/>DressCode
+          </a>
+          <a href="#" class="list-group-item text-center">
+            <h4 class=""></h4><br/>Benifits
+          </a>
+          <a href="#" class="list-group-item text-center">
+            <h4 class=""></h4><br/>Holidays 2017
+          </a>
+          <a href="#" class="list-group-item text-center">
+            <h4 class=""></h4><br/>Code Of Conduct
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9 bhoechie-tab">
+        <div class="bhoechie-tab-content active">
+          <center>
+            <h1 class="" style="font-size:12em;color:#55518a"></h1>
+            <h2 style="margin-top: 0px">Employee On Boarding</h2>
+          </center>
+        </div>
+        <div class="bhoechie-tab-content height200">
+          <div>
+            <h1 class="" style="font-size:12em;color:#55518a"></h1>
+            <h2 style="margin-top: 0px">leave policy for employees</h2>
+          </div>
+          <h4> OBJECTIVE:</h4>
+          <p>Yukti IT Solutions Pvt. Ltd. (YITSOL) believes that employees should have opportunities to enjoy
+            time away from work to help balance their professional and personal lives. The Company
+            encourages all employees to spend time with family for leisure, taking care of personal work, or
+            rest due to medical reasons.</p>
+          <p>The policy outlines the, the applicability, rules and procedures with regard to consumption and
+            approval of leave</p>
+          <h4> PURPOSE OF LEAVE:</h4>
+          <p> Leave is granted to employees with the good intention of providing rest, recuperation of health and
+            for fulfilling social obligations. This provides for healthy and efficient individuals, which in turn
+            benefits the company as well.</p>
+          <h4> LEAVE YEAR AND APPLICABILITY:</h4>
+          <p>Leave is not a matter of right.</p>
+          <p>Sanctioning of leave is at Management discretion based on exigencies of business or
+            seriousness of the case.</p>
+          <p> Leave year is from 1st January to 31st December.</p>
+          <p>Un-availed casual leaves of a year cannot submitted for any encashment, indeed can be
+            forwarded to next three consecutive years.</p>
+          <p>Eligible leave is credited to the employees on the 1st of January every year.</p>
+          <p>The different types of leaves given under the policy are:</p>
+          <ul>
+            <li>Casual Leave (CL)</li>
+            <li> Sick Leave (SL)</li>
+            <li> Earned Leave (EL)</li>
+            <li> Maternity Leave (ML)</li>
+            <li> Loss Of Pay (LOP)</li>
+          </ul>
+          <p>Employees whose date of joining service falls between 16th to the end of the
+            month are not entitled for the leave credit for that month.</p>
+          <p> Employees cannot be entitled any EL from the Date of Resignation from the
+            company.</p>
+          <p> Employees working during the intimation period are eligible only for two SL
+            which should be intimated and supported with medical certifications.</p>
+          <h4> CASUAL LEAVE</h4>
+
+          <h5>ELIGIBILITY:</h5> All permanent staff & Contract workers.
+          Casual leave is calculated for a period of one year (January to December)
+
+          <h5>ENTITLEMENT:</h5>
+          <p>7 days of Casual Leave in a calendar year & according to Telangana State Govt.</p>
+          <p> A minimum of half CL can be availed & a maximum of 2 days in a row can be taken.</p>
+          <p>If CL extends beyond 2 days, then the excess days taken will be treated under LOP or
+            Earned Leave.</p>
+          <p>It is up to the Management’s discretion to sanction more than 2 days of CL at a stretch.</p>
+          <p>National / Festival / Declared / weekly off days can be prefixed or suffixed to CL based on
+            manager’s approval and individual’s leave bucket.</p>
+          <p> Weekly off between CL will be treated as sandwich.</p>
+          <p>Intervening National / Festival / Declared holidays will NOT be counted as part of the
+            leave.</p>
+          <p> Balanced CL remaining unutilized as on 31st December will lapse.</p>
+          <p>When leave is taken without prior sanction (under certain unavoidable circumstances), the
+            absence should be notified to the respective H. O. D ’s on the same day through phone.</p>
+          <p>Approved leave application should reach the HR department within 2 working days of joining</p>
+          <h4>SICK LEAVE</h4>
+          <h5>ELIGIBILITY</h5>: All permanent staff
+          <h6>ENTITLEMENT:</h6>
+          <p> 5 days of Sick Leave (SL) in a calendar year & according to Telangana State Govt.
+          <p>
+          <p>A minimum of half SL can be availed & a maximum of whatever is required or whatever is
+            available, whichever is lesser
+          <p>
+          <p> If SL extends beyond 2 days, it has to be accompanied with a Doctor’s certificate
+          <p>
+          <p> In case adequate number of SL is not available with an employee, he can club EL
+            with it. If EL is also not available, then it will be treated as LOP.
+          <p>
+          <p>Intervening National / Festival / Declared holidays will be counted as part of the
+            leave.
+          <p>
+          <p>Balanced SL remaining unutilized as on 31st December will be lapsed.
+          <p>
+          <p> Inability to attend office because of any sickness should be notified to the respective
+          <p>
+          <p> H. O. D’s on the same day through phone.
+          <p>
+          <p> Approved leave application should reach the HR department within 2 working
+            days of rejoining.
+          <p>
+          <h4> EARNED LEAVE (EL)</h4>
+          <h5> ELIGIBILITY:</h5> All permanent staff and Contract workers.
+          EL is calculated for the days worked during the previous calendar year.
+          <h5>ENTITLEMENT</h5>
+          <p> 1 EL for every 20 working days
+          <p>
+          <p> EL will be credited to permanent staff & workers on completion of one year of service with
+            the company, eligibility after 240 days of working days.
+          <p>
+          <p>In case of staff 20 days are fixed on completion of one calendar year.
+          <p>
+          <p>The days served under probation will be taken into account for EL eligibility.
+          <p>
+          <p> Balanced EL remaining unutilized as on 31st December can be carried forward.
+          <p>
+          <p> Maximum 30 days EL can be accumulated. The EL beyond 30 days will be
+            automatically lapsed at the end of the year.
+          <p>
+          <p> Accumulated 30 EL cannot be availed at a stretch; the employee can redeem
+            for15 days at a time with prior approval.
+          <p>
+          <p>Any absence of more than the number of EL
+          <p>
+
+          <h4> MATERNITY LEAVE (ML)</h4>
+          <h5>ELIGIBILITY:</h5> All married female staff.
+          <h5>ENTITLEMENT:</h5>
+          <p> 84 days of paid Maternity Leave is allowed to females who have to deliver a child
+          <p>
+          <p> A female employee can adjust this leave before and after the delivery of child totaling it to
+            84 days.
+          <p>
+          <p> Before availing this leave, a certificate from the gynecologist has to be submitted
+            mentioning the expected date of delivery.
+          <p>
+          <p> Intervening National / declared / festival / weekly off days will be counted as part of leave.
+          <p>
+          <p> If, because of any complication, leave has to be extended, it can be done but will fall under
+            LOP.
+          <p>
+          <h4>. LOSS OF PAY (LOP)</h4>
+          <p> LOP can be applied by an employee when no other leave is available.
+          <p>
+          <p>During the period of LOP, the employee is not entitled for any pay or allowance.
+          <p>
+          <p> A maximum of 3 months of LOP can be availed on the approval of the management.
+          <p>
+            (Exceptional cases like ML/SL, etc.)
+          <p>If the employee fails to report to duty on the specified date after the sanctioned
+            LOP, it is deemed that the employee has abandoned his service with the company
+            on his own accord.
+          <p>
+          <p>LOP can be implicated on disciplinary grounds with regard to attendance by the
+            management regardless to the availability of the other types of leave.
+          <p>
+          <p> LOP days will not be taken for EL eligibility.
+          <p>
+          <h4>LEAVE SETTLEMENT DURING RESIGNATION / RETIREMENT / TERMINATION:</h4>
+          <p>If an employee to be relieved has availed more number of CL against the number of
+            months he has worked, then the excess CL will be deducted during his final settlement.
+          <p>
+          <p>EL for the days worked till the employee’s date of relieving will be calculated and paid
+            during the final settlement, provided he / she fulfils EL eligibility criteria.
+          <p>
+          <h4> PROCEDURE FOR APPLYING LEAVE</h4>
+          <p> The available leave balance is to be checked by the employee with the HR department and the
+            leave to be applied by duly filling up the leave application form and writing in a paper/ through the
+            mail/ through online portal. The application has to be forwarded by the employee to their
+            departmental head for approval. The departmental head is authorized to either grant or disapprove
+            the leave on valid grounds. The approved leave application has to be submitted to the HR
+            department for recordings and subsequent processing.
+          <p>
+          <h4> CANCELLATION OF LEAVE</h4>
+          <p> The department head can also cancel the once sanctioned leave on situational / need basis. If an
+            employee proceeds to avail the cancelled leave then those days will be treated as absence from
+            duty and the rules pertaining to absence from duty will be applied.</p>
+          <h4> ABSENCE FROM DUTY</h4>
+          <p> When an employee takes off from duty without prior leave approval or proper intimation
+            under certain unavoidable circumstances, then those day/days will be treated as absence
+            from duty.
+          <p>
+          <p>The days of absence will be treated under Loss of Pay.
+          <p>
+          <p>The employee has to report to his / her department head on rejoining duty from absence
+            and provide valid reasons for absence in writing before taking up work again.
+          <p>
+          <p> If an employee is absent from duty continuously for more than 7 days (including any
+            National / Festival / Declared / weekly off days which may fall in-between), an official
+            correspondence from the HR department will be
+          <p>
+            sent to him asking to report to duty and to provide explanation for his/her absence.
+          <p>
+          <p>Based on the enquiry any action deemed fit will/would be taken by the management.
+          <p>
+          <p> If there were no response from the employee within the stipulated time mentioned in
+            official correspondence, it would be assumed that the employee has withdrawn his service
+            from the company on his/her own accord and recorded accordingly.
+          <p>
+
+
+          <h4>SAI KUMARI</h4>
+          <h5>HR Department</h5>
+        </div>
+        <div class="bhoechie-tab-content">
+          <center>
+            <h1 class="" style="font-size:12em;color:#55518a"></h1>
+            <h2 style="margin-top: 0;color:#55518a">Dress Code</h2>
+          </center>
+        </div>
+        <div class="bhoechie-tab-content">
+          <center>
+            <h1 class="" style="font-size:12em;color:#55518a"></h1>
+            <h2 style="margin-top: 0;color:#55518a">Benifits</h2>
+          </center>
+        </div>
+        <div class="bhoechie-tab-content">
+          <center>
+            <h1 class="" style="font-size:12em;color:#55518a"></h1>
+            <h2 style="margin-top: 0;color:#55518a">Holidays</h2>
+
+          </center>
+        </div>
+        <div class="bhoechie-tab-content ">
+          <center>
+            <h1 class="" style="font-size:12em;color:#55518a"></h1>
+            <h2 style="margin-top: 0;color:#55518a">Code Of Conduct</h2>
+          </center>
+        </div>
+      </div>
     </div>
   </div>
+
+</div>
+</div>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
 <!--
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
@@ -190,3 +486,25 @@
 </nav>
 
 -->
+
+<!----<div class="container-fluid">
+<div class="row">
+  <div class=" col-lg-12 col-md-12 col-sm-6 col-xs-12">
+
+    <div>
+      <h3>USEFUL LINKS</h3>
+      <ul class="ind" >
+        <li><a href="#/Employee" ></i>Employee On Boarding</a></li>
+        <li><a href="#/Leavepolicy" ></i>Leave Policy</a></li>
+        <li><a href="#/Dresscode" ></i> DressCode</a></li>
+        <li><a href="#/Benifits"></i>Benifits</a></li>
+        <li><a href="#/Holidays"></i>Holidays</a></li>
+        <li><a href="#/Code" ></i>Code Of Conduct</a></li>
+      </ul>
+    </div>
+  </div>
+  </div>
+</div>
+</body>
+</html>
+

@@ -18,7 +18,6 @@ app.config(function($routeProvider) {
           templateUrl: '/rsr-resources.html',
           controller: 'resourcesController'
         })
-        
         .when('/projects', {
             templateUrl: '/rsr-projects.html',
             controller: 'projectsController'

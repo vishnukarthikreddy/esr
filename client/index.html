@@ -82,6 +82,8 @@
   <!--Bootstrap Core JavaScript-->
 
   <script src="js/angular-ui-notification.min.js"></script>
+
+  <script src="js/yitsol.js"></script>
   <script>
 
 
@@ -89,13 +91,13 @@
 //    var role=window.localStorage.getItem('role')
 //    alert("role: "+role);
 //    alert("userDetails" + JSON.stringify(userDetails));
-    if (!userDetails) {
-      window.location.href = "/login.html";
+   if (!userDetails) {
+      window.location.href = "/home.html";
     }
 
     function userLogout() {
       window.localStorage.removeItem('userDetails');
-      window.location.href = "/login.html";
+      window.location.href = "/";
     }
 
 
@@ -109,7 +111,6 @@
 
   </script>
 
-  <script src="js/yitsol.js"></script>
 
 
   <!--zing chart-->
@@ -136,6 +137,7 @@
   <!--Navigation-->
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display-->
+
     <a class="navbar-brand yitsol-title" style="text-align: center;" href="#/"><h5>Yukti IT Solutions</h5>
       <h6>Human Resource Portal</h6></a>
 
@@ -173,15 +175,12 @@
       </li>
     </ul>
 </div>
-    <!--Sidebar Menu Items - These collapse to the responsive navigation menu on small screens-->
-
+    <!--Sidebar Menu Items - These collapse to the responsive rnavigation menu on small screens-->
     <div class="collapse navbar-collapse navbar-ex1-collapse bag1">
-      <ul class="nav navbar-nav side-nav">
+      <ul class="nav navbar-nav side-nav" style="margin-top:-4%">
         <!--<li>
           <a href="#/rsr-resources"><i class="fa fa-fw fa-dashboard"></i> Resources</a>
         </li>-->
-
-
         <li id="mangerId" ng-show="managerShow">
           <a data-toggle="collapse" data-target="#Report123" data-parent="#sidenav01" class="cursor-pointer"
              role="button"><i class="fa fa-fw fa fa-users"></i>
@@ -213,7 +212,7 @@
                     <li class="active "><a href="#/rsr-weekly-status" id="padding11" class="edcolor">Weekly Status</a></li>
                     <li><a href="#/Expenses" class="edcolor" id="status">Expenses</a></li>
                     <li>
-                      <a href="#/Leaves" id="status" class="edcolor"></i>Leaves</a>
+                      <a href="#/Leaves" id="status" class="edcolor">Leaves</a>
                     </li>
                   </ul>
                 </div>
@@ -235,6 +234,7 @@
           </div>
         </li>
 
+
         <li id="empId" ng-show="employeeShow">
           <a style="color:#4bb1cf" data-toggle="collapse" data-target="#Report12" data-parent="#sidenav01" class="cursor-pointer"
              role="button"><i class="fa fa-fw fa fa-users"></i>
@@ -242,30 +242,55 @@
           <div class="collapse" id="Report12" style="">
             <ul class="nav nav-list">
 
-        <li>
-          <a href="#/LeaveRequest" id="padding8" class="table1"><i class="fa fa-fw fa fa-users"></i>Leave Request</a>
-        </li>
+              <li>
+                <a href="#/LeaveRequest" id="padding8" class="table1"><i class="fa fa-fw fa fa-users"></i>Leave Request</a>
+              </li>
+              <li>
 
-        <li>
-
-          <a href="#/Status" class="table1" id="statusId"><i class="fa fa-fw fa fa-users"></i> Status</a>
-        </li>
-        <li>
-          <a href="#/Expense Submission" id="padding9" class="table1"><i class="fa fa-fw fa fa-users"></i>Expense Submission</a>
-        </li>
-        <li class="">
-          <a data-toggle="collapse" data-target="#reports123" id="padding10" class="table1" data-parent="#sidenav01" role="button" class="cursor-pointer"><i
-            class="fa fa-fw fa fa-users"></i>
-            Reports <span class="caret"></span></a>
-          <div class="collapse" id="reports123" style="">
+                <a href="#/Status" class="table1" id="statusId"><i class="fa fa-fw fa fa-users"></i> Status</a>
+              </li>
+              <li>
+                <a href="#/Expense Submission" id="padding9" class="table1"><i class="fa fa-fw fa fa-users"></i>Expense Submission</a>
+              </li>
+              <li class="">
+                <a data-toggle="collapse" data-target="#reports123" id="padding10" class="table1" data-parent="#sidenav01" role="button" class="cursor-pointer"><i
+                  class="fa fa-fw fa fa-users"></i>
+                  Reports <span class="caret"></span></a>
+                <div class="collapse" id="reports123" style="">
+                  <ul class="nav nav-list">
+                    <a href="#/status" class="edcolor" id="resource">Status by Week</a></li>
+                    <li><a href="#/Leave Balance" class="edcolor" id="resource2">Leave Balance</a></li>
+                  </ul>
+                </div>
+              </ul></div></li>
+        <li id="usefulId" ng-show="usefulLinkShow">
+          <a style="color:#4bb1cf" data-toggle="collapse" data-target="#Report143" data-parent="#sidenav01" class="cursor-pointer"
+             role="button"><i class="fa fa-fw fa fa-users"></i>
+            Useful Links <i class="fa fa-angle-double-down"></i></a>
+          <div class="collapse" id="Report143" style="">
             <ul class="nav nav-list">
-              <a href="#/status" class="edcolor" id="resource">Status by Week</a></li>
-              <li><a href="#/Leave Balance" class="edcolor" id="resource2">Leave Balance</a></li>
-            </ul>
-          </div>
-</li></ul></div></li>
 
+              <li>
+                <a href="#/Employee" id="padding1" class="table1"><i class="fa fa-fw fa fa-users"></i>employee on boarding</a>
+              </li>
 
+              <li>
+
+                <a href="#/Leavepolicy" class="table2" id="padding2"><i class="fa fa-fw fa fa-users"></i>Leave policy</a>
+              </li>
+              <li>
+                <a href="#/DressCode" id="padding3" class="table3"><i class="fa fa-fw fa fa-users"></i>Dress code</a>
+              </li>
+              <li>
+                <a href="#/Benifits" id="padding4" class="table4"><i class="fa fa-fw fa fa-users"></i>Benifits</a>
+              </li>
+              <li>
+                <a href="#/Holidays" id="padding4" class="table4"><i class="fa fa-fw fa fa-users"></i>Holidays 2017</a>
+              </li>
+              <li>
+                <a href="#/Code" id="padding5" class="table5"><i class="fa fa-fw fa fa-users"></i>code of conduct</a>
+              </li>
+            </ul></div></li>
 
       </ul></div>
   </nav>
@@ -280,7 +305,7 @@
     </div>
   </section>
 
-
+ <!-- <h1> hr policies dsfsdfsfdsf dsfsdfsdf dfsdff</h1>-->
 </div>
 </body>
 
