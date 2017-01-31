@@ -14,6 +14,34 @@ app.config(function($routeProvider) {
         templateUrl: '/home.html',
         controller: 'homeController'
       })
+      .when('/Employee', {
+        templateUrl: '/Employee.html',
+        controller: 'homeController'
+      })
+      .when('/Leavepolicy', {
+        templateUrl: '/leavepolicy.html',
+        controller: 'homeController'
+      })
+      .when('/DressCode', {
+        templateUrl: '/Dresscode.html',
+        controller: 'homeController'
+      })
+      .when('/Benifits', {
+        templateUrl: '/Dresscode.html',
+        controller: 'homeController'
+      })
+      .when('/Benifits', {
+        templateUrl: '/Benifits.html',
+        controller: 'homeController'
+      })
+      .when('/Holidays', {
+        templateUrl: '/Holidays.html',
+        controller: 'homeController'
+      })
+      .when('/Code', {
+        templateUrl: '/Code.html',
+        controller: 'homeController'
+      })
         .when('/rsr-resources', {
           templateUrl: '/rsr-resources.html',
           controller: 'resourcesController'
@@ -115,9 +143,11 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
     // alert(role=='employee')
     $rootScope.managerShow=false;
     $rootScope.employeeShow=true;
+    $rootScope.usefulLinkShow=true;
   }else {
     $rootScope.managerShow=true;
     $rootScope.employeeShow=true;
+    $rootScope.usefulLinkShow=true;
   }
 
   $scope.profileDetails = JSON.parse($window.localStorage.getItem('profileDetails'))
@@ -160,7 +190,6 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
     "email": "",
     "password": "",
   };
-
   $scope.loginSubmit = function() {
    /* alert(  $scope.adminSf+":"+$scope.empSf)*/
     $scope.word = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
@@ -200,16 +229,16 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
           $window.localStorage.setItem("profileDetails",JSON.stringify(response));
           $window.localStorage.setItem("role",response.role);
 
-         /* alert("cv: "+ $window.localStorage.getItem("role"));*/
+          //alert("cv: "+ $window.localStorage.getItem("role"));
           if($rootScope.role=='employee'){
-             /*$location.url("#/HRportal");*/
-            // alert(role=='employee')
             $rootScope.managerShow=false;
             $rootScope.employeeShow=true;
+
 
           }else {
             $rootScope.managerShow=true;
             $rootScope.employeeShow=true;
+
           }
 
           $scope.loginDetails= response;
