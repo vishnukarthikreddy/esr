@@ -420,7 +420,6 @@ app.controller('resourcesController', function($scope,$http,$rootScope,$window) 
       console.log("entered post last");
     });
   };
-
   //$scope.updateResource = {};
   $scope.editPopup = function(resourceInfo){
    // alert("394:"+JSON.stringify(resourceInfo));
@@ -437,7 +436,9 @@ app.controller('resourcesController', function($scope,$http,$rootScope,$window) 
     alert("userDetails"+userDetails.id);
     $http({
       method: 'PUT',
-      url: 'http://139.162.42.96:4545/api/Resources/'+$scope.updateResource.id+'?access_token='+userDetails.id,
+     url: 'http://139.162.42.96:4545/api/Resources/'+$scope.updateResource.id+'?access_token='+userDetails.id,
+      //url: 'http://localhost:4545/api/Resources/'+$scope.updateResource.id+'?access_token='+userDetails.id,
+
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data: $scope.updateResource
     }).success(function (response) {
