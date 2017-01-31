@@ -430,19 +430,21 @@ app.controller('resourcesController', function($scope,$http,$rootScope,$window) 
   };
 
   $scope.editResource = function(){
+    var userDetails=JSON.parse($window.localStorage.getItem('userDetails'));
    // alert('Edit Resource:'+JSON.stringify($scope.updateResource));
     console.log('Edit Resource:'+JSON.stringify($scope.updateResource));
     alert("403:"+$scope.updateResource.id);
+    alert("userDetails"+userDetails.id);
     $http({
       method: 'PUT',
-      url: 'http://139.162.42.96:4545/api/Resources/'+$scope.updateResource.id,
+      url: 'http://139.162.42.96:4545/api/Resources/'+$scope.updateResource.id+'?access_token='+userDetails.id,
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data: $scope.updateResource
     }).success(function (response) {
       console.log('Resources Response :' + JSON.stringify(response));
       $rootScope.updateResource = {};
       console.log("entered Put");
-      $scope.getResources();
+     $scope.getResources();
       $('#resourceEdit').modal('hide');
     }).error(function (response) {
       console.log('Error Response :' + JSON.stringify(response));
