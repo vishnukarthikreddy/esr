@@ -19,7 +19,7 @@ app.config(function($routeProvider) {
         controller: 'homeController'
       })
       .when('/Leavepolicy', {
-        templateUrl: '/leavepolicy.html',
+        templateUrl: '/Leavepolicy.html',
         controller: 'homeController'
       })
       .when('/DressCode', {
