@@ -1,4 +1,3 @@
-
 {
   "db": {
     "name": "db",
@@ -13,5 +12,4 @@
     "user": "",
     "connector": "mongodb"
   }
-
 }
