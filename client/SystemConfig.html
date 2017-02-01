@@ -6,16 +6,15 @@
     <div class="col-lg-5">
       <label for="fYear">Current Financial year:<span style=color:red>*</span></label>
       <!--<input type="text"  id="financialYear1" ng-model="updateyear.financialYear" placeholder="YYYY-YY"  data-toggle="tooltip" data-placement="top" required>-->
-      <select  ng-model="presentFinYear.financialYear" required >
-        <option value="">Select Year</option>
-        <option ng-repeat="finYear in currentfinYear" value="{{finYear.id}}">{{finYear.financialYear}}</option>
+      <select  ng-model="yearOfCurrentFinance"  required >
+        <option  value= "" >Select Year</option>
+        <option ng-repeat="finYear in currentfinYear" ng-selected="yearOfCurrentFinance == finYear.financialYear"  value="{{finYear.id}}">{{finYear.financialYear}}</option>
       </select>
-      <button type="button" class="btn btn-primary" ng-click="updateCurrentYear()">Update</button>
+      <button type="button" class="btn btn-primary"  ng-click="updateCurrentYear()">Update</button>
     </div>
     <div class="col-lg-2">
       <button type="button" class="btn btn-primary" data-toggle="modal"  data-target="#financialYear" >Create</button>
     </div>
-    {{currentfinYear.id}}
 
     <div class="col-lg-2"></div>
     </div>
@@ -41,7 +40,7 @@
         </div>
         <div class="modal-body">
           <label>Enter Financial Year:<span style="color:red">*</span> </label>
-          <input type="text"  id="financialYear1" ng-model="updateyear.financialYear" placeholder="YYYY-YY like(2016-17)"  data-toggle="tooltip" data-placement="top" required="">
+          <input type="text"  id="financialYear1" ng-model="updateyear.financialYear" placeholder="YYYY-YY like(2016-17)"  data-toggle="tooltip" data-placement="top" required>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success"  ng-click="createFYear()" required>Save</button>

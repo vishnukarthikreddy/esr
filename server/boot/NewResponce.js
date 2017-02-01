@@ -15,7 +15,7 @@ module.exports = function(server) {
   var remotes = server.remotes();
 
 
-  remotes.before('**', function(ctx, next){
+ remotes.before('**', function(ctx, next){
 
     console.log("actual method: "+ctx.req.originalUrl);
     if (ctx.req.originalUrl.toString().indexOf('/api/Resources/login') > -1 ){
