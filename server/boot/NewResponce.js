@@ -19,7 +19,7 @@ module.exports = function(server) {
 
     console.log("actual method: "+ctx.req.originalUrl);
     if (ctx.req.originalUrl.toString().indexOf('/api/Resources/login') > -1 ){
-      ctx.req.body['ttl'] = 3600;
+      ctx.req.body['ttl'] = 36000;
       console.log('Entered..'+JSON.stringify(ctx.req.body));
       next();
     }else {
