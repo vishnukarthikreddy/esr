@@ -436,7 +436,7 @@ app.controller('resourcesController', function($scope,$http,$rootScope,$window) 
     $http({
       method: 'PUT',
     //  url: 'http://139.162.42.96:4545/api/Resources/'+$scope.updateResource.id,
-     url: 'http://139.162.42.96:4545/api/Resources/'+$scope.updateResource.id+'?access_token='+userDetails.id,
+     url: 'http://139.162.42.96:4545/api/Resources/'+$scope.updateResource.id+'?access_token='+userDetais.id,
       //url: 'http://localhost:4545/api/Resources/'+$scope.updateResource.id+'?access_token='+userDetails.id,
 
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
@@ -558,7 +558,6 @@ $scope.editProject={
     });
 
     // alert('create Project');
-
 
   }
 /*
