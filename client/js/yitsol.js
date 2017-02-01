@@ -472,15 +472,10 @@ app.controller('resourcesController', function($scope,$http,$rootScope,$window) 
     //alert("402:"+adminAcessToken);
     $http({
       method: 'PUT',
-<<<<<<< HEAD
     //  url: 'http://139.162.42.96:4545/api/Resources/'+$scope.updateResource.id,
      url: 'http://139.162.42.96:4545/api/Resources/'+$scope.updateResource.id+'?access_token='+userDetais.id,
       //url: 'http://localhost:4545/api/Resources/'+$scope.updateResource.id+'?access_token='+userDetails.id,
 
-=======
-      url: 'http://139.162.42.96:4545/api/Resources/'+$scope.updateResource.id+'?access_token='+userDetais.id,
-      /*url: 'http://139.162.42.96:4545/api/Resources/'+$scope.updateResource.id+'?access_token='+adminAcessToken,*/
->>>>>>> e0cdc366c1652b1901b3ebb582f32c3e2d2426c5
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       data: $scope.updateResource
     }).success(function (response) {
@@ -1219,13 +1214,7 @@ app.controller('StatusController', function($scope,$http,$rootScope) {
 app.controller('ResouceLeavesYearController',function ($scope,$http,$rootScope,$window,Notification) {
 
   $scope.yearOfCurrentFinance = $window.localStorage.getItem("UpdatedCurrentFinanYear");
-
-
-
-
-
   $scope.changeYears = function(searchText){
-
     //alert("valueOfYears:"+searchText);
     if(searchText=="0"){
       console.log("come to if block");
