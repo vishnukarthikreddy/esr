@@ -467,13 +467,13 @@ app.controller('resourcesController', function($scope,$http,$rootScope,$window) 
   $scope.editResource = function(){
     var userDetails=JSON.parse($window.localStorage.getItem('userDetails'));
     console.log('Edit Resource:'+JSON.stringify($scope.updateResource));
-    var adminAcessToken = $window.localStorage.getItem('adminAcessToken');
+    var userDetails = $window.localStorage.getItem('userDetails');
    // alert("403:"+$scope.updateResource.id);
     //alert("402:"+adminAcessToken);
     $http({
       method: 'PUT',
     //  url: 'http://139.162.42.96:4545/api/Resources/'+$scope.updateResource.id,
-     url: 'http://139.162.42.96:4545/api/Resources/'+$scope.updateResource.id+'?access_token='+userDetais.id,
+     url: 'http://139.162.42.96:4545/api/Resources/'+$scope.updateResource.id+'?access_token='+userDetails.id,
       //url: 'http://localhost:4545/api/Resources/'+$scope.updateResource.id+'?access_token='+userDetails.id,
 
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
