@@ -11,6 +11,31 @@ app.config(function($routeProvider) {
         templateUrl: '/home.html',
         controller: 'homeController'
       })
+      .when('/Employee', {
+        templateUrl: '/Employee.html',
+        controller: 'homeController'
+      })
+      .when('/Leavepolicy', {
+        templateUrl: '/Leavepolicy.html',
+        controller: 'homeController'
+      })
+      .when('/DressCode', {
+        templateUrl: '/Dresscode.html',
+        controller: 'homeController'
+      })
+      
+      .when('/Benifits', {
+        templateUrl: '/Benifits.html',
+        controller: 'homeController'
+      })
+      .when('/Holidays', {
+        templateUrl: '/Holidays.html',
+        controller: 'homeController'
+      })
+      .when('/Code', {
+        templateUrl: '/Code.html',
+        controller: 'homeController'
+      })
         .when('/rsr-resources', {
           templateUrl: '/rsr-resources.html',
           controller: 'resourcesController'
