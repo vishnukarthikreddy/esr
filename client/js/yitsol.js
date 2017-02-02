@@ -114,9 +114,11 @@ app.controller('indexController', function($http, $scope, $window, $location, $r
     // alert(role=='employee')
     $rootScope.managerShow=false;
     $rootScope.employeeShow=true;
+    $rootScope.usefulLinkShow=true;
   }else {
     $rootScope.managerShow=true;
     $rootScope.employeeShow=true;
+    $rootScope.usefulLinkShow=true;
   }
 
   $scope.profileDetails = JSON.parse($window.localStorage.getItem('profileDetails'))
