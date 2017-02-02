@@ -1,4 +1,4 @@
- <div ng-controller="ResouceLeavesYearController">
+ <div >
 
 <div class="contentArea">
   <div class="">
@@ -9,7 +9,7 @@
     <button type="button" class="btn btn-danger btn-md pull-right m-btm10"  data-toggle="modal" data-target="#myModal" ng-click="getMasterData()">Create</button>
     <div class="col-lg-4 text-right">
       <label> Financial Year:</label>
-     <!-- <select ng-model="searchText">
+      <!--<select ng-model="searchText">
       <option value="">Select Year</option>
       &lt;!&ndash; <option>2016-17</option>
         <option>2017-18</option>
@@ -17,10 +17,9 @@
         <option>2019-20</option>&ndash;&gt;
 
       </select>-->
-
-      <select  ng-model="yearOfCurrentFinance" ng-init="changeYears(yearOfCurrentFinance)" ng-change="changeYears(yearOfCurrentFinance)"  required>
+      <select  ng-model="yearOfCurrentFinanceEmployee" ng-init="changeYearsIntiallly(yearOfCurrentFinanceEmployee)" ng-change="changeYears(yearOfCurrentFinanceEmployee)" required>
         <option value="">Select Year</option>
-        <option ng-repeat="finYear in currentfinYear" ng-selected="yearOfCurrentFinance== finYear.financialYear" value="{{finYear.financialYear}}" >{{finYear.financialYear}}</option>
+        <option ng-repeat="finYear in currentfinYear" ng-selected="yearOfCurrentFinanceEmployee== finYear.financialYear" value="{{finYear.financialYear}}" >{{finYear.financialYear}}</option>
       </select>
     </div>
     <div class="col-lg-6 text-right">
@@ -56,9 +55,9 @@
                 </div>
                 <div class="col-lg-5">
                   <label>Financial Year: <span style="color:red">*</span></label>
-                  <select  ng-model="presentFinYear.financialYear"  required >
+                  <select  ng-model="resourceLeave.financialYear"  required >
                     <option value="">Select Year</option>
-                    <option ng-repeat="finYear in currentfinYear" value="{{finYear.id}}">{{finYear.financialYear}}</option>
+                    <option ng-repeat="finYear in currentfinYear" value="{{finYear.financialYear}}">{{finYear.financialYear}}</option>
                   </select>
                 </div>
               </div>
@@ -154,7 +153,7 @@
                 </div>
                 <div class="col-lg-6">
                   <label> <span class="color-red f-bold f-left">*</span>Financial Year:</label>
-                  <select  ng-model="yearOfCurrentFinance" ng-change="editChangeYears(yearOfCurrentFinance)" required>
+                  <select  ng-model="editLeave1.financialYear" ng-change="editChangeYears(yearOfCurrentFinance)" required>
                     <option value="">Select Year</option>
                     <option ng-repeat="finYear in currentfinYear" ng-selected="yearOfCurrentFinance==finYear.financialYear" value="{{finYear.financialYear}}" >{{finYear.financialYear}}</option>
                   </select>
